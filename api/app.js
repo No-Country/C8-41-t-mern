@@ -1,18 +1,14 @@
-import express from 'express'
-import dotenv from 'dotenv';
-import router from './route/route.js';
-
+import express from "express";
+import dotenv from "dotenv";
+import routerProducts from "./route/products.js";
+import config from "./config/config.js";
 dotenv.config();
 
 const app = express();
 
+const port = process.env.PORT;
+app.use("/", routerProducts);
 
-// const homeRouter = require("../src/route/route");
-
-// require("dotenv").config({ path: "../api/.env" });
-const port = process.env.PORT
-app.use("/", router);
-console.log(process.env.PORT);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
