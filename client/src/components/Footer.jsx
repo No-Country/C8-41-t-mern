@@ -82,7 +82,7 @@ import React from 'react';
                 {/* Grid column */}
                 {/* Grid column */}
                 <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    {/* Links */}
+                    {/* Links  */}
                     <h6 className="text-uppercase fw-bold mb-4">Contacto</h6>
                     <p><i className="fas fa-home me-3" /> New York, NY 10012, US</p>
                     <p>

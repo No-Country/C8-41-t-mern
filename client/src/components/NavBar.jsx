@@ -51,7 +51,7 @@ const NavBar = () => {
             placeholder="Buscar Mascara..."
             //   style="min-width: 125px;"
             />
-            <span className="input-group-text border-0 d-none d-lg-flex trasparent bg-dark"></span>
+            <span className="input-group-text border-0 d-none d-lg-flex trasparent bg-dark "></span>
             <button className="btn btn-success" type="submit" >
         Buscar
       </button> 
