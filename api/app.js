@@ -6,7 +6,8 @@ import config from "./config/config.js";
 import routerApi from "./route/index.js";
 const port = process.env.PORT;
 const app = express();
-app.use(express.json())
+
+app.use(express.json());
 
 
 routerApi(app);
