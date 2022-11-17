@@ -4,7 +4,7 @@ const NavBar = () => {
   return (
     <>
     {/* <!-- Navbar --> */}
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
+<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   {/* <!-- Container wrapper --> */}
   <div className="container-fluid">
     {/* <!-- Toggle button --> */}
@@ -34,13 +34,13 @@ const NavBar = () => {
       {/* <!-- Left links --> */}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link" href="#">Dashboard</a>
+          <a className="nav-link" href="#">Inicio</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Team</a>
+          <a className="nav-link" href="#">Productos</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Projects</a>
+          <a className="nav-link" href="#">Acerca de</a>
         </li>
        
         <form className="input-group w-auto my-auto d-none d-sm-flex">
@@ -48,10 +48,10 @@ const NavBar = () => {
             autocomplete="off"
             type="search"
             class="form-control rounded"
-            placeholder="Search"
+            placeholder="Buscar Mascara..."
             //   style="min-width: 125px;"
             />
-            <span className="input-group-text border-0 d-none d-lg-flex"></span>
+            <span className="input-group-text border-0 d-none d-lg-flex trasparent bg-dark"></span>
             <button className="btn btn-success" type="submit" >
         Buscar
       </button> 
