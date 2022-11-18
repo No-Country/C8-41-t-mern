@@ -1,12 +1,30 @@
-import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { productsData } from "./dummyData.js";
 import "./Products.css";
+
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const traerProductos = () => {
+      const url = "http://localhost:4000/api/products";
+
+      axios
+        .get(url)
+        .then((res) => setProducts(res.data))
+        .catch((error) => console.log(error));
+    };
+    traerProductos();
+  }, []);
+
+  console.log(products);
+
   return (
     <div className="products">
       {
         <ul className="products__list">
-          {productsData.map((item, index) => {
+          {products.map((item, index) => {
             return (
               <li key={index} className="products__list-item">
                 <div className="products__list-item__img">
