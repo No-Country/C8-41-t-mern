@@ -9,10 +9,17 @@ const Products = () => {
           {productsData.map((item, index) => {
             return (
               <li key={index} className="products__list-item">
-                <img src={item.url} alt={item.name} />
-                <h2>{item.name}</h2>
-                <p>{item.price}</p>
-                <button>Buy</button>
+                <div className="products__list-item__img">
+                  <img src={item.url} alt={item.name} />
+                </div>
+                <div className="products__list-item__content">
+                  <h2>{item.name}</h2>
+                  <p>{item.description}</p>
+                  <div className="products__list-item__content-btn">
+                    <p>{item.price}</p>
+                    <button>BUY NOW</button>
+                  </div>
+                </div>
               </li>
             );
           })}
