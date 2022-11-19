@@ -1,3 +1,4 @@
+import Buscador from "./Buscador"
 
 
 const NavBar = () => {
@@ -43,19 +44,8 @@ const NavBar = () => {
           <a className="nav-link" href="#">Acerca de</a>
         </li>
        
-        <form className="input-group w-auto my-auto d-none d-sm-flex">
-            <input
-            autocomplete="off"
-            type="search"
-            class="form-control rounded"
-            placeholder="Buscar Mascara..."
-            //   style="min-width: 125px;"
-            />
-            <span className="input-group-text border-0 d-none d-lg-flex trasparent bg-dark "></span>
-            <button className="btn btn-success" type="submit" >
-        Buscar
-      </button> 
-      </form>
+       {/* Componente buscador */}
+       <Buscador/>
       </ul>
       
 
