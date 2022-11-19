@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { productsData } from "./dummyData.js";
 import "./Products.css";
 
@@ -10,10 +11,9 @@ const Products = () => {
     const traerProductos = () => {
       const url = "http://localhost:4000/api/products";
 
-      axios
-        .get(url)
-        .then((res) => setProducts(res.data))
-        .catch((error) => console.log(error));
+      axios.get(url)
+          .then((res) => setProducts(res.data))
+          .catch((error) => console.log(error));
     };
     traerProductos();
   }, []);
@@ -36,6 +36,9 @@ const Products = () => {
                   <div className="products__list-item__content-btn">
                     <p>{item.price}</p>
                     <button>BUY NOW</button>
+                    <Link to={`/detalle/${item._id}`} >
+                      <button>Ver detalle</button>
+                    </Link>
                   </div>
                 </div>
               </li>
