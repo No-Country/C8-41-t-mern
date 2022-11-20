@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const DetalleMascara = () => {
+const ProductDetail = () => {
 
     const { id } = useParams()
    console.log(typeof(id))
@@ -31,8 +31,8 @@ const DetalleMascara = () => {
     <Container  >
        <Row className="justify-content-md-center">
        <Col md="auto">
-       <Card className='my-2 mx-2  ' >
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+       <Card className='my-2 mx-2 w-50  ' >
+      <Card.Img variant="top" src={oneProduct.image} />
       <Card.Body>
         <Card.Title className='text-dark fw-bold ' > Nombre: <span className='fw-semibold'> {oneProduct.name} </span> </Card.Title>
        
@@ -60,4 +60,4 @@ const DetalleMascara = () => {
   )
 }
 
-export default DetalleMascara
+export default ProductDetail
