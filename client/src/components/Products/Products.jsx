@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Product from "./Product.jsx";
+import ProductDetail from "./ProductDetail.jsx";
 import "./Products.css";
 
 const Products = () => {
@@ -25,7 +25,7 @@ const Products = () => {
       {
         <ul className="products__list">
           {products.map((item, index) => {
-            return <Product item={item} key={index} />;
+            return <ProductDetail item={item} key={index} />;
           })}
         </ul>
       }
