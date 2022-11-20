@@ -1,8 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import  { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import ProductDetail from "../ProductDetail";
 
-const ProductDetail = ({ item }) => {
+
+const Product = ( {item} ) => {
+
+  
   return (
+    <>
     <li className="products__list-item">
       <div className="products__list-item__img">
         <img src={item.image} alt={item.name} />
@@ -19,7 +25,8 @@ const ProductDetail = ({ item }) => {
         </div>
       </div>
     </li>
+    </>
   );
 };
 
-export default ProductDetail;
+export default Product;

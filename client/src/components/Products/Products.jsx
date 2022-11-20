@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProductDetail from "./ProductDetail.jsx";
+import Product from "./Product";
+
+
 import "./Products.css";
 
 const Products = () => {
@@ -18,14 +20,15 @@ const Products = () => {
     traerProductos();
   }, []);
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className="products">
       {
         <ul className="products__list">
           {products.map((item, index) => {
-            return <ProductDetail item={item} key={index} />;
+            console.log(item)
+            return <Product item={item} key={index} />;
           })}
         </ul>
       }

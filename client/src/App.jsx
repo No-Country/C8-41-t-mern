@@ -4,8 +4,12 @@ import NavBar from "./components/NavBar";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
 
+import Register from './components/Register/Register'
+import CreateProduct from "./components/CreateProduct";
 import ProductDetail from "./components/ProductDetail";
-import Register from "./components/Register/Register";
+
+
+
 
 function App() {
   return (
@@ -17,8 +21,18 @@ function App() {
           <Route path="/detalle/:id" element={<ProductDetail />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-        <Footer />
-      </BrowserRouter>
+
+
+        {/* Rutas del administrador */}
+        <Routes>
+          <Route path='/admin/crear-producto' element={<CreateProduct/>} />
+        </Routes>
+
+      <Footer />
+    </BrowserRouter>
+     
+
+        
     </>
   );
 }
