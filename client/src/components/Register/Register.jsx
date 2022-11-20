@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
-import "../login/login.scss";
-import "./register.scss";
+import "./register.css";
 const Register = () => {
   const [isLogged, setIsLogged] = useState(false);
   const { register, handleSubmit, reset } = useForm();
@@ -116,6 +115,10 @@ const Register = () => {
         <a href="#" className="login__btn-link">
           Already got an account?
         </a>
+        <i class="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+        <i class="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+        <i class="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+        <i class="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
   );
