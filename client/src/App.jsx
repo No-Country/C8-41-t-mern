@@ -5,6 +5,7 @@ import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
 
 import ProductDetail from './components/ProductDetail';
+import CreateProduct from './components/CreateProduct';
 
 function App() {
   return (
@@ -15,6 +16,12 @@ function App() {
           <Route path='/' element={<Products />} />
           <Route  path='/detalle/:id' element={ <ProductDetail /> } />
         </Routes>
+
+        {/* Rutas del administrador */}
+        <Routes>
+          <Route path='/admin/crear-producto' element={<CreateProduct/>} />
+        </Routes>
+
       <Footer />
     </BrowserRouter>
      
