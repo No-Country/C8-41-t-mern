@@ -1,0 +1,22 @@
+
+
+
+
+
+.login__container{
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.login__card {
+    width: 300px;
+    padding: 1.9rem 1.2rem;
+    text-align: center;
+    background-color: rgb(161, 161, 161);
+    border-radius: 5px;
+    position: relative;
+    
+}
+   
+
