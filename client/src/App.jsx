@@ -5,8 +5,9 @@ import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
 
 import Register from './components/Register/Register'
-import CreateProduct from "./components/CreateProduct";
+
 import ProductDetail from "./components/ProductDetail";
+import CreateProduct from "./components/CreateProduct/CreateProduct";
 
 
 
