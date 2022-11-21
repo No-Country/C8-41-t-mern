@@ -19,6 +19,7 @@ const CreateProduct = () => {
     }
 
     const [producto, setProducto] = useState(newProducto)
+    const [alerta, setAlerta] = useState('')
 
     const handleInput = (e) => {
         
@@ -31,40 +32,44 @@ const CreateProduct = () => {
     
     const handleSubmit = async(e) => {
         e.preventDefault()
-        let respuesta
-         await axios.post(`http://localhost:4000/api/products`, producto)
-                     .then( resp => respuesta = resp.data.name)
-                    
 
-                     Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: `El producto ${respuesta} fue creada de forma exitosa`,
-                        showConfirmButton: false,
-                        timer: 2500
-                      })
-                       
+        let respuesta;
+        let { name, image, materials, description, price, delay, sold } = producto;
+
+        if ([name, image, materials, description, price, delay, sold].includes('')) {
+
+          setAlerta(<h3 className="alert alert-danger" role="alert">
+                      Todos los campos son obligatorios
+                    </h3>)
+                     
+          return
+        } else {
+
+          await axios.post(`http://localhost:4000/api/products`, producto)
+                      .then( resp => respuesta = resp.data.name)
+                     
+  
+                      Swal.fire({
+                         position: 'center',
+                         icon: 'success',
+                         title: `El producto ${respuesta} fue creada de forma exitosa`,
+                         showConfirmButton: false,
+                         timer: 2500
+                       })
+                        
+        }
+        
 
     }
-
-
-
-
-
-  
     
-
-      
-   
-
-    
-
-
- 
-
-  return (
+    return (
 
     <div className="login__container">
+    { alerta 
+      
+      
+
+     }
       <form
         onSubmit={handleSubmit}
         className="login__card"
@@ -82,6 +87,7 @@ const CreateProduct = () => {
             type="text"
             name="name"
             onChange={handleInput}
+            // required={true}
           />
           {/* <i className="input-icon fa-solid fa-user"></i>
 
@@ -113,6 +119,8 @@ const CreateProduct = () => {
             value={producto.image}
             name='image'
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
@@ -133,6 +141,8 @@ const CreateProduct = () => {
             id="materials"
             value={producto.materials}
            onChange={handleInput}
+          //  required={true}
+
           />
         </div>
         <div className="login__field">
@@ -147,6 +157,8 @@ const CreateProduct = () => {
             id="description"
             value={producto.description}
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
@@ -161,6 +173,8 @@ const CreateProduct = () => {
             value={producto.price}
             name='price'
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
@@ -175,6 +189,8 @@ const CreateProduct = () => {
             value={producto.delay}
             name='delay'
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
@@ -189,6 +205,8 @@ const CreateProduct = () => {
             value={producto.sold}
             name='sold'
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
 
