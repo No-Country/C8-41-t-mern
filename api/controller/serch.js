@@ -5,6 +5,7 @@ import { text } from "express";
 
 const serchProducts = async (req, res) => {
   const encontrar = "metal";
+  console.log(encontrar);
   const result = await productsModel.find({
     $text: { $search: encontrar },
   });
