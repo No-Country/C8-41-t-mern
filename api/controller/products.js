@@ -4,7 +4,6 @@ import { httpError } from "../helper/handleError.js";
 
 const getProducts = async (req, res) => {
   const productos = await productsModel.find();
-  console.log(productos);
   res.send(productos);
 };
 
@@ -37,6 +36,7 @@ const createProducts = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
+  console.log(id);
   if (!mongoose.isValidObjectId(id)) {
     return res.status(400).send("Invalid Product ID");
   }

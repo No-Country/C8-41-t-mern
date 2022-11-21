@@ -1,16 +1,22 @@
 import mongoose from "mongoose";
 import productsModel from "../models/products.js";
 import { httpError } from "../helper/handleError.js";
+import { text } from "express";
 
 const serchProducts = async (req, res) => {
-  const productos = await productsModel.find();
+  const encontrar = "metal";
+  const result = await productsModel.find({
+    $text: { $search: encontrar },
+  });
+  if (result.length == 0) {
+    const todos = await productsModel.find();
 
-  const result = productos.filter((producto) =>
-    producto.toLowerCase().includes(title)
-  );
-
-  console.log(productos);
-  res.send(productos);
+    const result = todos.filter((producto) =>
+      producto.materials.includes(encontrar)
+    );
+    return res.send(result).status(200);
+  }
+  res.send(result).status(200);
 };
 
 export { serchProducts };
