@@ -1,0 +1,147 @@
+
+
+
+
+
+.login__container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login__card {
+width: 300px;
+padding: 1.9rem 1.2rem;
+text-align: center;
+background-color:var(--Primary-color);
+border-radius: 5px;
+position: relative;
+
+}
+
+
+
+/*Inputs*/
+.login__field {
+margin-top: .5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: .5em;
+background-color: var(--Light-background);
+border-radius: 4px;
+padding: 1em 1em;
+}
+
+
+
+.login__input-field {
+background: none;
+border: none;
+outline: none;
+width: 100%;
+color: var(--Button-color);
+}
+
+/*Text*/
+.login__title {
+margin-bottom: 1rem;
+font-size: 1.5em;
+font-weight: 500;
+color: var(--Text-white);
+font-weight: 700;
+letter-spacing: 1px;
+}
+
+/*Buttons*/
+.login__btn {
+margin: 1rem;
+border: none;
+border-radius: 4px;
+font-weight: bold;
+font-size: .8em;
+text-transform: uppercase;
+padding: 1em 3em;
+background-color: var(--Button-color);
+color: var(--Text-white);
+box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
+transition: all .3s ease-in-out;
+cursor: pointer;
+border: 1px solid var(--Button-color);
+
+
+}
+
+.login__btn-link {
+color: var(--Text-white);
+display: block;
+font-size: .75em;
+transition: color .3s ease-out;
+}
+
+/*Hover & focus*/
+.login__field input:focus::placeholder {
+opacity: 0;
+transition: opacity .3s;
+}
+
+.login__btn:hover {
+border: 1px solid var(--Button-color);
+background-color: transparent;
+color: var(--Button-color);
+box-shadow: 0 8px 24px 0 var(--Button-color);
+}
+
+.login__btn-link:hover {
+color: var(--Button-color);
+}
+
+.input-icon {
+height: 1em;
+width: 1em;
+fill: var(--Button-color);
+color: var(--Button-color);
+}
+
+
+.login__container .register__icon{
+color: rgba(143, 143, 143, 0.509);
+font-size: 35px;
+}
+
+.register__icon1{
+position: absolute;
+top: 20px;
+left:20px;
+transform: rotate(-45deg);
+
+}
+.register__icon2{
+position: absolute;
+bottom: 20px;
+left:20px;
+transform: rotate(45deg);
+
+}
+.register__icon3{
+position: absolute;
+top: 20px;
+right:20px;
+transform: rotate(-135deg);
+
+}
+.register__icon4{
+position: absolute;
+bottom: 20px;
+right:20px;
+transform: rotate(-45deg);
+
+}
+
+
+@media (min-width: 700px){
+.login__card {
+    width: 600px;
+}
+   
+}
