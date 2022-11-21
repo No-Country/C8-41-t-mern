@@ -37,7 +37,7 @@ const CreateProduct = () => {
         let { name, image, materials, description, price, delay, sold } = producto;
 
         if ([name, image, materials, description, price, delay, sold].includes('')) {
-
+          
           setAlerta(<h3 className="alert alert-danger" role="alert">
                       Todos los campos son obligatorios
                     </h3>)
@@ -47,8 +47,18 @@ const CreateProduct = () => {
 
           await axios.post(`http://localhost:4000/api/products`, producto)
                       .then( resp => respuesta = resp.data.name)
+                      .catch(error => console.log(error))
                      
   
+                      setProducto(newProducto = {
+                        name: '',
+                        image: '',
+                        materials: '',
+                        description: '',
+                        price: '',
+                        delay: '',
+                        sold: '',
+                    })
                       Swal.fire({
                          position: 'center',
                          icon: 'success',
@@ -56,8 +66,9 @@ const CreateProduct = () => {
                          showConfirmButton: false,
                          timer: 2500
                        })
-                        
-        }
+
+                       
+                      }
         
 
     }
@@ -65,11 +76,7 @@ const CreateProduct = () => {
     return (
 
     <div className="login__container">
-    { alerta 
-      
-      
-
-     }
+   
       <form
         onSubmit={handleSubmit}
         className="login__card"
@@ -81,7 +88,6 @@ const CreateProduct = () => {
           <input
             // {...register("name")}
             value={producto.name}
-            autoComplete="on"
             placeholder="Product Name"
             className="login__input-field"
             type="text"
@@ -111,7 +117,6 @@ const CreateProduct = () => {
           </svg> */}
           <input
             // {...register("image")}
-            autoComplete="on"
             placeholder="Insert image or url"
             className="login__input-field"
             type="text"
@@ -133,7 +138,6 @@ const CreateProduct = () => {
           </svg> */}
           <input
             // {...register("materials")}
-            autoComplete="off"
             type="text"
             placeholder="Materials"
             className="login__input-field"
@@ -149,7 +153,7 @@ const CreateProduct = () => {
           {/* <i className="input-icon fa-solid fa-phone"></i> */}
           <input
             // {...register("description")}
-            autoComplete="off"
+            
             type="text"
             placeholder="Description at Mask"
             className="login__input-field"
@@ -165,7 +169,7 @@ const CreateProduct = () => {
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("price")}
-            autoComplete="on"
+            
             placeholder="Price of product"
             className="login__input-field"
             type="number"
@@ -181,7 +185,7 @@ const CreateProduct = () => {
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("delay")}
-            autoComplete="on"
+           
             placeholder="Estimated time"
             className="login__input-field"
             type="text"
@@ -197,7 +201,7 @@ const CreateProduct = () => {
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("sold")}
-            autoComplete="on"
+            
             placeholder="Quantity sold"
             className="login__input-field"
             type="number"
@@ -209,15 +213,26 @@ const CreateProduct = () => {
 
           />
         </div>
+          <div className="mx-2 my-2" >
+
+           { 
+            
+              alerta 
+
+            
+            
+            }
+
+          </div>
 
         <button  type="submit" className="login__btn">Create Product</button>
         {/* <a href="#" className="login__btn-link">
           Already got an account?
         </a> */}
-        <i class="register__icon1 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon2 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon3 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon4 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
   )
