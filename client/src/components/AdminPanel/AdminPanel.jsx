@@ -1,6 +1,7 @@
 import React from "react";
 //import Sidebar from "./Sidebar";
 import SimpleSidebar from "./SimpleSidebar"
+import './AdminPanel.css'
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { Outlet, Link } from "react-router-dom";
 
@@ -10,10 +11,9 @@ import { Outlet, Link } from "react-router-dom";
 const AdminPanel = () => {
   return (
     <>
-      <div>AdminPanel</div>
       <Container fluid>
         <Row>
-          <Col xs={2} id="sidebar-wrapper">
+          <Col  id="sidebar-wrapper">
             <SimpleSidebar />
             
           </Col>

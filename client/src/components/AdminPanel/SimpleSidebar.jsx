@@ -1,13 +1,38 @@
 import React from 'react'
 import { Outlet, Link } from "react-router-dom";
+import {Nav} from "react-bootstrap";
 
 const SimpleSidebar = () => {
   return (
     <>
-    <div>SimpleSidebar</div>
-    <Link to="account">Inventario</Link> |{" "}
-    <Link to="inventario">Usuarios</Link>
-    <Link to="crear-producto">Crear Item</Link>
+    
+    <Nav className="col-md-4 d-none d-md-block bg-dark sidebar"
+            
+            >
+                <div className="sidebar-sticky"></div>
+            <Nav.Item>
+                <Nav.Link ><Link to="/admin">Mi Cuenta</Link></Nav.Link>
+            </Nav.Item>   
+            <Nav.Item>
+                <Nav.Link ><Link to="inventario">Inventario</Link></Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="link-1"><Link to="usuarios">Usuarios</Link></Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="link-2"><Link to="crear-producto">Crear Item</Link></Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="disabled" disabled>
+                Disabled
+                </Nav.Link>
+            </Nav.Item>
+            </Nav>
+            
+    
+    
+       
+    
     </>
   )
 }
