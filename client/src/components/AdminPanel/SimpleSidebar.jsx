@@ -6,7 +6,7 @@ const SimpleSidebar = () => {
   return (
     <>
     
-    <Nav className="col-md-4 d-none d-md-block bg-dark sidebar"
+    <Nav className="col d-none d-md-block bg-dark sidebar"
             
             >
                 <div className="sidebar-sticky"></div>

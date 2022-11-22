@@ -28,3 +28,12 @@
         min-width: 0;
         
     }
+
+    a.nav-link{
+        text-align: center;
+        
+    }
+    a.nav-link > a{
+       
+        text-decoration: none!important;
+    }
