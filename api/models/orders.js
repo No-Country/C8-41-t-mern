@@ -5,24 +5,27 @@ const Types = Schema.Types;
 const OrderSchema = new Schema({
   orderItems: [
     {
-      product: Types.ObjectId,
+      productID: Types.ObjectId,
       quantity: Number,
     },
   ],
   shippingAddress: {
     address: String,
     city: String,
-    zip: String,
+    zip: Number,
   },
   phone: String,
   orderStatus: String,
   orderDate: Date,
   deliveryDate: Date,
   totalPrice: Number,
-  user: Types.ObjectId,
+  userId: Types.ObjectId,
 },
 {
-  timestamps: true,
+  timestamps: { 
+    createdAt: false, 
+    updatedAt: true,
+  },
   versionKey: false,
 });
 
