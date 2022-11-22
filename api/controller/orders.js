@@ -1,13 +1,13 @@
-import { httpError } from "../helper/handleError";
-import { matchedData } from "express-validator";
 import ordersModel from "../models/orders.js";
+// import productsModel from "../models/products.js";
+// import usersModel from "../models/users.js";
 
 const getOrders = async (req, res) => {
   try {
     const orders = await ordersModel.find();
     res.json(orders);
   } catch (e) {
-    httpError(res, e);
+    res.status(500).send("Algo ocurrió");
   }
 };
 
@@ -16,53 +16,31 @@ const getOneOrder = async (req, res) => {
     const order = await ordersModel.findById(req.params.id);
     res.json(order);
   } catch (e) {
-    httpError(res, e);
+    res.status(500).send("Algo ocurrió");
   }
 };
 
 const createOrder = async (req, res) => {
   try {
     const body = req.body;
-    const {
+    const { orderItems, shippingAddress, phone, totalPrice, userId } = body;
+
+    const newOrder = new ordersModel({
       orderItems,
       shippingAddress,
-      phone,
-      orderStatus,
-      orderDate,
-      deliveryDate,
-      totalPrice,
-      user,
-    } = body;
-    const order = new ordersModel({
-      orderItems,
-      shippingAddress,
-      phone,
-      orderStatus,
-      orderDate,
-      deliveryDate,
-      totalPrice,
-      user,
+      phone, //TODO: ¿Debe obtenerse del user i se debe preguntar?
+      orderStatus: "Confirmado",
+      orderDate: new Date(),
+      deliveryDate: new Date(), //TODO: Incrementar la fecha
+      totalPrice, //TODO: Calcular el precio obteniendolo de la coleccion products
+      userId,
     });
-    const saved = await order.save();
+    const saved = await newOrder.save();
     res.status(200).json(saved);
+    //TODO: ¿Se debe incrementar el sold del producto?
   } catch (e) {
-    httpError(res, e);
+    res.status(500).json("La orden no pudo ser creada");
   }
 };
 
-const updateOrder = async (req, res) => {
-  try {
-    const data = matchedData(req, {
-      locations: ["body"],
-    });
-    const id = data.id;
-    const orderUpdate = await ordersModel.findByIdAndUpdate(id, data, {
-      new: true,
-    });
-    res.status(200).json(orderUpdate);
-  } catch (e) {
-    httpError(res, e);
-  }
-};
-
-export { getOneOrder, getOrders, createOrder, updateOrder };
+export { getOneOrder, getOrders, createOrder };
