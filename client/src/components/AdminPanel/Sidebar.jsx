@@ -1,5 +1,6 @@
 import React from 'react'
-import SidebarMenu from "react-bootstrap-sidebar-menu" 
+import SidebarMenu from "react-bootstrap-sidebar-menu"
+import { Outlet, Link } from "react-router-dom"; 
 
 const Sidebar = () => {
   return (
@@ -7,8 +8,12 @@ const Sidebar = () => {
     <SidebarMenu.Header>
       <SidebarMenu.Brand>{/* Your brand icon */}</SidebarMenu.Brand>
       <SidebarMenu.Toggle />
+      Panel de Administración
     </SidebarMenu.Header>
     <SidebarMenu.Body>
+    <Link to="account">Invoices</Link> |{" "}
+    <Link to="inventario">Expenses</Link>
+    <Link to="crear-cuenta">Expenses</Link>
       <SidebarMenu.Nav>
         <SidebarMenu.Nav.Link>
           <SidebarMenu.Nav.Icon>
@@ -16,7 +21,8 @@ const Sidebar = () => {
           </SidebarMenu.Nav.Icon>
           <SidebarMenu.Nav.Title>
             {/* Menu item title */}
-            Panel de Administración
+            
+            
           </SidebarMenu.Nav.Title>
         </SidebarMenu.Nav.Link>
       </SidebarMenu.Nav>

@@ -1,5 +1,6 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+//import Sidebar from "./Sidebar";
+import SimpleSidebar from "./SimpleSidebar"
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { Outlet, Link } from "react-router-dom";
 
@@ -13,9 +14,8 @@ const AdminPanel = () => {
       <Container fluid>
         <Row>
           <Col xs={2} id="sidebar-wrapper">
-            <Sidebar />
-            <Link to="account">Invoices</Link> |{" "}
-            <Link to="inventario">Expenses</Link>
+            <SimpleSidebar />
+            
           </Col>
           <Col xs={10} id="page-content-wrapper">
             <Outlet />
