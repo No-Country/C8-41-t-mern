@@ -13,6 +13,7 @@ import AdminPanel from "./components/AdminPanel/AdminPanel";
 import ManageProducts from "./components/AdminPanel/ManageProducts";
 
 import UpdateProduct from "./components/UpdateProduct";
+import Login from "./components/Login";
 
 
 
@@ -26,7 +27,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route index element={<Products />} />
+          <Route path="/login" element={<Login />} />
           <Route path="detalle/:id" element={<ProductDetail />} />
+
           <Route path="register" element={<Register />} />
         </Routes>
 

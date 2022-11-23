@@ -16,7 +16,7 @@ const ProductDetail = () => {
 
     useEffect(() => {
 
-      const url = `http://localhost:4000/api/products/${id}`
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/products/${id}`
       
       axios.get(url)
           .then(res => setOneProduct(res.data))
