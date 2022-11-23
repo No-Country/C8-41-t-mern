@@ -1,15 +1,17 @@
 import express from "express";
-import { get } from "mongoose";
 import {
+  getUsers,
   createUser,
-  getUser,
   updateUser,
   deleteUser,
 } from "../controller/user.js";
-const router = express.Router();
+import { validateCreateUser } from "../validator/users.js";
 
-router.post("/", createUser);
-router.get("/", getUser);
-router.patch("/:id", updateUser);
+const router = express.Router();
+router.use(express.json());
+router.get("/", getUsers);
+router.post("/", validateCreateUser, createUser);
 router.delete("/:id", deleteUser);
+router.patch("/:id", updateUser);
+
 export default router;

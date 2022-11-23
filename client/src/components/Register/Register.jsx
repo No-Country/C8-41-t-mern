@@ -115,10 +115,10 @@ const Register = () => {
         <a href="#" className="login__btn-link">
           Already got an account?
         </a>
-        <i class="register__icon1 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon2 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon3 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon4 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
   );

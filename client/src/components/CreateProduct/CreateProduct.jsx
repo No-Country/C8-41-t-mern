@@ -31,6 +31,7 @@ const CreateProduct = () => {
       .post(`http://localhost:3001/api/products`, producto)
       .then((resp) => (respuesta = resp.data.name));
 
+<<<<<<< HEAD
     Swal.fire({
       position: "center",
       icon: "success",
@@ -41,7 +42,67 @@ const CreateProduct = () => {
   };
 
   return (
+=======
+    const [producto, setProducto] = useState(newProducto)
+    const [alerta, setAlerta] = useState('')
+
+    const handleInput = (e) => {
+        
+            setProducto({
+                ...producto,
+                [e.target.name]:e.target.value
+            })
+    };
+    console.log(producto)
+    
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+
+        let respuesta;
+        let { name, image, materials, description, price, delay, sold } = producto;
+
+        if ([name, image, materials, description, price, delay, sold].includes('')) {
+          
+          setAlerta(<h3 className="alert alert-danger" role="alert">
+                      Todos los campos son obligatorios
+                    </h3>)
+                     
+          return
+        } else {
+
+          await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, producto)
+                      .then( resp => respuesta = resp.data.name)
+                      .catch(error => console.log(error))
+                     
+  
+                      setProducto(newProducto = {
+                        name: '',
+                        image: '',
+                        materials: '',
+                        description: '',
+                        price: '',
+                        delay: '',
+                        sold: '',
+                    })
+                      Swal.fire({
+                         position: 'center',
+                         icon: 'success',
+                         title: `El producto ${respuesta} fue creada de forma exitosa`,
+                         showConfirmButton: false,
+                         timer: 2500
+                       })
+
+                       
+                      }
+        
+
+    }
+    
+    return (
+
+>>>>>>> 7b48ef45d0dc8380b6e29c8c9414a64e0bb41834
     <div className="login__container">
+   
       <form
         onSubmit={handleSubmit}
         className="login__card"
@@ -49,27 +110,18 @@ const CreateProduct = () => {
       >
         <h2 className="login__title">Create product!</h2>
         <div className="login__field">
-          {/* <i className="input-icon fa-solid fa-user"></i> */}
+        
           <input
             // {...register("name")}
             value={producto.name}
-            autoComplete="on"
             placeholder="Product Name"
             className="login__input-field"
             type="text"
             name="name"
             onChange={handleInput}
+            // required={true}
           />
-          {/* <i className="input-icon fa-solid fa-user"></i>
-
-          <input
-            {...register("lastname")}
-            autoComplete="on"
-            placeholder="Last Name"
-            className="login__input-field"
-            type="text"
-            id="lastname"
-          /> */}
+         
         </div>
 
         <div className="login__field">
@@ -82,7 +134,6 @@ const CreateProduct = () => {
           </svg> */}
           <input
             // {...register("image")}
-            autoComplete="on"
             placeholder="Insert image or url"
             className="login__input-field"
             type="text"
@@ -90,6 +141,8 @@ const CreateProduct = () => {
             value={producto.image}
             name="image"
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
@@ -102,21 +155,26 @@ const CreateProduct = () => {
           </svg> */}
           <input
             // {...register("materials")}
-            autoComplete="off"
             type="text"
             placeholder="Materials"
             className="login__input-field"
             name="materials"
             id="materials"
             value={producto.materials}
+<<<<<<< HEAD
             onChange={handleInput}
+=======
+           onChange={handleInput}
+          //  required={true}
+
+>>>>>>> 7b48ef45d0dc8380b6e29c8c9414a64e0bb41834
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-phone"></i> */}
           <input
             // {...register("description")}
-            autoComplete="off"
+            
             type="text"
             placeholder="Description at Mask"
             className="login__input-field"
@@ -124,13 +182,15 @@ const CreateProduct = () => {
             id="description"
             value={producto.description}
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("price")}
-            autoComplete="on"
+            
             placeholder="Price of product"
             className="login__input-field"
             type="number"
@@ -138,13 +198,15 @@ const CreateProduct = () => {
             value={producto.price}
             name="price"
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("delay")}
-            autoComplete="on"
+           
             placeholder="Estimated time"
             className="login__input-field"
             type="text"
@@ -152,13 +214,15 @@ const CreateProduct = () => {
             value={producto.delay}
             name="delay"
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("sold")}
-            autoComplete="on"
+            
             placeholder="Quantity sold"
             className="login__input-field"
             type="number"
@@ -166,8 +230,21 @@ const CreateProduct = () => {
             value={producto.sold}
             name="sold"
             onChange={handleInput}
+            // required={true}
+
           />
         </div>
+          <div className="mx-2 my-2" >
+
+           { 
+            
+              alerta 
+
+            
+            
+            }
+
+          </div>
 
         <button type="submit" className="login__btn">
           Create Product
@@ -175,10 +252,10 @@ const CreateProduct = () => {
         {/* <a href="#" className="login__btn-link">
           Already got an account?
         </a> */}
-        <i class="register__icon1 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon2 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon3 register__icon fa-solid fa-masks-theater"></i>
-        <i class="register__icon4 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
   );

@@ -52,8 +52,13 @@ const ProductDetail = () => {
         </Col>
       </Row>
       <Link to='/' >
-        <button className="btn btn-success mb-2 " >
+        <button className="btn btn-success mx-2 my-2 " >
           Volver
+        </button>
+      </Link>
+      <Link to='/admin/editar-producto' >
+        <button className="btn btn-danger mx-2 my-2" >
+          Editar Producto
         </button>
       </Link>
     </Container>

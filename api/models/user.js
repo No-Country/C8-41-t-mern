@@ -1,19 +1,47 @@
-import mongoose, { isObjectIdOrHexString, isValidObjectId } from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const UserScheam = new Schema(
-  {
-    name: String,
-    email: String,
-    password: String,
-    carrito: [String],
-    admin: Boolean,
+const UserSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  email: {
+    type: String,
+    required: true,
+  },
+  passwordHash: {
+    type: String,
+    required: true,
+  },
+  street: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: Number,
+    required: true,
+  },
+  zip: {
+    type: String,
+    required: true,
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  state: {
+    type: Boolean,
+    default: true,
+  },
+});
 
-const userModel = mongoose.model("user", UserScheam);
+UserSchema.methods.toJSON = function () {
+  const { __v, passwordHash, _id, ...user } = this.toObject();
+  user.uid = _id;
+  return user;
+};
+
+const userModel = mongoose.model("User", UserSchema);
 
 export default userModel;
