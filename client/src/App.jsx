@@ -8,6 +8,7 @@ import Register from './components/Register/Register'
 
 import ProductDetail from "./components/ProductDetail";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
+import UpdateProduct from "./components/UpdateProduct";
 
 
 
@@ -27,6 +28,7 @@ function App() {
         {/* Rutas del administrador */}
         <Routes>
           <Route path='/admin/crear-producto' element={<CreateProduct/>} />
+          <Route path='/admin/editar-producto' element={<UpdateProduct/>} />
         </Routes>
 
       <Footer />

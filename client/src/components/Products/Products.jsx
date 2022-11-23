@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+
 import Product from "./Product";
 
 
@@ -10,7 +11,7 @@ const Products = () => {
 
   useEffect(() => {
     const traerProductos = () => {
-      const url = "http://localhost:4000/api/products";
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
 
       axios
         .get(url)

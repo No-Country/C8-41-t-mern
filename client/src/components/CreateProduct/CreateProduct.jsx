@@ -45,7 +45,7 @@ const CreateProduct = () => {
           return
         } else {
 
-          await axios.post(`http://localhost:4000/api/products`, producto)
+          await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, producto)
                       .then( resp => respuesta = resp.data.name)
                       .catch(error => console.log(error))
                      
@@ -84,7 +84,7 @@ const CreateProduct = () => {
       >
         <h2 className="login__title">Create product!</h2>
         <div className="login__field">
-          {/* <i className="input-icon fa-solid fa-user"></i> */}
+        
           <input
             // {...register("name")}
             value={producto.name}
@@ -95,16 +95,7 @@ const CreateProduct = () => {
             onChange={handleInput}
             // required={true}
           />
-          {/* <i className="input-icon fa-solid fa-user"></i>
-
-          <input
-            {...register("lastname")}
-            autoComplete="on"
-            placeholder="Last Name"
-            className="login__input-field"
-            type="text"
-            id="lastname"
-          /> */}
+         
         </div>
 
         <div className="login__field">
