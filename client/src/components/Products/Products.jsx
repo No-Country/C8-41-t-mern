@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Product from "./Product";
 
-
 import "./Products.css";
 
 const Products = () => {
@@ -10,7 +9,7 @@ const Products = () => {
 
   useEffect(() => {
     const traerProductos = () => {
-      const url = "http://localhost:4000/api/products";
+      const url = "http://localhost:3001/api/products";
 
       axios
         .get(url)
@@ -27,7 +26,7 @@ const Products = () => {
       {
         <ul className="products__list">
           {products.map((item, index) => {
-            console.log(item)
+            console.log(item);
             return <Product item={item} key={index} />;
           })}
         </ul>

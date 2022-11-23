@@ -1,69 +1,46 @@
 import { useForm } from "react-hook-form";
-import axios from 'axios';
+import axios from "axios";
 import { useState } from "react";
- import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const CreateProduct = () => {
+  let newProducto = {
+    name: "",
+    image: "",
+    materials: "",
+    description: "",
+    price: "",
+    delay: "",
+    sold: "",
+  };
 
+  const [producto, setProducto] = useState(newProducto);
 
+  const handleInput = (e) => {
+    setProducto({
+      ...producto,
+      [e.target.name]: e.target.value,
+    });
+  };
+  console.log(producto);
 
-    let newProducto = {
-        name: '',
-        image: '',
-        materials: '',
-        description: '',
-        price: '',
-        delay: '',
-        sold: '',
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let respuesta;
+    await axios
+      .post(`http://localhost:3001/api/products`, producto)
+      .then((resp) => (respuesta = resp.data.name));
 
-    const [producto, setProducto] = useState(newProducto)
-
-    const handleInput = (e) => {
-        
-            setProducto({
-                ...producto,
-                [e.target.name]:e.target.value
-            })
-    };
-    console.log(producto)
-    
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-        let respuesta
-         await axios.post(`http://localhost:4000/api/products`, producto)
-                     .then( resp => respuesta = resp.data.name)
-                    
-
-                     Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: `El producto ${respuesta} fue creada de forma exitosa`,
-                        showConfirmButton: false,
-                        timer: 2500
-                      })
-                       
-
-    }
-
-
-
-
-
-  
-    
-
-      
-   
-
-    
-
-
- 
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: `El producto ${respuesta} fue creada de forma exitosa`,
+      showConfirmButton: false,
+      timer: 2500,
+    });
+  };
 
   return (
-
     <div className="login__container">
       <form
         onSubmit={handleSubmit}
@@ -111,7 +88,7 @@ const CreateProduct = () => {
             type="text"
             id="image"
             value={producto.image}
-            name='image'
+            name="image"
             onChange={handleInput}
           />
         </div>
@@ -132,7 +109,7 @@ const CreateProduct = () => {
             name="materials"
             id="materials"
             value={producto.materials}
-           onChange={handleInput}
+            onChange={handleInput}
           />
         </div>
         <div className="login__field">
@@ -159,7 +136,7 @@ const CreateProduct = () => {
             type="number"
             id="price"
             value={producto.price}
-            name='price'
+            name="price"
             onChange={handleInput}
           />
         </div>
@@ -173,7 +150,7 @@ const CreateProduct = () => {
             type="text"
             id="delay"
             value={producto.delay}
-            name='delay'
+            name="delay"
             onChange={handleInput}
           />
         </div>
@@ -187,12 +164,14 @@ const CreateProduct = () => {
             type="number"
             id="sold"
             value={producto.sold}
-            name='sold'
+            name="sold"
             onChange={handleInput}
           />
         </div>
 
-        <button  type="submit" className="login__btn">Create Product</button>
+        <button type="submit" className="login__btn">
+          Create Product
+        </button>
         {/* <a href="#" className="login__btn-link">
           Already got an account?
         </a> */}
@@ -202,7 +181,7 @@ const CreateProduct = () => {
         <i class="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreateProduct
+export default CreateProduct;

@@ -10,14 +10,13 @@ const getProducts = async (req, res) => {
 const getOneProduct = async (req, res) => {
   const product = await productsModel.findById(req.params.id);
   if (!product) {
-    res.status(500).json({ success: false });
+    return res.status(500).json({ success: false });
   }
   res.send(product);
 };
 
 const createProducts = async (req, res) => {
   const body = req.body;
-  console.log("yohan", body);
   const { name, image, materials, description, price, delay, sold } = body;
   const producto = new productsModel({
     name,
@@ -36,7 +35,6 @@ const createProducts = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   if (!mongoose.isValidObjectId(id)) {
     return res.status(400).send("Invalid Product ID");
   }
@@ -47,4 +45,20 @@ const updateProduct = async (req, res) => {
   res.status(200).json(productUpdate);
 };
 
-export { getProducts, getOneProduct, createProducts, updateProduct };
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).send("Invalid Product ID");
+  }
+
+  const productUpdate = await productsModel.findByIdAndDelete(id);
+  res.status(200).json(productUpdate);
+};
+
+export {
+  getProducts,
+  getOneProduct,
+  createProducts,
+  updateProduct,
+  deleteProduct,
+};

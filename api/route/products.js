@@ -5,6 +5,7 @@ import {
   getOneProduct,
   createProducts,
   updateProduct,
+  deleteProduct,
 } from "../controller/products.js";
 
 import { validateCreate } from "../validator/products.js";
@@ -16,5 +17,6 @@ router.get("/", getProducts);
 router.post("/", validateCreate, createProducts);
 router.patch("/:id", updateProduct);
 router.get("/:id", getOneProduct);
+router.delete("/:id", deleteProduct);
 
 export default router;

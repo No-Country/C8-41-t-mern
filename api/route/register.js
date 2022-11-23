@@ -1,6 +1,8 @@
 import express from "express";
+
 const router = express.Router();
-import { serchProducts } from "../controller/serch.js";
-router.get("/", serchProducts);
+// const controller = require("../controller/products");
+
+router.post("/");
 
 export default router;
