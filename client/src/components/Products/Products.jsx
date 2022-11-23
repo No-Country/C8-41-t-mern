@@ -9,6 +9,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    console.log("doc is "+import.meta.env.VITE_BACKEND_URL);
     const traerProductos = () => {
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
 
@@ -20,7 +21,7 @@ const Products = () => {
     traerProductos();
   }, []);
 
-  // console.log(products);
+  console.log(products);
 
   return (
     <div className="products">
