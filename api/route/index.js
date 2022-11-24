@@ -9,7 +9,7 @@ const app = express();
 
 function routerApi(app) {
   app.use("/api/products", productsRouter);
-  app.use("/api/serch", serchRouter);
+  app.use("/api/search", serchRouter);
   app.use("/api/users", usersRouter);
   app.use("/api/auth", authRouter);
   app.use("/api/orders", ordersRouter);
