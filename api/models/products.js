@@ -1,16 +1,21 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
 
-const ProductScheam = new Schema({
-  name: String,
-  image: String,
-  materials: String,
-  description: String,
-  price: Number,
-  delay: String,
-  sold: Number,
-});
+const ProductScheam = new Schema(
+  {
+    name: String,
+    description: { type: String, index: { text: true, unique: false } },
+    image: String,
+    materials: String,
+    price: Number,
+    delay: String,
+    sold: Number,
+    stock: Boolean,
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const productsModel = mongoose.model("products", ProductScheam);
 
