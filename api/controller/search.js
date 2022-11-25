@@ -4,8 +4,8 @@ import { httpError } from "../helper/handleError.js";
 import { json, text } from "express";
 
 const searchProducts = async (req, res) => {
-  const encontrar = "terro";
-  console.log(encontrar);
+
+  const { encontrar } = req.body;
   const result = await productsModel.find({
     $text: { $search: encontrar },
   });
