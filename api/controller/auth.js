@@ -7,8 +7,7 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     //Verificar si el email existe
-    const user = await User.findOne({ email });
-    console.log(user);
+    const user = await User.findOne({ email });    
     if (!user) {
       return res.status(400).json({
         msg: "Usuario / Contraseña no son correctos - correo",
@@ -31,10 +30,10 @@ const login = async (req, res) => {
     }
 
     //Generar JWT
-    const token = await generateJWT( user.uid );
+    const token = await generateJWT( user.uid ); 
     res.json({
       user,
-      token
+      token,
     });
 
   } catch (error) {

@@ -42,7 +42,7 @@ const createUser = async (req, res) => {
 //Actualizar usuario
 const updateUser = async (req, res) => {
   const { id } = req.params;
-  const { _id, email, passwordHash, ...others } = req.body;
+  const { email, passwordHash, ...others } = req.body;
 
   if (passwordHash) {
     // Encriptar la contraseña
@@ -50,20 +50,18 @@ const updateUser = async (req, res) => {
     others.passwordHash = bcryptjs.hashSync(passwordHash, salt);
   }
 
-  const user = await User.findByIdAndUpdate(id, others, { new: true });
-  res.json(user);
+    const user = await User.findByIdAndUpdate({_id: id}, others, {new: true});
+    res.json(user);
 };
 
+//Borrar usuario
 const deleteUser = async (req, res) => {
   const { id } = req.params;
-  const user = await User.findByIdAndUpdate(
-    id,
-    { state: false },
-    { new: true }
-  );
+  
+  const user = await User.findByIdAndUpdate(id, { state: false }, { new: true });
+
   res.json({
-    msg: "Usuario eliminado",
-    user,
+    user
   });
 };
 

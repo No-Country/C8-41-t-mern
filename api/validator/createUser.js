@@ -1,5 +1,4 @@
 import { check } from "express-validator";
-import { validateResult } from "../helper/validateHelper.js";
 
 const validateCreateUser = [
   check("name", "El nombre es obligatorio").exists().not().isEmpty().trim(),
@@ -12,11 +11,7 @@ const validateCreateUser = [
 
   check("phone", "Número no válido").exists().isNumeric().isLength({ min:6 }),
 
-  check("zip", "El código postal no es válido").exists().not().isEmpty().trim(),
-
-  (req, res, next) => {
-    validateResult(req, res, next);
-  },
+  check("zip", "El código postal no es válido").exists().not().isEmpty().trim()
 ];
 
 export { validateCreateUser };
