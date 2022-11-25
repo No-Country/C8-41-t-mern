@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [nav, setNav] = useState([])
@@ -27,11 +28,23 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, { email, password })
-                                  .then( res => console.log(res) )
+                                  
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", data.user.name)
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Bienvenido ${data.user.name} nuevamente`,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+
+      setTimeout(() => {
+        
+        navigate('/')
+      }, 3000);
       
-      // navigate('/')
       
       
     } catch (error) {
@@ -41,6 +54,10 @@ const Login = () => {
       )
      
     }
+
+   
+      
+    
     
   };
 

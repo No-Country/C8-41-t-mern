@@ -58,13 +58,13 @@ const CreateProduct = () => {
 
   return (
     <div className="login__container">
-      {alerta}
       <form
         onSubmit={handleSubmit}
         className="login__card"
         style={{ marginTop: "50px" }}
       >
         <h2 className="login__title">Create product!</h2>
+      {alerta}
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-user"></i> */}
           <input
