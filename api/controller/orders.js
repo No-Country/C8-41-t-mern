@@ -1,22 +1,42 @@
 import ordersModel from "../models/orders.js";
-// import productsModel from "../models/products.js";
-// import usersModel from "../models/users.js";
+import { httpError } from "../helper/handleError.js";
 
 const getOrders = async (req, res) => {
   try {
     const orders = await ordersModel.find();
-    res.json(orders);
+    if (orders.length < 1) {
+      res.send("No hay órdenes que mostrar.");
+    } else {
+      res.json(orders);
+    }
   } catch (e) {
-    res.status(500).send("Algo ocurrió");
+    httpError(res, e);
+  }
+};
+
+const getOrdersUser = async (req, res) => {
+  try {
+    const orders = await ordersModel.find({ userId: req.params.id });
+    if (orders.length < 1) {
+      res.send("No hay órdenes que mostrar.");
+    } else {
+      res.json(orders);
+    }
+  } catch (e) {
+    httpError(res, e);
   }
 };
 
 const getOneOrder = async (req, res) => {
   try {
     const order = await ordersModel.findById(req.params.id);
-    res.json(order);
+    if (!order) {
+      res.send("La orden no existe.");
+    } else {
+      res.json(order);
+    }
   } catch (e) {
-    res.status(500).send("Algo ocurrió");
+    httpError(res, e);
   }
 };
 
@@ -39,8 +59,8 @@ const createOrder = async (req, res) => {
     res.status(200).json(saved);
     //TODO: ¿Se debe incrementar el sold del producto?
   } catch (e) {
-    res.status(500).json("La orden no pudo ser creada");
+    httpError(res, e);
   }
 };
 
-export { getOneOrder, getOrders, createOrder };
+export { getOneOrder, getOrders, createOrder, getOrdersUser };
