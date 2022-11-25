@@ -43,7 +43,7 @@ const CreateProduct = () => {
       return;
     } else {
       await axios
-        .post(`http://localhost:3001/api/products`, producto)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, producto)
         .then((resp) => (respuesta = resp.data.name));
 
       Swal.fire({

@@ -29,7 +29,7 @@ const Products = () => {
     <div className="products">
 
       <ul className="products__list">
-        {productsData.map((item, index) => {
+        {products.map((item, index) => {
           return <Product item={item} key={index} />;
         })}
       </ul>
