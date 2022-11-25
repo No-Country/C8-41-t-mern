@@ -1,4 +1,5 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
+
 
 const generateJWT = ( uid = '') => {
     
@@ -6,7 +7,7 @@ const generateJWT = ( uid = '') => {
 
         const payLoad = { uid };
 
-        jwt.sign( payLoad, process.env.SECRETORPRIVATEKEY, {
+        jwt.sign( payLoad, process.env.SECRETORPRIVATEKEY || '3356uw87994serdsdasdasd', {
             expiresIn: '1h'
         }, ( err, token ) => {
             if ( err ) {
