@@ -1,82 +1,64 @@
 import { useForm } from "react-hook-form";
-import axios from 'axios';
+import axios from "axios";
 import { useState } from "react";
- import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const CreateProduct = () => {
+  let newProducto = {
+    name: "",
+    image: "",
+    materials: "",
+    description: "",
+    price: "",
+    delay: "",
+    sold: "",
+  };
 
+  const [producto, setProducto] = useState(newProducto);
+  const [alerta, setAlerta] = useState("");
 
+  const handleInput = (e) => {
+    setProducto({
+      ...producto,
+      [e.target.name]: e.target.value,
+    });
+  };
+  console.log(producto);
 
-    let newProducto = {
-        name: '',
-        image: '',
-        materials: '',
-        description: '',
-        price: '',
-        delay: '',
-        sold: '',
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let respuesta;
+    let { name, image, materials, description, price, delay, sold } = producto;
+
+    if (
+      [name, image, materials, description, price, delay, sold].includes("")
+    ) {
+      setAlerta(
+        <h3 className="alert alert-danger" role="alert">
+          Todos los campos son obligatorios
+        </h3>
+      );
+
+      return;
+    } else {
+      await axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, producto)
+        .then((resp) => (respuesta = resp.data.name));
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `El producto ${respuesta} fue creada de forma exitosa`,
+        showConfirmButton: false,
+        timer: 2500,
+      });
     }
+  };
 
-    const [producto, setProducto] = useState(newProducto)
-    const [alerta, setAlerta] = useState('')
-
-    const handleInput = (e) => {
-        
-            setProducto({
-                ...producto,
-                [e.target.name]:e.target.value
-            })
-    };
-    console.log(producto)
-    
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-
-        let respuesta;
-        let { name, image, materials, description, price, delay, sold } = producto;
-
-        if ([name, image, materials, description, price, delay, sold].includes('')) {
-          
-          setAlerta(<h3 className="alert alert-danger" role="alert">
-                      Todos los campos son obligatorios
-                    </h3>)
-                     
-          return
-        } else {
-
-          await axios.post(`http://localhost:4000/api/products`, producto)
-                      .then( resp => respuesta = resp.data.name)
-                      .catch(error => console.log(error))
-                     
-  
-                      setProducto(newProducto = {
-                        name: '',
-                        image: '',
-                        materials: '',
-                        description: '',
-                        price: '',
-                        delay: '',
-                        sold: '',
-                    })
-                      Swal.fire({
-                         position: 'center',
-                         icon: 'success',
-                         title: `El producto ${respuesta} fue creada de forma exitosa`,
-                         showConfirmButton: false,
-                         timer: 2500
-                       })
-
-                       
-                      }
-        
-
-    }
-    
-    return (
-
+  return (
     <div className="login__container">
-   
+      {alerta}
       <form
         onSubmit={handleSubmit}
         className="login__card"
@@ -88,6 +70,7 @@ const CreateProduct = () => {
           <input
             // {...register("name")}
             value={producto.name}
+            autoComplete="on"
             placeholder="Product Name"
             className="login__input-field"
             type="text"
@@ -117,15 +100,15 @@ const CreateProduct = () => {
           </svg> */}
           <input
             // {...register("image")}
+            autoComplete="on"
             placeholder="Insert image or url"
             className="login__input-field"
             type="text"
             id="image"
             value={producto.image}
-            name='image'
+            name="image"
             onChange={handleInput}
             // required={true}
-
           />
         </div>
         <div className="login__field">
@@ -138,22 +121,22 @@ const CreateProduct = () => {
           </svg> */}
           <input
             // {...register("materials")}
+            autoComplete="off"
             type="text"
             placeholder="Materials"
             className="login__input-field"
             name="materials"
             id="materials"
             value={producto.materials}
-           onChange={handleInput}
-          //  required={true}
-
+            onChange={handleInput}
+            //  required={true}
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-phone"></i> */}
           <input
             // {...register("description")}
-            
+            autoComplete="off"
             type="text"
             placeholder="Description at Mask"
             className="login__input-field"
@@ -162,80 +145,67 @@ const CreateProduct = () => {
             value={producto.description}
             onChange={handleInput}
             // required={true}
-
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("price")}
-            
+            autoComplete="on"
             placeholder="Price of product"
             className="login__input-field"
             type="number"
             id="price"
             value={producto.price}
-            name='price'
+            name="price"
             onChange={handleInput}
             // required={true}
-
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("delay")}
-           
+            autoComplete="on"
             placeholder="Estimated time"
             className="login__input-field"
             type="text"
             id="delay"
             value={producto.delay}
-            name='delay'
+            name="delay"
             onChange={handleInput}
             // required={true}
-
           />
         </div>
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-calendar-days"></i> */}
           <input
             // {...register("sold")}
-            
+            autoComplete="on"
             placeholder="Quantity sold"
             className="login__input-field"
             type="number"
             id="sold"
             value={producto.sold}
-            name='sold'
+            name="sold"
             onChange={handleInput}
             // required={true}
-
           />
         </div>
-          <div className="mx-2 my-2" >
 
-           { 
-            
-              alerta 
-
-            
-            
-            }
-
-          </div>
-
-        <button  type="submit" className="login__btn">Create Product</button>
+        <button type="submit" className="login__btn">
+          Create Product
+        </button>
         {/* <a href="#" className="login__btn-link">
           Already got an account?
         </a> */}
-        <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
-        <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
-        <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
-        <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
+        <i class="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+        <i class="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+        <i class="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+        <i class="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreateProduct
+export default CreateProduct;

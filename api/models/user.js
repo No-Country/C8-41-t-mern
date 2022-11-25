@@ -49,7 +49,7 @@ UserSchema.methods.toJSON = function() {
   const { __v, passwordHash, _id, ...user  } = this.toObject();
   user.uid = _id;
   return user;
-}
+};
 
 const userModel = mongoose.model("User", UserSchema);
 

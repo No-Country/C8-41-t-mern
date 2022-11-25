@@ -3,14 +3,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
-
-import Register from './components/Register/Register'
-
+import Register from "./components/Register/Register";
 import ProductDetail from "./components/ProductDetail";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
-
-
-
+import AdminPanel from "./components/AdminPanel/AdminPanel";
+import ManageProducts from "./components/AdminPanel/ManageProducts";
+import UpdateProduct from "./components/UpdateProduct";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -18,22 +17,26 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Products />} />
-          <Route path="/detalle/:id" element={<ProductDetail />} />
-          <Route path="/register" element={<Register />} />
+          <Route index element={<Products />} />
+          <Route path="detalle/:id" element={<ProductDetail />} />
+          <Route path="register" element={<Register />} />
+          <Route path='/login'  element={<Login/>}  />
         </Routes>
-
 
         {/* Rutas del administrador */}
         <Routes>
-          <Route path='/admin/crear-producto' element={<CreateProduct/>} />
+          <Route path="admin" element={<AdminPanel />}>
+            <Route index element={<h3>Account panel</h3>} />
+            <Route path="inventario" element={<ManageProducts />} />
+            <Route path="usuarios" element={<h3>usuarios</h3>} />
+            <Route path="crear-producto" element={<CreateProduct />} />
+            <Route path="editar-producto" element={<UpdateProduct />} />
+          </Route>
+          
         </Routes>
 
-      <Footer />
-    </BrowserRouter>
-     
-
-        
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
