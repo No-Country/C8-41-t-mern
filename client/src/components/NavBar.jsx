@@ -2,6 +2,9 @@ import Buscador from "./Buscador"
 
 
 const NavBar = () => {
+
+  const data = localStorage.getItem('user')
+
   return (
     <>
     {/* <!-- Navbar --> */}
@@ -35,7 +38,7 @@ const NavBar = () => {
       {/* <!-- Left links --> */}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link" href="#">Inicio</a>
+          <a className="nav-link" href="#">{data}</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Productos</a>
