@@ -18,6 +18,21 @@ const ManageProducts = () => {
         .catch((error) => console.log(error));
     };
     traerProductos();
+    // setProducts({...products});
+  }, [products]);
+  
+  useEffect(() => {
+    console.log("doc is " + import.meta.env.VITE_BACKEND_URL);
+    const traerProductos = () => {
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
+
+      axios
+        .get(url)
+        .then((res) => setProducts(res.data))
+        .catch((error) => console.log(error));
+    };
+    traerProductos();
+    // setProducts({...products});
   }, []);
   console.log("stock is "+products);
   const checkStock = (stock) => {
@@ -27,13 +42,19 @@ const ManageProducts = () => {
     // return answer;
     return "Agotado";
   };
-  const handleDelete = (id, e) => {
+  const handleDelete = async (id, e) => {
     e.preventDefault();
     console.log("id is "+id);
     const target = `${import.meta.env.VITE_BACKEND_URL}/api/products/${id}`;
-    axios
+    await axios
         .delete(target)
-        // .then((res) => setProducts(res.data))
+        .then((res) => {
+          console.log({res});
+          console.log("item eliminado");
+          //necesito forzar update
+          // 
+          
+        })
         .catch((error) => console.log(error));
     
   };
