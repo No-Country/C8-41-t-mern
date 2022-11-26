@@ -9,8 +9,10 @@ const Buscador = () => {
     const navigate = useNavigate()
     
     const [buscar, setBuscar] = useState('')
+    
 
     const handleChange = (e) => {
+      
       console.log(e.target.value)
         setBuscar( e.target.value)
     };
@@ -26,15 +28,11 @@ const Buscador = () => {
                 text: 'Debes ingresar un producto en el buscador!',
                 
               })
-        // } else {
-        //     console.log('hola')
-        //     navigate(`/detalle?buscador=${buscar}`)
+        } else {
+            console.log('hola')
+            navigate(`/detalle-busqueda?encontrar=${buscar}`)
               return
         }
-
-         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/search`, { buscar })
-                              .then( res => console.log(res.data) )
-                              .catch(error => console.log(error))
 
 
 
@@ -46,7 +44,8 @@ const Buscador = () => {
    <>
          <form onSubmit={handleSubmit} className="input-group w-auto my-auto d-none d-sm-flex">
             <input
-            name="buscar"
+            value={buscar}
+            name="encontrar"
             onChange={handleChange}
             autocomplete="off"
             type="search"

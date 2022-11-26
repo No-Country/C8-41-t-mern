@@ -10,6 +10,7 @@ import AdminPanel from "./components/AdminPanel/AdminPanel";
 import ManageProducts from "./components/AdminPanel/ManageProducts";
 import UpdateProduct from "./components/UpdateProduct";
 import Login from "./components/Login";
+import DetalleBusqueda from "./components/DetalleBusqueda";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="detalle/:id" element={<ProductDetail />} />
           <Route path="register" element={<Register />} />
           <Route path='/login'  element={<Login/>}  />
+          <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
         </Routes>
 
         {/* Rutas del administrador */}
