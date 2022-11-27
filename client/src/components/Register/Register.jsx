@@ -5,7 +5,7 @@ import { endpointUrl } from "../../config";
 import "../login/login.scss";
 import "./register.scss";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/slices/user.slice";
+import { setUser } from "../../store/slices/user.slice.ts";
 
 const Register = () => {
   const { register, handleSubmit, reset } = useForm();
