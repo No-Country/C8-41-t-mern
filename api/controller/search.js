@@ -6,6 +6,7 @@ import { json, text } from "express";
 const searchProducts = async (req, res) => {
   const encontrar = "terro";
   console.log(encontrar);
+
   const result = await productsModel.find({
     $text: { $search: encontrar },
   });
@@ -24,6 +25,7 @@ const searchProducts = async (req, res) => {
     let result3 = { ...result, ...result2 };
     return res.send(result3).status(200);
   }
+
   res.send(result).status(200);
 };
 

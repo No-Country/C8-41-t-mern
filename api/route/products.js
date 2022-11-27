@@ -15,8 +15,8 @@ const router = express.Router();
 router.use(express.json());
 router.get("/", getProducts);
 router.post("/", validateCreate, createProducts);
-router.patch("/:id", updateProduct);
-router.get("/:id", getOneProduct);
-router.delete("/:id", deleteProduct);
+router.patch("/:id", validateCreate, updateProduct);
+router.get("/:id", validateCreate, getOneProduct);
+router.delete("/:id", validateCreate, deleteProduct);
 
 export default router;
