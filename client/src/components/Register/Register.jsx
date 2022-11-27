@@ -1,19 +1,28 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import axios from "axios";
-import "./register.css";
+import { endpointUrl } from "../../config";
+
+import "../login/login.scss";
+import "./register.scss";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/user.slice";
+
 const Register = () => {
-  const [isLogged, setIsLogged] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
 
   const submit = (data) => {
-    const URL = "";
+    console.log(data);
     axios
-      .post(URL, data)
+      .post(endpointUrl + "auth/register", data)
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem("token", res.data.data.token);
-        setIsLogged(res.data.data.user);
+        dispatch(setUser(res.data));
+
+        axios.post(endpointUrl + "auth/login", data).then((res) => {
+          console.log(res);
+          localStorage.setItem("token", res.data.token);
+        });
       })
       .catch((err) => console.log(err));
     reset({
