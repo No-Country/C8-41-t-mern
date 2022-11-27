@@ -11,8 +11,14 @@ import ManageProducts from "./components/AdminPanel/ManageProducts";
 import UpdateProduct from "./components/UpdateProduct";
 import Login from "./components/Login";
 import DetalleBusqueda from "./components/DetalleBusqueda";
+import { useAuthStore } from "./hooks/useAuthStore";
+import { useEffect } from "react";
 
 function App() {
+
+
+  
+
   return (
     <>
       <BrowserRouter>
