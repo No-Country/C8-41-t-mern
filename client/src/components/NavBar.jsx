@@ -8,7 +8,7 @@ const NavBar = () => {
     // const auth = useSelector(state => state.auth)
     const auth = useSelector(state => state)
 
-    console.log(auth)
+    // console.log(auth)
     // console.log(state.payload.user)
     
 

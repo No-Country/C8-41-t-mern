@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
+import { redirect } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
@@ -32,7 +33,10 @@ const Login = () => {
   const handleSubmit =  (e) => {
     e.preventDefault();
       startLogin({email, password})
-     
+      if(!startLogin.error){
+        // redirect("/");
+      }
+      
     
     
     // if ([email, password].includes("")) {

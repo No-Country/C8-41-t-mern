@@ -2,11 +2,14 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { clearErrorMessage, onChecking, onLogin, onLogout } from "../store/slices/auth/authSlice"
+import { redirect } from "react-router-dom";
 
 export const useAuthStore = () => {
 
-      const { status, user, errorMessage } = useSelector( state => state )   
+      const { status, user, errorMessage } = useSelector( state => state )
+      let navigate = useNavigate()   
      const dispatch  = useDispatch()
+    
      
 
      const startLogin =  async ({ email, password }) => {
@@ -23,9 +26,10 @@ export const useAuthStore = () => {
             localStorage.setItem("user", data.user.name)
             sessionStorage.setItem("user",data.user.name)
             dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin }))
-        
+            navigate("/");
         } catch (error) {
-            dispatch( onLogout( 'Credenciales incorrectas' ) )
+            console.log(error)
+            dispatch( onLogout( {msg: error} ) )
             setTimeout(() => {
                 dispatch(clearErrorMessage())
             }, 1000);
