@@ -32,10 +32,11 @@ const Login = () => {
   
   const handleSubmit =  (e) => {
     e.preventDefault();
+
+    
+
       startLogin({email, password})
-      if(!startLogin.error){
-        // redirect("/micuenta");
-      }
+     
       
     
     

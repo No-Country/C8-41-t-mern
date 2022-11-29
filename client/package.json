@@ -21,6 +21,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "redux-persist": "^6.0.0",
+    "redux-toolkit": "^1.1.2",
+    "redux-toolkit-persist": "^1.1.0",
     "sweetalert2": "^11.6.9"
   },
   "devDependencies": {
