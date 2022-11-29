@@ -32,8 +32,8 @@ function App() {
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
           <Route path="micuenta" element={<UserPanel />}>
             <Route index element={<h3>Account panel</h3>} />
-            <Route path="ordenes" element={<h3>Ordenes</h3>} />
-            <Route path="mensajes" element={<h3>usuarios</h3>} />
+            <Route path="ordenes" element={<h3>Mis Ordenes</h3>} />
+            <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
         
           </Route>
         </Routes>

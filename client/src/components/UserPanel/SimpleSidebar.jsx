@@ -11,13 +11,13 @@ const SimpleSidebar = () => {
             >
                 <div className="sidebar-sticky"></div>
             <Nav.Item>
-                <Nav.Link ><Link to="/admin">Mi Cuenta</Link></Nav.Link>
+                <Nav.Link ><Link to="/micuenta">Mi Cuenta</Link></Nav.Link>
             </Nav.Item>   
             <Nav.Item>
-                <Nav.Link ><Link to="inventario">Inventario</Link></Nav.Link>
+                <Nav.Link ><Link to="ordenes">Mis Ordenes</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="link-1"><Link to="usuarios">Usuarios</Link></Nav.Link>
+                <Nav.Link eventKey="link-1"><Link to="ordenes">Usuarios</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link eventKey="link-2"><Link to="crear-producto">Crear Producto</Link></Nav.Link>
