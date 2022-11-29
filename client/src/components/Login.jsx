@@ -34,7 +34,7 @@ const Login = () => {
     e.preventDefault();
       startLogin({email, password})
       if(!startLogin.error){
-        // redirect("/");
+        // redirect("/micuenta");
       }
       
     
