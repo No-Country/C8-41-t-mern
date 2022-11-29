@@ -28,8 +28,10 @@ export const useAuthStore = () => {
             dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin }))
             navigate("/");
         } catch (error) {
+            let err = error.response.data.error?.map(err => err.msg)
+            let err2 = error.response.data.msg
             console.log(error)
-            dispatch( onLogout( {msg: error} ) )
+            dispatch( onLogout( `Credenciales incorrectas${ err ? JSON.stringify(err) : JSON.stringify(err2)} ` ) )
             setTimeout(() => {
                 dispatch(clearErrorMessage())
             }, 1000);

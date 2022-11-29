@@ -33,7 +33,7 @@ const ProductDetail = () => {
        <Row className="justify-content-md-center">
        <Col md="auto">
        <Card className='my-2 mx-2 w-50  ' >
-      <Card.Img variant="top" src={"https://www.pngall.com/wp-content/uploads/2016/07/Anonymous-Mask-Free-Download-PNG.png"} />
+      <Card.Img variant="top" src={oneProduct.image} />
       <Card.Body>
         <Card.Title className='text-dark fw-bold ' > Nombre: <span className='fw-semibold'> {oneProduct.name} </span> </Card.Title>
        
