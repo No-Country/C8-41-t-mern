@@ -10,7 +10,7 @@ const ProductScheam = new Schema(
     price: Number,
     delay: String,
     sold: Number,
-    stock: Boolean,
+    stock: Number,
   },
   {
     timestamps: true,
