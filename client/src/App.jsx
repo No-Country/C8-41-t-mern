@@ -7,6 +7,7 @@ import Register from "./components/Register/Register";
 import ProductDetail from "./components/ProductDetail";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
+import UserPanel from "./components/UserPanel/UserPanel";
 import ManageProducts from "./components/AdminPanel/ManageProducts";
 import UpdateProduct from "./components/UpdateProduct";
 import Login from "./components/Login";
@@ -29,6 +30,12 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='/login'  element={<Login/>}  />
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
+          <Route path="micuenta" element={<UserPanel />}>
+            <Route index element={<h3>Account panel</h3>} />
+            <Route path="ordenes" element={<h3>Ordenes</h3>} />
+            <Route path="mensajes" element={<h3>usuarios</h3>} />
+        
+          </Route>
         </Routes>
 
         {/* Rutas del administrador */}
