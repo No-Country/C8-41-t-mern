@@ -17,7 +17,7 @@ const SimpleSidebar = () => {
                 <Nav.Link ><Link to="ordenes">Mis Ordenes</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="link-1"><Link to="ordenes">Usuarios</Link></Nav.Link>
+                <Nav.Link eventKey="link-1"><Link to="mensajes">Mensajes</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link eventKey="link-2"><Link to="crear-producto">Crear Producto</Link></Nav.Link>
