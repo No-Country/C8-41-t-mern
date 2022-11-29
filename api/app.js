@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-const dominiosPertmitidos = ["http://localhost:3000"];
+const dominiosPertmitidos = ["http://localhost:3000","http://localhost:3001" ];
 
 const corsOptions = {
   origin: function (origin, callback) {

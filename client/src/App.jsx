@@ -9,10 +9,13 @@ import CreateProduct from "./components/CreateProduct/CreateProduct";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import ManageProducts from "./components/AdminPanel/ManageProducts";
 import UpdateProduct from "./components/UpdateProduct";
+import UserPanel from "./components/UserPanel/UserPanel";
+import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
+
 
 function App() {
 
@@ -29,6 +32,12 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='/login'  element={<Login/>}  />
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
+          <Route path="micuenta" element={<UserPanel />}>
+            <Route index element={<h3>Account panel</h3>} />
+            <Route path="ordenes" element={<OrdersList />} />
+            <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
+        
+          </Route>
         </Routes>
 
         {/* Rutas del administrador */}
