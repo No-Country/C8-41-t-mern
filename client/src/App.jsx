@@ -7,13 +7,15 @@ import Register from "./components/Register/Register";
 import ProductDetail from "./components/ProductDetail";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
-import UserPanel from "./components/UserPanel/UserPanel";
 import ManageProducts from "./components/AdminPanel/ManageProducts";
 import UpdateProduct from "./components/UpdateProduct";
+import UserPanel from "./components/UserPanel/UserPanel";
+import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
+
 
 function App() {
 
@@ -32,7 +34,7 @@ function App() {
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
           <Route path="micuenta" element={<UserPanel />}>
             <Route index element={<h3>Account panel</h3>} />
-            <Route path="ordenes" element={<h3>Mis Ordenes</h3>} />
+            <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
         
           </Route>
