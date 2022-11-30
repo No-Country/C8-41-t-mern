@@ -18,15 +18,31 @@ import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
 import { useSelector } from "react-redux"
 import UserPerfil from "./components/UserPanel/UserPerfil";
+import { enableES5 } from "immer";
 
 
 function App() {
 
   const auth = useSelector(state => state) || "";
-  let user = auth.user;
-  console.log("user is admin? "+user.isAdmin);
-  Object.keys(auth.user).length>0? user=auth.user : user=null;
-  console.log(user)
+  console.log(auth);
+  let user="";
+  let isAdmin="";
+  if(auth.status!=="not-authenticated"){
+    user = auth.user;
+    isAdmin= auth.isAdmin;
+    Object.keys(auth.user).length>0? user=auth.user : user=null;
+    //user.isAdmin? isAdmin=auth.isAdmin : isAdmin=false;
+  }
+  else{
+    user = null;
+    isAdmin= false;
+    
+  }
+  
+ // console.log("user is admin? "+user.isAdmin);
+  
+  
+  //console.log(auth);
  
   
 
@@ -53,7 +69,7 @@ function App() {
 
         {/* Rutas del administrador */}
         <Routes>
-          <Route path="admin" element={user.isAdmin? <AdminPanel />: <Navigate to="/restringido" replace/>} >
+          <Route path="admin" element={isAdmin? <AdminPanel />: <Navigate to="/restringido" replace/>} >
             <Route index element={<h3>Account panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<h3>usuarios</h3>} />
