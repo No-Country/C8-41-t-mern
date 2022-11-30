@@ -12,6 +12,7 @@ import UpdateProduct from "./components/UpdateProduct";
 import UserPanel from "./components/UserPanel/UserPanel";
 import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
+import Forbidden from "./components/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
@@ -38,10 +39,10 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='/login'  element={<Login/>}  />
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
-          <Route path="/restringido" element={<h3>Restringido</h3>} />
+          <Route path="/restringido" element={<Forbidden/>} />
           
          {/* Rutas del Panel de Usuario */}
-          <Route path="micuenta"  element={user?<AdminPanel /> : <Login/>}>
+          <Route path="micuenta"  element={user?<AdminPanel /> : <Navigate to="/login" replace/>}>
             <Route index element={<h3>Account panel</h3>} />
             <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
