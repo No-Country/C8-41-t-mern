@@ -16,35 +16,31 @@ import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import UserPerfil from "./components/UserPanel/UserPerfil";
 import { enableES5 } from "immer";
 
-
 function App() {
-
-  const auth = useSelector(state => state) || "";
+  const auth = useSelector((state) => state) || "";
   console.log(auth);
-  let user="";
-  let isAdmin="";
-  if(auth.status!=="not-authenticated"){
+
+  let user=null;
+  let isAdmin=false;
+
+  if (auth.status === "authenticated") {
     user = auth.user;
-    isAdmin= auth.isAdmin;
-    Object.keys(auth.user).length>0? user=auth.user : user=null;
-    //user.isAdmin? isAdmin=auth.isAdmin : isAdmin=false;
-  }
-  else{
+   isAdmin = auth.user.isAdmin;
+    Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
+  } else {
     user = null;
-    isAdmin= false;
-    
+    isAdmin = false;
   }
-  
- // console.log("user is admin? "+user.isAdmin);
-  
-  
-  //console.log(auth);
- 
-  
+
+  //user.isAdmin? isAdmin=auth.isAdmin : isAdmin=false;
+
+  console.log("user is admin? " + isAdmin);
+
+  //console.log(auth.user.isAdmin);
 
   return (
     <>
@@ -54,12 +50,15 @@ function App() {
           <Route index element={<Products />} />
           <Route path="detalle/:id" element={<ProductDetail />} />
           <Route path="register" element={<Register />} />
-          <Route path='/login'  element={<Login/>}  />
-          <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
-          <Route path="/restringido" element={<Forbidden/>} />
-          
-         {/* Rutas del Panel de Usuario */}
-          <Route path="micuenta"  element={user? <UserPanel />: <Navigate to="/login" replace/>}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/detalle-busqueda" element={<DetalleBusqueda />} />
+          <Route path="/restringido" element={<Forbidden />} />
+
+          {/* Rutas del Panel de Usuario */}
+          <Route
+            path="micuenta"
+            element={user ? <UserPanel /> : <Navigate to="/login" replace />}
+          >
             <Route index element={<h3>Account panel</h3>} />
             <Route path="perfil" element={<UserPerfil />} />
             <Route path="ordenes" element={<OrdersList />} />
@@ -69,14 +68,18 @@ function App() {
 
         {/* Rutas del administrador */}
         <Routes>
-          <Route path="admin" element={isAdmin? <AdminPanel />: <Navigate to="/restringido" replace/>} >
+          <Route
+            path="admin"
+            element={
+              isAdmin ? <AdminPanel /> : <Navigate to="/restringido" replace />
+            }
+          >
             <Route index element={<h3>Account panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<h3>usuarios</h3>} />
             <Route path="crear-producto" element={<CreateProduct />} />
             <Route path="editar-producto" element={<UpdateProduct />} />
           </Route>
-          
         </Routes>
 
         <Footer />
