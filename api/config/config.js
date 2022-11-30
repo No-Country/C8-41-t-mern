@@ -16,7 +16,8 @@ async function main() {
       let nuevo = new User({
         name: faker.name.firstName(),
         email: faker.internet.email(),
-        passwordHash: "password de prueba",
+        passwordHash:
+          "$2b$10$id1UANEEoNGzl8HYGF0Ir.Wm91uNwlgu6OYD74.jb5zZe5mhVw7nG",
         street: faker.address.city(),
         phone: 481450,
         zip: 3562,
@@ -27,7 +28,6 @@ async function main() {
 
   //Poblando la base de datos Products
   const productos = await products.find();
-  console.log(productos);
 
   if (productos.length === 0) {
     console.log("Products poblada con datos de prueba");
