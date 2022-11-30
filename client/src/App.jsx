@@ -12,7 +12,7 @@ import UpdateProduct from "./components/UpdateProduct";
 import UserPanel from "./components/UserPanel/UserPanel";
 import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
-import Forbidden from "./components/Forbidden";
+import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
