@@ -43,7 +43,7 @@ function App() {
           <Route path="/restringido" element={<Forbidden/>} />
           
          {/* Rutas del Panel de Usuario */}
-          <Route path="micuenta"  element={user?<AdminPanel /> : <Navigate to="/login" replace/>}>
+          <Route path="micuenta"  element={user? <UserPanel />: <Navigate to="/login" replace/>}>
             <Route index element={<h3>Account panel</h3>} />
             <Route path="perfil" element={<UserPerfil />} />
             <Route path="ordenes" element={<OrdersList />} />
@@ -53,7 +53,7 @@ function App() {
 
         {/* Rutas del administrador */}
         <Routes>
-          <Route path="admin" element={user.isAdmin? <UserPanel />: <Navigate to="/restringido" replace/>} >
+          <Route path="admin" element={user.isAdmin? <AdminPanel />: <Navigate to="/restringido" replace/>} >
             <Route index element={<h3>Account panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<h3>usuarios</h3>} />
