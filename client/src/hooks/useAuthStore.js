@@ -39,8 +39,12 @@ export const useAuthStore = () => {
            
           }
 
-     }
-
+          
+        }
+        
+        const startLogout = async () => {
+          dispatch(onLogout())
+        }
     
 
     return {
@@ -50,6 +54,7 @@ export const useAuthStore = () => {
         errorMessage,
         //Metodos
         startLogin,
+        startLogout
         
     }
 

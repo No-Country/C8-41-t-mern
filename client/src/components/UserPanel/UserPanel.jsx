@@ -2,7 +2,7 @@ import React from "react";
 //import Sidebar from "./Sidebar";
 import SimpleSidebar from "./SimpleSidebar"
 import './UserPanel.css'
-import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Form, Button, Table } from "react-bootstrap";
 import { Outlet, Link, redirect } from "react-router-dom";
 //import { useAuthStore } from "../../hooks/useAuthStore";
 import { useSelector } from "react-redux"
@@ -32,6 +32,8 @@ const UserPanel = () => {
           </Col>
           <Col xs={10} id="page-content-wrapper">
             <Outlet />
+            
+           
           </Col>
         </Row>
       </Container>

@@ -30,9 +30,12 @@ const Buscador = () => {
               })
         } else {
             console.log('hola')
+           setBuscar('')
             navigate(`/detalle-busqueda?encontrar=${buscar}`)
               return
         }
+        
+
 
 
 
@@ -42,7 +45,7 @@ const Buscador = () => {
 
   return (
    <>
-         <form onSubmit={handleSubmit} className="input-group w-auto my-auto d-none d-sm-flex">
+         <form onSubmit={handleSubmit} className="input-group w-auto my-auto mx-auto d-none d-sm-flex">
             <input
             value={buscar}
             name="encontrar"
