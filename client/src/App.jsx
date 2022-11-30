@@ -15,11 +15,16 @@ import Login from "./components/Login";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
+import { useSelector } from "react-redux"
 
 
 function App() {
 
-
+  const auth = useSelector(state => state) || "";
+  let user = auth.user;
+  Object.keys(auth.user).length>0? user=auth.user : user=null;
+  console.log(user)
+ 
   
 
   return (
@@ -32,17 +37,18 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='/login'  element={<Login/>}  />
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
-          <Route path="micuenta" element={<UserPanel />}>
+         
+         {/* Rutas del Panel de Usuario */}
+          <Route path="micuenta" element={user? <UserPanel />: <Login/> }>
             <Route index element={<h3>Account panel</h3>} />
             <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
-        
           </Route>
         </Routes>
 
         {/* Rutas del administrador */}
         <Routes>
-          <Route path="admin" element={<AdminPanel />}>
+          <Route path="admin" element={user?<AdminPanel /> : <Login/>}>
             <Route index element={<h3>Account panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<h3>usuarios</h3>} />
