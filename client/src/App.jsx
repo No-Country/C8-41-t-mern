@@ -1,5 +1,5 @@
 // import './App.css'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
@@ -12,6 +12,7 @@ import UpdateProduct from "./components/UpdateProduct";
 import UserPanel from "./components/UserPanel/UserPanel";
 import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
+import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
@@ -23,6 +24,7 @@ function App() {
 
   const auth = useSelector(state => state) || "";
   let user = auth.user;
+  console.log("user is admin? "+user.isAdmin);
   Object.keys(auth.user).length>0? user=auth.user : user=null;
   console.log(user)
  
@@ -38,9 +40,10 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='/login'  element={<Login/>}  />
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
-         
+          <Route path="/restringido" element={<Forbidden/>} />
+          
          {/* Rutas del Panel de Usuario */}
-          <Route path="micuenta" element={user? <UserPanel />: <Login/> }>
+          <Route path="micuenta"  element={user? <UserPanel />: <Navigate to="/login" replace/>}>
             <Route index element={<h3>Account panel</h3>} />
             <Route path="perfil" element={<UserPerfil />} />
             <Route path="ordenes" element={<OrdersList />} />
@@ -50,7 +53,7 @@ function App() {
 
         {/* Rutas del administrador */}
         <Routes>
-          <Route path="admin" element={user?<AdminPanel /> : <Login/>}>
+          <Route path="admin" element={user.isAdmin? <AdminPanel />: <Navigate to="/restringido" replace/>} >
             <Route index element={<h3>Account panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<h3>usuarios</h3>} />

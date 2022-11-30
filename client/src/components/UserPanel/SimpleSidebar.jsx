@@ -5,15 +5,14 @@ import { useAuthStore } from "../../hooks/useAuthStore";
 import { useDispatch } from "react-redux";
 
 const SimpleSidebar = () => {
+  const { startLogout } = useAuthStore();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-   const { startLogout } = useAuthStore()
-   const dispatch = useDispatch()
-   const navigate = useNavigate()
-
-   const handleClick = () => {
-    dispatch(startLogout)
-    navigate('/')
-   }
+  const handleClick = () => {
+    dispatch(startLogout);
+    navigate("/");
+  };
 
   return (
     <>
@@ -35,14 +34,20 @@ const SimpleSidebar = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-1">
+          <Nav.Link eventKey="link-2">
             <Link to="mensajes">Mensajes</Link>
           </Nav.Link>
         </Nav.Item>
 
         <Nav.Item>
-          <Nav.Link eventKey="link-1">
-           <button className="btn btn-danger" onClick={handleClick} type="submit"  >Cerrar sesion</button>
+          <Nav.Link eventKey="link-3">
+            <button
+              className="btn btn-danger"
+              onClick={handleClick}
+              type="submit"
+            >
+              Cerrar sesion
+            </button>
           </Nav.Link>
         </Nav.Item>
       </Nav>
