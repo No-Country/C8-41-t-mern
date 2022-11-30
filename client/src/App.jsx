@@ -1,5 +1,5 @@
 // import './App.css'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
@@ -22,6 +22,7 @@ function App() {
 
   const auth = useSelector(state => state) || "";
   let user = auth.user;
+  console.log("user is admin? "+user.isAdmin);
   Object.keys(auth.user).length>0? user=auth.user : user=null;
   console.log(user)
  
@@ -37,9 +38,10 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='/login'  element={<Login/>}  />
           <Route path="/detalle-busqueda" element={ <DetalleBusqueda /> } />
-         
+          <Route path="/restringido" element={<h3>Restringido</h3>} />
+          
          {/* Rutas del Panel de Usuario */}
-          <Route path="micuenta" element={user? <UserPanel />: <Login/> }>
+          <Route path="micuenta"  element={user?<AdminPanel /> : <Login/>}>
             <Route index element={<h3>Account panel</h3>} />
             <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
@@ -48,7 +50,7 @@ function App() {
 
         {/* Rutas del administrador */}
         <Routes>
-          <Route path="admin" element={user?<AdminPanel /> : <Login/>}>
+          <Route path="admin" element={user.isAdmin? <UserPanel />: <Navigate to="/restringido" replace/>} >
             <Route index element={<h3>Account panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<h3>usuarios</h3>} />
