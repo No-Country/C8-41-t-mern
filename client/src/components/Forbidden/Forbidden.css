@@ -3,3 +3,8 @@
     max-width: 30rem;
     display: inline-flex;
 }
+
+.btn-home{
+    text-decoration: none!important;
+    color: black;
+}

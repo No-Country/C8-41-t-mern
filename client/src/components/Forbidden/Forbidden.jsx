@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import {Container, Card, Button, Image , Row, Col} from "react-bootstrap";
-import "./Forbidden.css"
+import { Link} from 'react-router-dom';
+import "./Forbidden.css";
 const Forbidden = () => {
   return (
     <Container className="text-center">
@@ -14,7 +15,7 @@ const Forbidden = () => {
         </Card.Text>
         
       </Card.Body>
-      <Card.Footer ><Button variant="warning">Ir al inicio</Button></Card.Footer>
+      <Card.Footer ><Button variant="warning" ><Link to="/" className="btn-home">Ir al inicio</Link></Button></Card.Footer>
     </Card>
         
     </Container>
