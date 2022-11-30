@@ -42,6 +42,7 @@ const createUser = async (req, res) => {
 //Actualizar usuario
 const updateUser = async (req, res) => {
   const { id } = req.params;
+
   const { email, passwordHash, ...others } = req.body;
 
   if (passwordHash) {
@@ -50,18 +51,18 @@ const updateUser = async (req, res) => {
     others.passwordHash = bcryptjs.hashSync(passwordHash, salt);
   }
 
-    const user = await User.findByIdAndUpdate({_id: id}, others, {new: true});
-    res.json(user);
+  const user = await User.findByIdAndUpdate({ _id: id }, others, { new: true });
+  res.json(user);
 };
 
 //Borrar usuario
 const deleteUser = async (req, res) => {
   const { id } = req.params;
-  
-  const user = await User.findByIdAndUpdate(id, { state: false }, { new: true });
+
+  const user = await User.findByIdAndUpdate();
 
   res.json({
-    user
+    user,
   });
 };
 
