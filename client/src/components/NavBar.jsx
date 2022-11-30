@@ -1,9 +1,19 @@
+
+import { useSelector } from "react-redux"
 import Buscador from "./Buscador"
 
 
 const NavBar = () => {
 
+    // const auth = useSelector(state => state.auth)
+    const auth = useSelector(state => state)
+
+    // console.log(auth)
+    // console.log(state.payload.user)
+    
+
   const data = localStorage.getItem('user')
+  const data2 = sessionStorage.getItem('user')
 
   return (
     <>
@@ -36,12 +46,12 @@ const NavBar = () => {
         />
       </a>
       {/* <!-- Left links --> */}
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link" href="#">{data}</a>
+          <a className="nav-link" href="#">{auth.user.name}</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Productos</a>
+          <a className="nav-link" href="/">Productos</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Acerca de</a>
