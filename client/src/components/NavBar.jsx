@@ -1,14 +1,35 @@
-
-import { useSelector } from "react-redux"
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useDispatch, useSelector } from "react-redux"
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../hooks/useAuthStore';
 import Buscador from "./Buscador"
 
 
 const NavBar = () => {
 
-    // const auth = useSelector(state => state.auth)
-    const auth = useSelector(state => state)
+     const { startLogout } = useAuthStore()
+     const dispatch = useDispatch()
+     const navigate = useNavigate()
 
-    // console.log(auth)
+    // const auth = useSelector(state => state.auth)
+    const auth = useSelector(state => state) || "";
+    let user = auth.user;
+    Object.keys(auth.user).length>0? user=auth.user : user=null;
+
+    const handleClick = () => {
+      dispatch(startLogout())
+
+    }
+
+    const handleLogin = () => {
+
+      navigate("/login")
+    }
+
+  
     // console.log(state.payload.user)
     
 
@@ -18,128 +39,53 @@ const NavBar = () => {
   return (
     <>
     {/* <!-- Navbar --> */}
-<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  {/* <!-- Container wrapper --> */}
-  <div className="container-fluid">
-    {/* <!-- Toggle button --> */}
-    <button
-      className="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i className="fas fa-bars"></i>
-    </button>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#features">{auth.user.name}</Nav.Link>
+            <Nav.Link href="/">Ver productos</Nav.Link>
+            {
+              user ? <>
+            <NavDropdown title="Opciones de Usuario" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="micuenta">Panel de Usuario</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
 
-    {/* <!-- Collapsible wrapper --> */}
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      {/* <!-- Navbar brand --> */}
-      <a className="navbar-brand mt-2 mt-lg-0" href="#">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="15"
-          alt="MDB Logo"
-          loading="lazy"
-        />
-      </a>
-      {/* <!-- Left links --> */}
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <a className="nav-link" href="#">{auth.user.name}</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/">Productos</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Acerca de</a>
-        </li>
-       
-       {/* Componente buscador */}
-       <Buscador/>
-      </ul>
-      
-
-      {/* <!-- Left links --> */}
-    </div>
-    {/* <!-- Collapsible wrapper --> */}
-
-    {/* <!-- Right elements --> */}
-    <div className="d-flex align-items-center">
-      {/* <!-- Icon --> */}
-      <a className="text-reset me-3" href="#">
-        <i className="fas fa-shopping-cart"></i>
-      </a>
-
-      {/* <!-- Notifications --> */}
-      <div className="dropdown">
-        <a
-          className="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i className="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul
-          className="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >Name
-          <li>
-            <a className="dropdown-item" href="#">Some news</a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">Another news</a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
-      </div>
-      {/* <!-- Avatar --> */}
-      <div className="dropdown">
-        <a
-          className="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-            className="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
-          />
-        </a>
-        <ul
-          className="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a className="dropdown-item" href="#">My profile</a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    {/* <!-- Right elements --> */}
-  </div>
-  {/* <!-- Container wrapper --> */}
-</nav>
-{/* <!-- Navbar --> */}
+              </>
+              :
+              ""
+              
+              
+            
+            
+            }
+          </Nav>
+              <Buscador/>
+          <Nav>
+          {
+            user ?
+            <button className='btn btn-danger mx-2' onClick={handleClick} >
+              Cerrar Sesion
+            </button>
+            :
+            <button className='btn btn-primary' onClick={handleLogin}>
+              Iniciar Sesion
+            </button>
+          }
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
 </>
   )
 }

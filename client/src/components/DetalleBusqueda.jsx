@@ -18,12 +18,11 @@ const DetalleBusqueda = () => {
             .then( res => setDetalleBusqueda(res.data) )
             .catch(error => console.log(error))
         
-        }, [busqueda, setDetalleBusqueda])
+        }, [])
 
     
+       
 
-
-   
   return (
     <>  
     <div className="products">
