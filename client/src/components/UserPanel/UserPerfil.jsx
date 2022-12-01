@@ -9,12 +9,12 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 
-const UserPerfil = () => {
+const UserProfile = () => {
 
     const auth = useSelector(state => state) || ""
     const navigate = useNavigate()  
-    console.log(auth)
-    console.log(Object.keys(auth.user).length)
+    // console.log(auth)
+    // console.log(Object.keys(auth.user).length)
     //console.log(state.payload.user)
     
 
@@ -29,6 +29,8 @@ const UserPerfil = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Street</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -40,13 +42,18 @@ const UserPerfil = () => {
                   <td>{ auth.user.street }</td>
                  
                   <td>
-                    {/* <Button variant="success">Edit</Button>{' '}
-                 
-                  <Button variant="danger" onClick={((e) => {
+                  {/* <Link to={`editar`} >
+                    <Button variant="success">Edit</Button>{' '}
+
+                  </Link> */}
+                 </td>
+                 <td>
+                 <Button variant="danger" onClick={((e) => {
                     handleDelete(item._id, e, item.name);
-                  })}>Delete</Button>{' '} */}
+                  })}>Delete</Button>{' '}
+                 </td> 
                   
-                  </td>
+                  
                 </tr>
           </tbody>
         </Table>
@@ -56,4 +63,4 @@ const UserPerfil = () => {
   )
 }
 
-export default UserPerfil
+export default UserProfile

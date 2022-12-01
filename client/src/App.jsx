@@ -16,7 +16,9 @@ import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
 import { useSelector } from "react-redux"
-import UserPerfil from "./components/UserPanel/UserPerfil";
+import UserProfile from "./components/UserPanel/UserPerfil";
+import EditProfile from "./components/UserPanel/EditProfile";
+
 
 
 function App() {
@@ -42,7 +44,8 @@ function App() {
          {/* Rutas del Panel de Usuario */}
           <Route path="micuenta" element={user? <UserPanel />: <Login/> }>
             <Route index element={<h3>Account panel</h3>} />
-            <Route path="perfil" element={<UserPerfil />} />
+            <Route path="perfil" element={<UserProfile />} />
+            <Route path="editar" element={<EditProfile />} />
             <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
           </Route>

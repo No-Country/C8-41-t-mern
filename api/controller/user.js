@@ -40,7 +40,8 @@ const createUser = async (req, res) => {
 };
 
 //Actualizar usuario
-const updateUser = async (req, res) => {
+const 
+updateUser = async (req, res) => {
   const { id } = req.params;
 
   const { email, passwordHash, ...others } = req.body;

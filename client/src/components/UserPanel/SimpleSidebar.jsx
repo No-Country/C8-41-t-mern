@@ -36,6 +36,11 @@ const SimpleSidebar = () => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-1">
+            <Link to="editar">Editar Perfil</Link>
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">
             <Link to="mensajes">Mensajes</Link>
           </Nav.Link>
         </Nav.Item>
