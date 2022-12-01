@@ -33,7 +33,8 @@ const createUser = async (req, res) => {
 };
 
 //Actualizar usuario
-const updateUser = async (req, res) => {
+const 
+updateUser = async (req, res) => {
   const { id } = req.params;
 
   const { email, passwordHash, ...others } = req.body;
@@ -52,7 +53,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { id } = req.params;
 
-  const user = await User.findByIdAndUpdate();
+  const user = await User.findByIdAndDelete(id);
 
   res.json({
     user,
