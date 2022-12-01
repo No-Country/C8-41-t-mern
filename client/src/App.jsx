@@ -19,11 +19,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import UserPerfil from "./components/UserPanel/UserPerfil";
 import { enableES5 } from "immer";
+import ManageUsers from "./components/AdminPanel/ManageUsers";
 
 function App() {
   const auth = useSelector((state) => state) || "";
-  console.log(auth);
-
   let user=null;
   let isAdmin=false;
 
@@ -38,7 +37,7 @@ function App() {
 
   //user.isAdmin? isAdmin=auth.isAdmin : isAdmin=false;
 
-  console.log("user is admin? " + isAdmin);
+  
 
   //console.log(auth.user.isAdmin);
 
@@ -76,7 +75,7 @@ function App() {
           >
             <Route index element={<h3>Account panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
-            <Route path="usuarios" element={<h3>usuarios</h3>} />
+            <Route path="usuarios" element={<ManageUsers />} />
             <Route path="crear-producto" element={<CreateProduct />} />
             <Route path="editar-producto" element={<UpdateProduct />} />
           </Route>
