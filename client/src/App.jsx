@@ -16,10 +16,14 @@ import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import UserPerfil from "./components/UserPanel/UserPerfil";
-import { enableES5 } from "immer";
-import ManageUsers from "./components/AdminPanel/ManageUsers";
+
+import { useSelector } from "react-redux"
+import UserProfile from "./components/UserPanel/UserPerfil";
+import EditProfile from "./components/UserPanel/EditProfile";
+
+
+
+
 
 function App() {
   const auth = useSelector((state) => state) || "";
@@ -59,7 +63,8 @@ function App() {
             element={user ? <UserPanel /> : <Navigate to="/login" replace />}
           >
             <Route index element={<h3>Account panel</h3>} />
-            <Route path="perfil" element={<UserPerfil />} />
+            <Route path="perfil" element={<UserProfile />} />
+            <Route path="editar" element={<EditProfile />} />
             <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
           </Route>
