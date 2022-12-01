@@ -21,7 +21,7 @@ const Buscador = () => {
         e.preventDefault()
        
 
-        if ( buscar === '' ) {
+        if ( buscar === ''  ) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',

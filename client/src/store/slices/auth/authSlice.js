@@ -26,6 +26,12 @@ initialState: {
           state.errorMessage = payload
 
        },
+
+       onEditProfile: (state, { payload }) => {
+         state.user = payload,
+         state.errorMessage = undefined
+       },
+
        clearErrorMessage: (state) => {
           state.errorMessage = undefined
        }
@@ -34,4 +40,4 @@ initialState: {
 
 
 // Action creators are generated for each case reducer function
-export const { onLogin, onChecking, onLogout, clearErrorMessage } = authSlice.actions;
+export const { onLogin, onChecking, onLogout, clearErrorMessage, onEditProfile } = authSlice.actions;
