@@ -23,10 +23,50 @@ const ManageUsers = () => {
         .catch((error) => console.log(error));
     };
     traerUsuarios();
-    console.log("users are...");
-    console.log(users);
+    //console.log("users are...");
+    //console.log(users);
     // setProducts({...products});
   }, [users]);
+
+  const handleDelete = async (id, e, user) => {
+    e.preventDefault();
+    console.log("id is "+id);
+    const target = `${import.meta.env.VITE_BACKEND_URL}/api/users/${id}`;
+    await Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: `Desea Eliminar el usuario ${user} ?`,
+      showDenyButton: true,
+      confirmButtonText: 'Si',
+      confirmButtonColor: 'green',
+      denyButtonText: `No`,
+      buttons: true,
+      //dangerMode: true,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        axios
+        .delete(target, { headers: { 'x-token': ` ${token}` } })
+        .then((res) => {
+          console.log({res});
+          console.log("usuario eliminado");
+          //necesito forzar update
+          // 
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `El usuario ${user} fue eliminado exitosamente`,
+            showConfirmButton: false,
+            timer: 2500,
+          });
+          
+        })
+        .catch((error) => console.log(error));
+        //Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('El usuario no ha sido eliminado', '', 'info')
+      }});
+    };
 
   return (
     <>
@@ -44,10 +84,10 @@ const ManageUsers = () => {
           </thead>
           <tbody>
             {users.map((user, index) => {
-              console.log("user is...");
-              console.log(user);
+             //console.log("user is...");
+              //console.log(user);
               return (
-                <tr key={user.id}>
+                <tr key={user._id}>
                   <td>{user._id}</td>
                   <td>{user.name}</td>
                   {/* <td>{checkStock(user.stock)}</td> */}
@@ -60,7 +100,7 @@ const ManageUsers = () => {
                     <Button
                       variant="danger"
                       onClick={(e) => {
-                        handleDelete(user._id, e, user.name);
+                        handleDelete(user.uid, e, user.name);
                       }}
                     >
                       Borrar
