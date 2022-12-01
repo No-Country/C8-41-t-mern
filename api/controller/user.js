@@ -13,14 +13,7 @@ const createUser = async (req, res) => {
   const body = req.body;
   const { name, email, passwordHash, street, phone, zip } = body;
 
-  const user = new User({
-    name,
-    email,
-    passwordHash,
-    street,
-    phone,
-    zip,
-  });
+  const user = new User(name, email, passwordHash, street, phone, zip);
 
   //Verificar si existe el correo existe
   const repeatedEmail = await User.findOne({ email });
@@ -47,8 +40,8 @@ const updateUser = async (req, res) => {
 
   if (passwordHash) {
     // Encriptar la contraseña
-    const salt = bcryptjs.genSaltSync();
-    others.passwordHash = bcryptjs.hashSync(passwordHash, salt);
+    const salt = bcrypt.genSaltSync();
+    others.passwordHash = bcrypt.hashSync(passwordHash, salt);
   }
 
   const user = await User.findByIdAndUpdate({ _id: id }, others, { new: true });
@@ -66,4 +59,33 @@ const deleteUser = async (req, res) => {
   });
 };
 
-export { createUser, getUsers, updateUser, deleteUser };
+//Cambiar contraseña
+
+const changePass = async (req, res) => {
+  const { id } = req.params;
+  const { password, before } = req.body;
+
+  //Verificar contraseña
+  const useR = await User.findById(id);
+  const validPassword = bcrypt.compareSync(before, useR.passwordHash);
+
+  if (!validPassword) {
+    return res.status(400).json({
+      msg: " Contraseña actual no es correcta - password",
+    });
+  }
+
+  if (password) {
+    // Encriptar la contraseña
+    const salt = bcrypt.genSaltSync();
+    let passwordHash = bcrypt.hashSync(password, salt);
+    const user = await User.findByIdAndUpdate(
+      { _id: id },
+      { passwordHash },
+      { new: true }
+    );
+    res.status(200).json(user);
+  }
+};
+
+export { createUser, getUsers, updateUser, deleteUser, changePass };

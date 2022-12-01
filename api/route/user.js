@@ -5,6 +5,7 @@ import {
   createUser,
   updateUser,
   deleteUser,
+  changePass,
 } from "../controller/user.js";
 
 //Middlewares
@@ -24,13 +25,18 @@ router.get("/", [validateJWT, isAdminRole], getUsers);
 
 router.post("/", [validateCreateUser, validateFields], createUser);
 
-router.patch("/:id", [validateUpdateUser, validateFields], updateUser);
+router.patch(
+  "/:id",
+  [validateJWT, validateUpdateUser, validateFields],
+  updateUser
+);
 
 router.delete(
   "/:id",
   [validateJWT, isAdminRole, validateUpdateUser, validateFields],
   deleteUser
 );
+router.patch("/passChange/:id", validateJWT, changePass);
 
 //Rutas para carrito
 router.delete("/deletecart/:id", deleteCart);
