@@ -148,5 +148,6 @@ export {
   updateUser,
   passwordReset,
   passwordResetUser,
-  deleteUser,
+  changePass,
+  deleteUser
 };
