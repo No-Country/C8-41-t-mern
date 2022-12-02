@@ -48,19 +48,36 @@ const createOrder = async (req, res) => {
     const newOrder = new ordersModel({
       orderItems,
       shippingAddress,
-      phone, //TODO: ¿Debe obtenerse del user i se debe preguntar?
+      phone,
       orderStatus: "Confirmado",
       orderDate: new Date(),
       deliveryDate: new Date(), //TODO: Incrementar la fecha
-      totalPrice, //TODO: Calcular el precio obteniendolo de la coleccion products
+      totalPrice,
       userId,
     });
     const saved = await newOrder.save();
     res.status(200).json(saved);
-    //TODO: ¿Se debe incrementar el sold del producto?
   } catch (e) {
     httpError(res, e);
   }
 };
 
-export { getOneOrder, getOrders, createOrder, getOrdersUser };
+const updateOrder = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const order = await ordersModel.findById(id);
+    if (!order) {
+      res.send("La orden no existe.");
+    } else {
+      const { ...data } = req.body;
+      const orderUpdate = await ordersModel.findByIdAndUpdate(id, data, {
+        new: true,
+      });
+      res.status(200).json(orderUpdate);
+    }
+  } catch (e) {
+    httpError(res, e);
+  }
+};
+
+export { getOneOrder, getOrders, createOrder, getOrdersUser, updateOrder };
