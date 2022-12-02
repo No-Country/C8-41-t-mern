@@ -11,11 +11,12 @@ const app = express();
 
 app.use(express.json());
 
-const dominiosPertmitidos = ["http://localhost:3000", "http://localhost:3001"];
+const dominiosPertmitidos = ["http://localhost:3000"];
 
 const corsOptions = {
   origin: function (origin, callback) {
     if (dominiosPertmitidos.indexOf(origin) !== -1) {
+      // El origen del request esta permitido
       callback(null, true);
     } else {
       callback(new Error("No permitido por CORS"));
