@@ -63,6 +63,35 @@ const deleteUser = async (req, res) => {
   });
 };
 
+//Cambiar contraseña
+
+const changePass = async (req, res) => {
+  const { id } = req.params;
+  const { password, before } = req.body;
+
+  //Verificar contraseña
+  const useR = await User.findById(id);
+  const validPassword = bcrypt.compareSync(before, useR.passwordHash);
+
+  if (!validPassword) {
+    return res.status(400).json({
+      msg: " Contraseña actual no es correcta - password",
+    });
+  }
+
+  if (password) {
+    // Encriptar la contraseña
+    const salt = bcrypt.genSaltSync();
+    let passwordHash = bcrypt.hashSync(password, salt);
+    const user = await User.findByIdAndUpdate(
+      { _id: id },
+      { passwordHash },
+      { new: true }
+    );
+    res.status(200).json(user);
+  }
+};
+
 //Envío de correo para recuperar contraseña
 const passwordReset = async (req, res) => {
   try {
