@@ -1,65 +1,52 @@
 
 import axios from "axios";
-import { useState } from "react";
-import { Navbar } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../hooks/useAuthStore";
+import { redirect } from "react-router-dom";
+
 import Swal from "sweetalert2";
 
+
 const Login = () => {
+  
+  const { startLogin, errorMessage } = useAuthStore()
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
   const [nav, setNav] = useState([])
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState();
 
-  const navigate = useNavigate()
+ 
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire('Error en la autenticacion', errorMessage, 'error')
+    }
+    
+  }, [errorMessage])
+  
+  const handleSubmit =  (e) => {
     e.preventDefault();
 
-    if ([email, password].includes("")) {
-      setAlerta(
-        <h3 className="alert alert-danger" role="alert">
-          Todos los campos son obligatorios
-        </h3>
-      );
+    
 
-      return;
-    }
-
-    try {
-      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, { email, password })
-                                  
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", data.user.name)
-
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: `Bienvenido ${data.user.name} nuevamente`,
-        showConfirmButton: false,
-        timer: 2500,
-      });
-
-      setTimeout(() => {
-        
-        navigate('/')
-      }, 3000);
-      
-      
-      
-    } catch (error) {
-      console.log(error)
-      setAlerta(
-        <h3 className="alert alert-danger" role="alert"> { error.response.data.msg } </h3>
-      )
+      startLogin({email, password})
      
-    }
-
-   
       
     
     
-  };
+    // if ([email, password].includes("")) {
+    //   Swal.fire('Todos los campos son obligatorios', errorMessage, 'error')
+    //   return;
+    //
+ };
+
+ 
 
   return (
     <div className="login__container">
