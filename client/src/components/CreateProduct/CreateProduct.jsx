@@ -39,6 +39,9 @@ const CreateProduct = () => {
           Todos los campos son obligatorios
         </h3>
       );
+      setTimeout(() => {
+        setAlerta('')
+      }, 3000);
 
       return;
     } else {
@@ -53,7 +56,18 @@ const CreateProduct = () => {
         showConfirmButton: false,
         timer: 2500,
       });
+      setProducto(newProducto = {
+        name: "",
+        image: "",
+        materials: "",
+        description: "",
+        price: "",
+        delay: "",
+        sold: "",
+      })
     }
+    
+
   };
 
   return (
@@ -103,7 +117,8 @@ const CreateProduct = () => {
             autoComplete="on"
             placeholder="Insert image or url"
             className="login__input-field"
-            type="text"
+            type="file"
+            accept=".png, .jpg, .jpeg"
             id="image"
             value={producto.image}
             name="image"

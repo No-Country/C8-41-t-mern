@@ -15,14 +15,7 @@ const createUser = async (req, res) => {
   const body = req.body;
   const { name, email, passwordHash, street, phone, zip } = body;
 
-  const user = new User({
-    name,
-    email,
-    passwordHash,
-    street,
-    phone,
-    zip,
-  });
+  const user = new User(name, email, passwordHash, street, phone, zip);
 
   //Verificar si el correo existe
   const repeatedEmail = await User.findOne({ email });
@@ -43,14 +36,16 @@ const createUser = async (req, res) => {
 };
 
 //Actualizar usuario
-const updateUser = async (req, res) => {
+const 
+updateUser = async (req, res) => {
   const { id } = req.params;
+
   const { email, passwordHash, ...others } = req.body;
 
   if (passwordHash) {
     // Encriptar la contraseña
-    const salt = bcryptjs.genSaltSync();
-    others.passwordHash = bcryptjs.hashSync(passwordHash, salt);
+    const salt = bcrypt.genSaltSync();
+    others.passwordHash = bcrypt.hashSync(passwordHash, salt);
   }
 
   const user = await User.findByIdAndUpdate({ _id: id }, others, { new: true });
@@ -61,11 +56,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { id } = req.params;
 
-  const user = await User.findByIdAndUpdate(
-    id,
-    { state: false },
-    { new: true }
-  );
+  const user = await User.findByIdAndDelete(id);
 
   res.json({
     user,

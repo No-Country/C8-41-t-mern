@@ -2,6 +2,8 @@ import { check } from "express-validator";
 import { validateResult } from "../helper/validateHelper.js";
 
 const validateCreate = [
+  check("id").isMongoId(),
+
   check("name").exists().not().isEmpty().trim(),
 
   check("image").exists().not().isEmpty().trim(),

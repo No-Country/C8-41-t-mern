@@ -7,7 +7,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controller/products.js";
-
+import { validateId } from "../validator/id.js";
 import { validateCreate } from "../validator/products.js";
 
 const router = express.Router();
@@ -15,8 +15,8 @@ const router = express.Router();
 router.use(express.json());
 router.get("/", getProducts);
 router.post("/", validateCreate, createProducts);
-router.patch("/:id", updateProduct);
-router.get("/:id", getOneProduct);
-router.delete("/:id", deleteProduct);
+router.patch("/:id", validateCreate, updateProduct);
+router.get("/:id", validateId, getOneProduct);
+router.delete("/:id", validateId, deleteProduct);
 
 export default router;

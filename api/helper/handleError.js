@@ -1,10 +1,5 @@
-const httpError = (res = {}, e = {}) => {
-  // Sends error to user
-  res.status(e.code).json({
-    errors: {
-      msg: e.message,
-    },
-  });
+const httpError = (res, e) => {
+  res.status(500).json({ error: e });
 };
 
 export { httpError };
