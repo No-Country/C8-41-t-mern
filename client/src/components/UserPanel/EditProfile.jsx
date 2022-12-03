@@ -9,9 +9,10 @@ import Swal from 'sweetalert2'
 
 const EditProfile = () => {
 
-   const {  startEditProfile } = useAuthStore()
+   const {  startEditMyProfile } = useAuthStore()
     const auth = useSelector( state => state.user );
     const [perfil, setPerfil] = useState({})
+    const token = localStorage.getItem("token");
    
     useEffect(() => {
       setPerfil(auth)
@@ -28,7 +29,7 @@ const EditProfile = () => {
     const handleSubmit =  async (e) => {
       e.preventDefault();
       
-      startEditProfile(perfil)
+      startEditMyProfile(perfil, token)
       await Swal.fire(
         'Perfil!',
         'Tu perfil se ha actualizado de forma exitosa',

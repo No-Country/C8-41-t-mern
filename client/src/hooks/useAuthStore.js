@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { clearErrorMessage, onChecking, onEditProfile, onLogin, onLogout } from "../store/slices/auth/authSlice"
+import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout } from "../store/slices/auth/authSlice"
 import { redirect } from "react-router-dom";
 
 export const useAuthStore = () => {
@@ -53,6 +53,25 @@ export const useAuthStore = () => {
                 try {
                     const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${perfil.uid}`, perfil, { headers: { 'x-token': ` ${token}` } }  )
                     dispatch(onEditProfile(data))
+                    return true
+                    
+                } catch (error) {
+                    console.log(error)
+                    return false
+                }
+                // console.log(perfil.uid)
+                
+        
+                
+               
+            
+        }
+        const startEditMyProfile = async (perfil, token) => {
+            console.log(perfil)
+        
+                try {
+                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${perfil.uid}`, perfil, { headers: { 'x-token': ` ${token}` } }  )
+                    dispatch(onEditMyProfile(data))
                     
                 } catch (error) {
                     console.log(error)
@@ -74,7 +93,9 @@ export const useAuthStore = () => {
         //Metodos
         startLogin,
         startLogout,
+        startEditMyProfile,
         startEditProfile
+        
         
     }
 
