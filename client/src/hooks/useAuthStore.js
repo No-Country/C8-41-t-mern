@@ -47,11 +47,11 @@ export const useAuthStore = () => {
           dispatch(onLogout())
         }
     
-        const startEditProfile = async (perfil) => {
+        const startEditProfile = async (perfil, token) => {
             console.log(perfil)
         
                 try {
-                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${perfil.uid}`, perfil  )
+                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${perfil.uid}`, perfil, { headers: { 'x-token': ` ${token}` } }  )
                     dispatch(onEditProfile(data))
                     
                 } catch (error) {
