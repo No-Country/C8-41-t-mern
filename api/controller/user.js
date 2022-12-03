@@ -13,10 +13,11 @@ const createUser = async (req, res) => {
   const body = req.body;
   const { name, email, passwordHash, street, phone, zip } = body;
 
-  const user = new User(name, email, passwordHash, street, phone, zip);
+  const user = new User({ name, email, passwordHash, street, phone, zip });
 
   //Verificar si existe el correo existe
   const repeatedEmail = await User.findOne({ email });
+
   if (repeatedEmail) {
     return res.status(400).json({
       msg: "El correo ya está registrado",
@@ -33,8 +34,7 @@ const createUser = async (req, res) => {
 };
 
 //Actualizar usuario
-const 
-updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   const { id } = req.params;
 
   const { email, passwordHash, ...others } = req.body;
