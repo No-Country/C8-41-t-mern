@@ -34,7 +34,7 @@ const SimpleSidebar = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-
+          <Nav.Link>
             <Link to="mensajes">Mensajes</Link>
           </Nav.Link>
         </Nav.Item>
