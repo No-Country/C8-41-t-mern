@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 //import Product from "../Products/Product";
 import { Link } from "react-router-dom";
-import { Table, Container, Button } from "react-bootstrap";
+import { Table, Container, Button, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 
@@ -12,6 +12,10 @@ const ManageUsers = () => {
   const auth = useSelector((state) => state) || "";
   const token = localStorage.getItem("token");
   //console.log("token is "+token);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   useEffect(() => {
     console.log("url " + import.meta.env.VITE_BACKEND_URL);
     const traerUsuarios = () => {
@@ -67,6 +71,9 @@ const ManageUsers = () => {
         Swal.fire('El usuario no ha sido eliminado', '', 'info')
       }});
     };
+    const handleEdit = async (id, e, user) => {
+
+    }
 
   return (
     <>
@@ -87,7 +94,7 @@ const ManageUsers = () => {
              //console.log("user is...");
               //console.log(user);
               return (
-                <tr key={user._id}>
+                <tr key={index}>
                   <td>{user._id}</td>
                   <td>{user.name}</td>
                   {/* <td>{checkStock(user.stock)}</td> */}
@@ -95,7 +102,7 @@ const ManageUsers = () => {
                   <td>{user.phone}</td>
                   <td>{user.isAdmin? 'Si' : 'No'}</td>
                   <td>
-                    <Button variant="success">Editar</Button>{" "}
+                    <Button variant="success" onClick={handleShow}>Editar</Button>{" "}
                     {/* <Button variant="warning">Ed</Button>{' '} */}
                     <Button
                       variant="danger"
@@ -113,6 +120,20 @@ const ManageUsers = () => {
           </tbody>
         </Table>
       </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar Usuario</Modal.Title>
+        </Modal.Header>
+        <Modal.Body></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
