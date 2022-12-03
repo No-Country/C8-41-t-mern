@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Table, Container, Button, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
+import EditProfile from "../UserPanel/EditProfile";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -122,17 +123,17 @@ const ManageUsers = () => {
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar Usuario</Modal.Title>
+          {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body></Modal.Body>
-        <Modal.Footer>
+        <Modal.Body><EditProfile className="my-0"/></Modal.Body>
+        {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Save Changes
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );

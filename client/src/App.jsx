@@ -8,7 +8,7 @@ import ProductDetail from "./components/ProductDetail";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import ManageProducts from "./components/AdminPanel/ManageProducts";
-import ManageUsers from "./components/AdminPanel/ManageUsers";
+
 import UpdateProduct from "./components/UpdateProduct";
 import UserPanel from "./components/UserPanel/UserPanel";
 import OrdersList from "./components/UserPanel/OrdersList";
