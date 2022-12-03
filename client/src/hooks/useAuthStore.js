@@ -48,10 +48,11 @@ export const useAuthStore = () => {
         }
     
         const startEditProfile = async (perfil) => {
-            console.log(perfil)
+            const token = localStorage.getItem('token')
+            // console.log(perfil)
         
                 try {
-                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${perfil.uid}`, perfil  )
+                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${perfil.uid}`, perfil, { headers: { 'x-token': ` ${token}` } }  )
                     dispatch(onEditProfile(data))
                     
                 } catch (error) {
@@ -60,11 +61,9 @@ export const useAuthStore = () => {
                 }
                 // console.log(perfil.uid)
                 
-        
-                
-               
-            
         }
+
+       
 
     return {
         // Propiedades
@@ -74,7 +73,8 @@ export const useAuthStore = () => {
         //Metodos
         startLogin,
         startLogout,
-        startEditProfile
+        startEditProfile,
+        
         
     }
 
