@@ -12,7 +12,7 @@ const validateJWT = async (req = request, res = response, next) => {
     });
   }
 
-  const secret = process.env.SECRETORPRIVATEKEY;
+  const secret = process.env.SECRETORPRIVATEKEY || '3355sd8sdsdsd';
 
   try {
     const { uid } = jwt.verify(token, secret);

@@ -57,11 +57,7 @@ const ProductDetail = () => {
           Volver
         </button>
       </Link>
-      <Link to='/admin/editar-producto' >
-        <button className="btn btn-danger mx-2 my-2" >
-          Editar Producto
-        </button>
-      </Link>
+      
     </Container>
   )
 }

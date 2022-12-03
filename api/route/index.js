@@ -4,6 +4,7 @@ import productsRouter from "./products.js";
 import serchRouter from "./search.js";
 import authRouter from "./auth.js";
 import ordersRouter from "./orders.js";
+import passwordReset from "./passwordReset.js";
 
 const app = express();
 
@@ -13,6 +14,7 @@ function routerApi(app) {
   app.use("/api/users", usersRouter);
   app.use("/api/auth", authRouter);
   app.use("/api/orders", ordersRouter);
+  app.use("/api/password-reset", passwordReset);
 }
 
 export default routerApi;

@@ -22,11 +22,7 @@ const SimpleSidebar = () => {
             <Nav.Item>
                 <Nav.Link eventKey="link-2"><Link to="crear-producto">Crear Producto</Link></Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="disabled" disabled>
-                Disabled
-                </Nav.Link>
-            </Nav.Item>
+            
             </Nav>
             
     

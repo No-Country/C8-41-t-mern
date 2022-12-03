@@ -18,7 +18,7 @@ const DetalleBusqueda = () => {
             .then( res => setDetalleBusqueda(res.data) )
             .catch(error => console.log(error))
         
-        }, [])
+        }, [detalleBusqueda])
 
     
        
@@ -53,6 +53,11 @@ const DetalleBusqueda = () => {
 
       }
       </ul>
+   <Link to='/' >
+        <button className="btn btn-success mx-2 my-2 " >
+          Volver
+        </button>
+      </Link>
    </div>
     </>
   )
