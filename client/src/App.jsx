@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux"
 import UserProfile from "./components/UserPanel/UserPerfil";
 import EditProfile from "./components/UserPanel/EditProfile";
+import ManageUsers from "./components/AdminPanel/ManageUsers";
 
 
 

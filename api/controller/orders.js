@@ -17,7 +17,7 @@ const getOrders = async (req, res) => {
 const getOrdersUser = async (req, res) => {
   try {
     const orders = await ordersModel.find({ userId: req.params.id });
-    if (orders.length < 1) {
+    if (orders.length < 0) {
       res.send("No hay órdenes que mostrar.");
     } else {
       res.json(orders);

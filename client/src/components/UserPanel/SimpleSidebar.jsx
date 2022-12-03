@@ -16,7 +16,7 @@ const SimpleSidebar = () => {
 
   return (
     <>
-      <Nav className="col d-none d-md-block bg-dark sidebar">
+     <Nav className="col d-none d-md-block bg-dark sidebar">
         <div className="sidebar-sticky"></div>
         <Nav.Item>
           <Nav.Link>
@@ -34,7 +34,12 @@ const SimpleSidebar = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link>
+          <Nav.Link eventKey="link-1">
+            <Link to="editar">Editar Perfil </Link>
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">
             <Link to="mensajes">Mensajes</Link>
           </Nav.Link>
         </Nav.Item>

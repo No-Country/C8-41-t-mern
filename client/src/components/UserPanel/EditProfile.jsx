@@ -53,23 +53,14 @@ const EditProfile = () => {
           name='name'
           onChange={handleInputChange}
           autoComplete="on"
-          placeholder="First Name"
+          placeholder="Full name"
           className="login__input-field"
           type="text"
           id="name"
         />
-        <i className="input-icon fa-solid fa-user"></i>
+       
 
-        <input
-          value={perfil.lastname || ''}
-          onChange={handleInputChange}
-          name='lastname'
-          autoComplete="off"
-          placeholder="Last Name"
-          className="login__input-field"
-          type="text"
-          id="lastname"
-        />
+        
       </div>
 
       <div className="login__field">

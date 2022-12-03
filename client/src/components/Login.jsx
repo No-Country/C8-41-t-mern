@@ -21,6 +21,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState();
 
+  const name = localStorage.getItem('user')
+
  
 
   useEffect(() => {
@@ -36,6 +38,11 @@ const Login = () => {
     
 
       startLogin({email, password})
+      Swal.fire(
+        'Bienvenido/a!',
+        `${name}`,
+        'success'
+      )
      
       
     

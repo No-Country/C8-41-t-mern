@@ -3,15 +3,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Order from "./Order";
 import { Link } from "react-router-dom";
-import {Table, Container, Button} from "react-bootstrap";
+import {Table, Container, Button, Alert, Row, Col} from "react-bootstrap";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+
 
 const OrdersList = () => {
+
+  const auth = useSelector(state => state)
+  // console.log(auth)
+
   const [orders, setOrders] = useState([]);
+  
   useEffect(() => {
+   
     console.log("url " + import.meta.env.VITE_BACKEND_URL);
     const traerOrdenes = () => {
-      const url = `${import.meta.env.VITE_BACKEND_URL}/api/orders`;
+      const userId = auth.user.uid;
+      // console.log(userId)
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/orders/misOrdenes/${userId}`;
 
       axios
         .get(url)
@@ -20,29 +30,81 @@ const OrdersList = () => {
     };
     traerOrdenes();
     // setProducts({...products});
-  }, [orders]);
-  
-  // useEffect(() => {
     
-  //   const traerProductos = () => {
-  //     const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
+  }, []);
 
-  //     axios
-  //       .get(url)
-  //       .then((res) => setProducts(res.data))
-  //       .catch((error) => console.log(error));
-  //   };
-  //   traerProductos();
-  //   // setProducts({...products});
-  // }, []);
+  
+  
+  
   
  
   return (
     <>
-      <Container>
-        
-      </Container>
-    </>
+    
+    <Container  >
+      <Table striped>
+        <thead>
+          <tr>
+            <th>Fecha de Orden</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+            <th>Telefono</th>
+            <th>Domicilio</th>
+            <th>Ciudad</th>
+            <th>Codigo postal</th>
+            <th>Precio</th>
+            <th>Id Pedido</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+           
+            orders.length ?
+
+          (
+
+           orders?.map((item, index) => {
+           console.log(item)
+            return (
+              <tr key={item.id}>
+                <td>{item.orderDate}</td>
+                <td>{item.orderItems.map(quant => {
+                 return ( <td>{quant.quantity} </td>)
+                })}</td>
+               
+                <td>{item.orderStatus}</td>
+                <td>{item.phone}</td>
+                <td>{item.shippingAddress.address}</td>
+                <td>{item.shippingAddress.city}</td>
+                <td>{item.shippingAddress.zip}</td>
+                <td>{item.totalPrice}</td>
+                <td>{item._id}</td>
+
+              </tr>
+             
+            );
+          })
+          )
+          :
+            (
+              <Container>
+          <Row className="justify-content-md-center" >
+             
+              <Col md='auto' >
+              <Alert variant="danger">
+            <Alert.Heading>No hay órdenes para mostrar</Alert.Heading>
+              
+          </Alert>
+          </Col>
+         
+          </Row>
+          </Container>
+          )
+          }
+        </tbody>
+      </Table>
+    </Container>
+  </>
   );
 };
 
