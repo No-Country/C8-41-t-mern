@@ -29,8 +29,7 @@ const UserProfile = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Street</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -47,11 +46,7 @@ const UserProfile = () => {
 
                   </Link> */}
                  </td>
-                 <td>
-                 <Button variant="danger" onClick={((e) => {
-                    handleDelete(item._id, e, item.name);
-                  })}>Delete</Button>{' '}
-                 </td> 
+                
                   
                   
                 </tr>
