@@ -47,8 +47,9 @@ export const useAuthStore = () => {
           dispatch(onLogout())
         }
     
-        const startEditProfile = async (perfil, token) => {
-            console.log(perfil)
+        const startEditProfile = async (perfil) => {
+            const token = localStorage.getItem('token')
+            // console.log(perfil)
         
                 try {
                     const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${perfil.uid}`, perfil, { headers: { 'x-token': ` ${token}` } }  )
@@ -83,11 +84,9 @@ export const useAuthStore = () => {
                 }
                 // console.log(perfil.uid)
                 
-        
-                
-               
-            
         }
+
+       
 
     return {
         // Propiedades

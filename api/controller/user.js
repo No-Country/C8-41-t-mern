@@ -15,10 +15,11 @@ const createUser = async (req, res) => {
   const body = req.body;
   const { name, email, passwordHash, street, phone, zip } = body;
 
-  const user = new User({name, email, passwordHash, street, phone, zip});
+  const user = new User({ name, email, passwordHash, street, phone, zip });
 
   //Verificar si el correo existe
   const repeatedEmail = await User.findOne({ email });
+
   if (repeatedEmail) {
     return res.status(400).json({
       msg: "El correo ya está registrado",
@@ -36,8 +37,7 @@ const createUser = async (req, res) => {
 };
 
 //Actualizar usuario
-const 
-updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   const { id } = req.params;
 
   const { email, passwordHash, ...others } = req.body;
@@ -110,7 +110,7 @@ const passwordReset = async (req, res) => {
 
     //Enlace que recibirá el usuario
     const link = `${process.env.BASE_URL}/password-reset/${user.uid}/${token}`;
-    console.log(link)
+    console.log(link);
     //Envío de correo con link de recuperación
     sendRecoveryPasswordMail(user, link);
 
@@ -149,5 +149,5 @@ export {
   passwordReset,
   passwordResetUser,
   changePass,
-  deleteUser
+  deleteUser,
 };

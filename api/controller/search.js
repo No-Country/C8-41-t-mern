@@ -22,6 +22,11 @@ const searchProducts = async (req, res) => {
     //Si un objeto de result contiene similitud con un resultado de result2 el mismo conserbara
     //los cambios de result2 y agregara los que la primera busqueda no contiene
     let result3 = [...result, ...result2];
+    if (result.length == 0) {
+      return res
+        .send({ message: "No se encontro resultados para esta busqueda" })
+        .status(200);
+    }
     return res.send(result3).status(200);
   }
 

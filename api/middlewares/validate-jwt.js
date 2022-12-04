@@ -12,18 +12,19 @@ const validateJWT = async (req = request, res = response, next) => {
     });
   }
 
-  const secret = process.env.SECRETORPRIVATEKEY || '3355sd8sdsdsd';
+  // const secret = process.env.SECRETORPRIVATEKEY;
+  console.log(process.env.SECRETORPRIVATEKEY)
 
   try {
-    const { uid } = jwt.verify(token, secret);
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
     const user = await User.findById(uid);
 
     // Validar que el usuario exista en la BD
     if (!user) {
-        return res.status(401).json({
-          msg: "Token no válido - usuario no existe en la BD",
-        });
-      }    
+      return res.status(401).json({
+        msg: "Token no válido - usuario no existe en la BD",
+      });
+    }
 
     // Validar si el uid tiene estado true
     if (!user.state) {
@@ -36,11 +37,9 @@ const validateJWT = async (req = request, res = response, next) => {
 
     next();
   } catch (error) {
-    console.log(error);
-    res.status(401).json({
+    return res.status(401).json({
       msg: "Token no válido",
     });
-    return;
   }
 };
 
