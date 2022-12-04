@@ -15,19 +15,18 @@ const ManageUsers = () => {
   //console.log("token is "+token);
   
   useEffect(() => {
-    console.log("url " + import.meta.env.VITE_BACKEND_URL);
+   // console.log("url " + import.meta.env.VITE_BACKEND_URL);
     const traerUsuarios = () => {
-      const url = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
+     const url = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
 
       axios
         .get(url, { headers: { 'x-token': ` ${token}` } })
-        .then((res) => setUsers(res.data))
+        .then((res) => {setUsers(res.data);
+          console.log(res.data)})
         .catch((error) => console.log(error));
     };
     traerUsuarios();
-    //console.log("users are...");
-    //console.log(users);
-    // setProducts({...products});
+    
   }, [users]);
 
   const handleDelete = async (id, e, user) => {
@@ -134,7 +133,7 @@ const ManageUsers = () => {
         <Modal.Header closeButton>
           {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="py-0"><EditProfiles user={user} token={token} /></Modal.Body>
+        <Modal.Body className="py-0 my-0"><EditProfiles user={user} token={token} /></Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

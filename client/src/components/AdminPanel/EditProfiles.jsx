@@ -130,7 +130,7 @@ const EditProfiles = ({user}) => {
         />
       </div>
       <div className="login__field">
-        <i className="input-icon fa-solid fa-street"></i>
+        <i className="input-icon fa-solid fa-house"></i>
         <input
           value={perfil.street || ''}
           onChange={handleInputChange}
@@ -140,6 +140,19 @@ const EditProfiles = ({user}) => {
           className="login__input-field"
           name="street"
           id="street"
+        />
+      </div>
+      <div className="login__field">
+        <i className="input-icon fa-solid fa-house"></i>
+        <input
+          value={perfil.isAdmin || ''}
+          onChange={handleInputChange}
+          autoComplete="off"
+          type="text"
+          placeholder="Admin state"
+          className="login__input-field"
+          name="isAdmin"
+          id="isAdmin"
         />
       </div>
       

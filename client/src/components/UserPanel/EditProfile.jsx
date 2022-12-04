@@ -34,7 +34,7 @@ const EditProfile = () => {
     const handleSubmit =  async (e) => {
       e.preventDefault();
       
-      startEditMyProfile(perfil).then(async()=>{
+      startEditMyProfile(perfil, token).then(async()=>{
         console.log("response is...");
       console.log(response);
       response=localStorage.getItem("res")

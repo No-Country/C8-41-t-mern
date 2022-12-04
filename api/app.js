@@ -13,7 +13,7 @@ app.use(express.json());
 
 const dominiosPertmitidos = ["http://localhost:3000"];
 
-const corsOptions = {
+const corsOptions = { 
   origin: function (origin, callback) {
     if (dominiosPertmitidos.indexOf(origin) !== -1) {
       // El origen del request esta permitido
@@ -24,7 +24,7 @@ const corsOptions = {
   },
 };
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 routerApi(app);
 

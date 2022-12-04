@@ -1,5 +1,8 @@
 // import './App.css'
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useAuthStore } from "./hooks/useAuthStore";
+import { useEffect } from "react";
+import { useSelector } from "react-redux"
 import NavBar from "./components/NavBar";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
@@ -8,17 +11,13 @@ import ProductDetail from "./components/ProductDetail";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import ManageProducts from "./components/AdminPanel/ManageProducts";
-
+import ManageUsers from "./components/AdminPanel/ManageUsers";
 import UpdateProduct from "./components/UpdateProduct";
 import UserPanel from "./components/UserPanel/UserPanel";
 import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
 import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
-import { useAuthStore } from "./hooks/useAuthStore";
-import { useEffect } from "react";
-
-import { useSelector } from "react-redux"
 import UserProfile from "./components/UserPanel/UserPerfil";
 import EditProfile from "./components/UserPanel/EditProfile";
 
