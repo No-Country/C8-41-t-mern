@@ -41,19 +41,20 @@ const NavBar = () => {
     {/* <!-- Navbar --> */}
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/">Ecommerce <br/> Artistico</Navbar.Brand>
+        <Buscador/>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#features">{auth.user.name}</Nav.Link>
             <Nav.Link href="/">Ver productos</Nav.Link>
+            
             {
               user ? <>
             <NavDropdown title="Opciones de Usuario" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="micuenta">Panel de Usuario</NavDropdown.Item>
-              {/* <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
+              <NavDropdown.Item href="/micuenta">Panel de Usuario</NavDropdown.Item>
+              {user.isAdmin? <NavDropdown.Item href="/admin">Panel Administrativo</NavDropdown.Item> : ''}
+              {/* 
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
@@ -69,12 +70,13 @@ const NavBar = () => {
             
             
             }
+            
           </Nav>
-              <Buscador/>
+              
           <Nav>
           {
             user ?
-            <button className='btn btn-danger mx-2' onClick={handleClick} >
+            <button className='btn btn-danger' onClick={handleClick} >
               Cerrar Sesion
             </button>
             :
