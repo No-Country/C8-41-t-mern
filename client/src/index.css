@@ -85,4 +85,6 @@ button:focus-visible {
   --Button-color: #F7C873;
   
 }
-
+.searchbox > input{
+  border-radius: 5px 0px 0px 5px !important;
+}
