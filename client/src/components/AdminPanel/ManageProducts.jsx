@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Table, Container, Button, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import CreateProduct from "../CreateProduct/CreateProduct";
+import UpdateProduct from "../UpdateProduct";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -82,12 +83,14 @@ const ManageProducts = () => {
       } else if (result.isDenied) {
         Swal.fire("El item no ha sido eliminado", "", "info");
       }
+      handleClose();
     });
   };
   const [show, setShow] = useState(false);
+  const [edit, setEdit] = useState(false);
     const [user, setUser] = useState();
     const handleClose = () => setShow(false);
-    const handleShow = (e) =>{
+    const handleShow = (e, item, title) =>{
         e.preventDefault();
         setShow(true);
        
@@ -116,7 +119,9 @@ const ManageProducts = () => {
                   <td>{item.sold}</td>
                   <td>
                     <Button variant="success">
-                      <i className=" fa-solid fa-edit"></i>
+                      <i className=" fa-solid fa-edit"  onClick={(e) => {
+                        handleShow( e,{}, setEdit(true));
+                      }}></i>
                     </Button>{" "}
                     {/* <Button variant="warning">Ed</Button>{' '} */}
                     <Button
@@ -136,7 +141,9 @@ const ManageProducts = () => {
         </Table>
 
         {/* <div className="position-sticky"> */}
-          <Button className="btn btn-success float-end" onClick={handleShow}>
+          <Button className="btn btn-success float-end" onClick={(e) => {
+                        handleShow( e,{}, setEdit(false));
+                      }}>
             Adñadir Producto <i className=" fa-solid fa-plus"></i>
           </Button>
         {/* </div> */}
@@ -145,7 +152,7 @@ const ManageProducts = () => {
         <Modal.Header closeButton>
           {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="py-0 my-0"><CreateProduct /></Modal.Body>
+        <Modal.Body className="py-0 my-0">{edit==true?<UpdateProduct />:<CreateProduct />}</Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
