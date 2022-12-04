@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Stack from "react-bootstrap/Stack";
-
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
@@ -18,7 +18,7 @@ const NavBar = () => {
   const auth = useSelector((state) => state) || "";
   let user = auth.user;
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
-
+  const [cart, setCart]=useState([{}]);
   const handleClick = () => {
     dispatch(startLogout());
   };
@@ -26,8 +26,15 @@ const NavBar = () => {
   const handleLogin = () => {
     navigate("/login");
   };
+useEffect(() => {
+  
+  auth.user.cart? setCart(auth.user.cart) : setCart([{}]);
+  //esperando para el componente carrito
+  console.log(cart);
+  
+}, [cart])
 
-  // console.log(state.payload.user)
+  //console.log(state.payload.user)
 
   const data = localStorage.getItem("user");
   const data2 = sessionStorage.getItem("user");
@@ -36,15 +43,17 @@ const NavBar = () => {
     <>
       {/* <!-- Navbar --> */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
+        <Container fluid>
           <Navbar.Brand href="/">
             Ecommerce <br /> Artistico
           </Navbar.Brand>
-          <Buscador />
+         
+          
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">{auth.user.name}</Nav.Link>
+            <Nav.Link href="#features">{auth.user.name}</Nav.Link>
+            <Buscador />
               <Nav.Link href="/">Ver productos</Nav.Link>
 
               {user ? (
@@ -80,9 +89,9 @@ const NavBar = () => {
               {/* <Nav> */}
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
-                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    0<span class="visually-hidden">Cart items</span>
-                  </span>
+                  {cart.length>1?<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cart.length}<span class="visually-hidden">Cart items</span>
+                  </span>: ''}
                 </button>
               {/* </Nav> */}
               {/* <vr /> */}
