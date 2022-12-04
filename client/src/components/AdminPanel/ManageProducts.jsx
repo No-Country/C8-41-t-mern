@@ -88,11 +88,12 @@ const ManageProducts = () => {
   };
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(false);
-    const [user, setUser] = useState();
+    const [product, setProduct] = useState();
     const handleClose = () => setShow(false);
     const handleShow = (e, item, title) =>{
         e.preventDefault();
         setShow(true);
+        setProduct(item);
        
     } 
   return (
@@ -111,7 +112,7 @@ const ManageProducts = () => {
           <tbody>
             {products.map((item, index) => {
               return (
-                <tr key={item.id}>
+                <tr key={index}>
                   <td>{item._id}</td>
                   <td>{item.name}</td>
                   {/* <td>{checkStock(item.stock)}</td> */}
@@ -120,7 +121,7 @@ const ManageProducts = () => {
                   <td>
                     <Button variant="success">
                       <i className=" fa-solid fa-edit"  onClick={(e) => {
-                        handleShow( e,{}, setEdit(true));
+                        handleShow( e,item, setEdit(true));
                       }}></i>
                     </Button>{" "}
                     {/* <Button variant="warning">Ed</Button>{' '} */}
@@ -152,7 +153,7 @@ const ManageProducts = () => {
         <Modal.Header closeButton>
           {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="py-0 my-0">{edit==true?<UpdateProduct />:<CreateProduct />}</Modal.Body>
+        <Modal.Body className="py-0 my-0">{edit==true?<UpdateProduct item={product} />:<CreateProduct />}</Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
