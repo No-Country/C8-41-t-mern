@@ -4,7 +4,7 @@ import productsRouter from "./products.js";
 import serchRouter from "./search.js";
 import authRouter from "./auth.js";
 import ordersRouter from "./orders.js";
-
+import compraRouter from "./mercadopago.js";
 const app = express();
 
 function routerApi(app) {
@@ -13,6 +13,7 @@ function routerApi(app) {
   app.use("/api/users", usersRouter);
   app.use("/api/auth", authRouter);
   app.use("/api/orders", ordersRouter);
+  app.use("/api/compra", compraRouter);
 }
 
 export default routerApi;
