@@ -30,7 +30,7 @@ useEffect(() => {
   
   auth.user.cart? setCart(auth.user.cart) : setCart([{}]);
   //esperando para el componente carrito
-  console.log(cart);
+  //console.log(cart);
   
 }, [cart])
 
