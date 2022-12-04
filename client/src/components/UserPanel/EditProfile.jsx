@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useAuthStore } from '../../hooks/useAuthStore';
 import Swal from 'sweetalert2'
 
@@ -13,10 +13,14 @@ const EditProfile = () => {
     const auth = useSelector( state => state.user );
     const [perfil, setPerfil] = useState({})
     const token = localStorage.getItem("token");
+    let response = '';
+    
    
     useEffect(() => {
       setPerfil(auth)
     }, [])
+    
+    
     
     
     const handleInputChange = (e) => {
@@ -24,17 +28,31 @@ const EditProfile = () => {
         ...perfil,
         [e.target.name] : e.target.value
       })
+      
     }
     
     const handleSubmit =  async (e) => {
       e.preventDefault();
       
-      startEditMyProfile(perfil, token)
-      await Swal.fire(
-        'Perfil!',
-        'Tu perfil se ha actualizado de forma exitosa',
-        'success'
-      )
+      startEditMyProfile(perfil).then(async()=>{
+        console.log("response is...");
+      console.log(response);
+      response=localStorage.getItem("res")
+        if(response==='success'){
+          await Swal.fire(
+            '¡Exito!',
+            'Tu perfil se ha actualizado de forma exitosa',
+            'success'
+          )
+        }else{
+          await Swal.fire(
+            '¡Error!',
+            `${response}`,
+            'warning'
+          )
+        }
+      })
+      localStorage.setItem("res", "")
       }
    
 

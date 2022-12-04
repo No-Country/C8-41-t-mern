@@ -9,11 +9,12 @@ import Swal from 'sweetalert2'
 
 const EditProfiles = ({user}) => {
 
-   const {  startEditMyProfile } = useAuthStore()
+   const {  startEditProfile } = useAuthStore()
     const auth = useSelector( state => state.user );
     const token = localStorage.getItem("token");
   // console.log("token is "+token);
     const [perfil, setPerfil] = useState({})
+    let response = '';
     
     useEffect(() => {
       setPerfil(user);
@@ -29,13 +30,25 @@ const EditProfiles = ({user}) => {
     
     const handleSubmit =  async (e) => {
       e.preventDefault();
-      
-      startEditMyProfile(perfil, token)
-      await Swal.fire(
-        'Perfil!',
-        'Tu perfil se ha actualizado de forma exitosa',
-        'success'
-      )
+      startEditProfile(perfil, token).then(async()=>{
+        console.log("response is...");
+      console.log(response);
+      response=localStorage.getItem("res")
+        if(response==='success'){
+          await Swal.fire(
+            '¡Exito!',
+            `El usuario ${user.name} ha sido actualizado de forma exitosa`,
+            'success'
+          )
+        }else{
+          await Swal.fire(
+            '¡Ha ocurrido un Error!',
+            `${response}`,
+            'warning'
+          )
+        }
+      })
+      localStorage.setItem("res", "")
       }
    
 

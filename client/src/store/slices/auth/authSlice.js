@@ -5,7 +5,8 @@ name: 'auth',
 initialState: {
         status: 'checking',
         user: {},
-        errorMessage: undefined 
+        errorMessage: undefined, 
+        
   },
   reducers: {
       onChecking: (state) => {
@@ -38,6 +39,7 @@ initialState: {
        clearErrorMessage: (state) => {
           state.errorMessage = undefined
        }
+
       },
    });
 
