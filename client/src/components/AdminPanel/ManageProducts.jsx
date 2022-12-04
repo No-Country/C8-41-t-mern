@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    console.log("url " + import.meta.env.VITE_BACKEND_URL);
+    //console.log("url " + import.meta.env.VITE_BACKEND_URL);
     const traerProductos = () => {
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
 
@@ -100,7 +100,7 @@ const ManageProducts = () => {
           </thead>
           <tbody>
             {products.map((item, index) => {
-            //console.log(item);
+            
               return (
                 <tr key={item.id}>
                   <td>{item._id}</td>
@@ -122,7 +122,7 @@ const ManageProducts = () => {
         </Table>
       </Container>
     </>
-  );
+  )
 };
 
 
