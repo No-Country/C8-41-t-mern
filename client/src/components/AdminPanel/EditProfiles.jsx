@@ -142,7 +142,7 @@ const EditProfiles = ({user}) => {
           id="street"
         />
       </div>
-      <div className="login__field">
+      {/* <div className="login__field">
         <i className="input-icon fa-solid fa-house"></i>
         <input
           value={perfil.isAdmin || ''}
@@ -154,6 +154,17 @@ const EditProfiles = ({user}) => {
           name="isAdmin"
           id="isAdmin"
         />
+      </div> */}
+      <div className="login__field">
+        <i className="input-icon fa-solid fa-house"></i>
+        <select className="login__input-field" onChange={handleInputChange} 
+        aria-label="Default select user" name="isAdmin"
+          id="isAdmin">
+        <option>Seleccione Tipo de Usuario</option>
+        <option value={false} selected={perfil.isAdmin?'':true}>Usuario Normal</option>
+        <option value={true} selected={perfil.isAdmin?true:''}>Usuario Administrador</option>
+        </select>
+
       </div>
       
 
