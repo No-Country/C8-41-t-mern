@@ -27,7 +27,6 @@ async function main() {
 
   //Poblando la base de datos Products
   const productos = await products.find();
-  console.log(productos);
 
   if (productos.length === 0) {
     console.log("Products poblada con datos de prueba");
