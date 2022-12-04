@@ -5,7 +5,8 @@ name: 'auth',
 initialState: {
         status: 'checking',
         user: {},
-        errorMessage: undefined 
+        errorMessage: undefined, 
+        
   },
   reducers: {
       onChecking: (state) => {
@@ -27,17 +28,23 @@ initialState: {
 
        },
 
-       onEditProfile: (state, { payload }) => {
+       onEditMyProfile: (state, { payload }) => {
          state.user = payload,
          state.errorMessage = undefined
        },
+       onEditProfile: (state, { payload }) => {
+         
+       },
+
+      
 
        clearErrorMessage: (state) => {
           state.errorMessage = undefined
        }
+
       },
    });
 
 
 // Action creators are generated for each case reducer function
-export const { onLogin, onChecking, onLogout, clearErrorMessage, onEditProfile } = authSlice.actions;
+export const { onLogin, onChecking, onLogout, clearErrorMessage, onEditProfile, onEditMyProfile } = authSlice.actions;

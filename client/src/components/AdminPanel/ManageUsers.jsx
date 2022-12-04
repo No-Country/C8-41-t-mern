@@ -6,30 +6,27 @@ import { Link } from "react-router-dom";
 import { Table, Container, Button, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
+import EditProfiles from "./EditProfiles";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const auth = useSelector((state) => state) || "";
   const token = localStorage.getItem("token");
   //console.log("token is "+token);
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  
   useEffect(() => {
-    console.log("url " + import.meta.env.VITE_BACKEND_URL);
+   // console.log("url " + import.meta.env.VITE_BACKEND_URL);
     const traerUsuarios = () => {
-      const url = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
+     const url = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
 
       axios
         .get(url, { headers: { 'x-token': ` ${token}` } })
-        .then((res) => setUsers(res.data))
+        .then((res) => {setUsers(res.data);
+          console.log(res.data)})
         .catch((error) => console.log(error));
     };
     traerUsuarios();
-    //console.log("users are...");
-    //console.log(users);
-    // setProducts({...products});
+    
   }, [users]);
 
   const handleDelete = async (id, e, user) => {
@@ -75,6 +72,16 @@ const ManageUsers = () => {
 
     }
 
+    // Modal de Editar Usuario
+    const [show, setShow] = useState(false);
+    const [user, setUser] = useState();
+    const handleClose = () => setShow(false);
+    const handleShow = (user, e) =>{
+        e.preventDefault();
+        setShow(true);
+        setUser(user);
+    } 
+
   return (
     <>
       <Container>
@@ -102,7 +109,9 @@ const ManageUsers = () => {
                   <td>{user.phone}</td>
                   <td>{user.isAdmin? 'Si' : 'No'}</td>
                   <td>
-                    <Button variant="success" onClick={handleShow}>Editar</Button>{" "}
+                    <Button variant="success"  onClick={(e) => {
+                        handleShow(user, e);
+                      }}>Editar</Button>{" "}
                     {/* <Button variant="warning">Ed</Button>{' '} */}
                     <Button
                       variant="danger"
@@ -122,17 +131,17 @@ const ManageUsers = () => {
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar Usuario</Modal.Title>
+          {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body></Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className="py-0 my-0"><EditProfiles user={user} token={token} /></Modal.Body>
+        {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Save Changes
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );

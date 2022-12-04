@@ -31,6 +31,10 @@
         
     }
 
+    .login__container > .login__card{
+        margin-top:0px!important;
+    }
+
     a.nav-link{
         text-align: center;
         

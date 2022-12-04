@@ -1,26 +1,24 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useAuthStore } from '../../hooks/useAuthStore';
 import Swal from 'sweetalert2'
 
 
 
-const EditProfile = () => {
+const EditProfiles = ({user}) => {
 
-   const {  startEditMyProfile } = useAuthStore()
+   const {  startEditProfile } = useAuthStore()
     const auth = useSelector( state => state.user );
-    const [perfil, setPerfil] = useState({})
     const token = localStorage.getItem("token");
+  // console.log("token is "+token);
+    const [perfil, setPerfil] = useState({})
     let response = '';
     
-   
     useEffect(() => {
-      setPerfil(auth)
+      setPerfil(user);
     }, [])
-    
-    
     
     
     const handleInputChange = (e) => {
@@ -28,25 +26,23 @@ const EditProfile = () => {
         ...perfil,
         [e.target.name] : e.target.value
       })
-      
     }
     
     const handleSubmit =  async (e) => {
       e.preventDefault();
-      
-      startEditMyProfile(perfil, token).then(async()=>{
+      startEditProfile(perfil, token).then(async()=>{
         console.log("response is...");
       console.log(response);
       response=localStorage.getItem("res")
         if(response==='success'){
           await Swal.fire(
             '¡Exito!',
-            'Tu perfil se ha actualizado de forma exitosa',
+            `El usuario ${user.name} ha sido actualizado de forma exitosa`,
             'success'
           )
         }else{
           await Swal.fire(
-            '¡Error!',
+            '¡Ha ocurrido un Error!',
             `${response}`,
             'warning'
           )
@@ -134,7 +130,7 @@ const EditProfile = () => {
         />
       </div>
       <div className="login__field">
-        <i className="input-icon fa-solid fa-street"></i>
+        <i className="input-icon fa-solid fa-house"></i>
         <input
           value={perfil.street || ''}
           onChange={handleInputChange}
@@ -145,6 +141,30 @@ const EditProfile = () => {
           name="street"
           id="street"
         />
+      </div>
+      {/* <div className="login__field">
+        <i className="input-icon fa-solid fa-house"></i>
+        <input
+          value={perfil.isAdmin || ''}
+          onChange={handleInputChange}
+          autoComplete="off"
+          type="text"
+          placeholder="Admin state"
+          className="login__input-field"
+          name="isAdmin"
+          id="isAdmin"
+        />
+      </div> */}
+      <div className="login__field">
+        <i className="input-icon fa-solid fa-house"></i>
+        <select className="login__input-field" onChange={handleInputChange} 
+        aria-label="Default select user" name="isAdmin"
+          id="isAdmin">
+        <option>Seleccione Tipo de Usuario</option>
+        <option value={false} selected={perfil.isAdmin?'':true}>Usuario Normal</option>
+        <option value={true} selected={perfil.isAdmin?true:''}>Usuario Administrador</option>
+        </select>
+
       </div>
       
 
@@ -162,4 +182,4 @@ const EditProfile = () => {
   )
 }
 
-export default EditProfile
+export default EditProfiles

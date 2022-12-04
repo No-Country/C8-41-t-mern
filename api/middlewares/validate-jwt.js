@@ -12,10 +12,11 @@ const validateJWT = async (req = request, res = response, next) => {
     });
   }
 
-  const secret = process.env.SECRETORPRIVATEKEY || '3355sd8sdsdsd';
+  // const secret = process.env.SECRETORPRIVATEKEY;
+  //console.log(process.env.SECRETORPRIVATEKEY)
 
   try {
-    const { uid } = jwt.verify(token, secret);
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
     const user = await User.findById(uid);
 
     // Validar que el usuario exista en la BD
