@@ -17,7 +17,7 @@ const UpdateProduct = ({item}) => {
   }, [])
   
   const handleInput = (e) => {
-    setproduct({
+    setProduct({
       ...product,
       [e.target.name]: e.target.value,
     });
@@ -29,7 +29,7 @@ const UpdateProduct = ({item}) => {
     e.preventDefault();
 
     let respuesta;
-    let { name, image, materials, description, price, delay, sold } = product;
+    let { _id, name, image, materials, description, price, delay, sold } = product;
 
     if (
       [name, image, materials, description, price, delay, sold].includes("")
@@ -46,7 +46,7 @@ const UpdateProduct = ({item}) => {
       return;
     } else {
       await axios
-      .patch(`${import.meta.env.VITE_BACKEND_URL}/api/products`, product)
+      .patch(`${import.meta.env.VITE_BACKEND_URL}/api/products/${_id}`, product)
         .then((resp) => (respuesta = resp.data.name));
 
       Swal.fire({
@@ -69,7 +69,7 @@ const UpdateProduct = ({item}) => {
         className="login__card"
         style={{ marginTop: "50px" }}
       >
-        <h2 className="login__title">Create product!</h2>
+        <h2 className="login__title">Editar Producto</h2>
       {alerta}
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-user"></i> */}
