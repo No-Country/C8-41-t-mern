@@ -29,6 +29,7 @@ const UserProfile = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Street</th>
+              <th>Zip</th>
               
             </tr>
           </thead>
@@ -39,6 +40,7 @@ const UserProfile = () => {
                   <td>{ auth.user.email }</td>
                   <td>{ auth.user.phone }</td>
                   <td>{ auth.user.street }</td>
+                  <td>{ auth.user.zip }</td>
                  
                   <td>
                   {/* <Link to={`editar`} >

@@ -110,6 +110,9 @@ const Login = () => {
         <a href="/register" className="login__btn-link">
           No tienes cuenta?
         </a>
+        <a href="/password-reset" className="login__btn-link">
+          olvidaste tu contraseña?
+        </a>
       </form>
     </div>
   );

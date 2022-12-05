@@ -125,6 +125,7 @@ const passwordReset = async (req, res) => {
 const passwordResetUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
+    console.log
     if (!user) return res.status(400).send("Enlace inválido o expirado");
 
     //Encriptar contraseña

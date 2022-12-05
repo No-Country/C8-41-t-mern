@@ -63,7 +63,7 @@ const EditProfile = () => {
         
       </div>
 
-      <div className="login__field">
+      {/* <div className="login__field">
         <svg
           className="input-icon"
           viewBox="0 0 500 500"
@@ -81,8 +81,8 @@ const EditProfile = () => {
           type="email"
           id="email"
         />
-      </div>
-      <div className="login__field">
+      </div> */}
+      {/* <div className="login__field">
         <svg
           className="input-icon"
           viewBox="0 0 500 500"
@@ -100,7 +100,7 @@ const EditProfile = () => {
           name="password"
           id="password"
         />
-      </div>
+      </div> */}
       <div className="login__field">
         <i className="input-icon fa-solid fa-phone"></i>
         <input
@@ -115,9 +115,23 @@ const EditProfile = () => {
         />
       </div>
       <div className="login__field">
-        <i className="input-icon fa-solid fa-street"></i>
+      <i className="input-icon fa-solid fa-home"></i>
         <input
           value={perfil.street || ''}
+          onChange={handleInputChange}
+          autoComplete="off"
+          type="text"
+          placeholder="Street"
+          className="login__input-field"
+          name="street"
+          id="street"
+        />
+      </div>
+      
+      <div className="login__field">
+      <i className="input-icon fa-solid fa-home"></i>
+        <input
+          value={perfil.zip || ''}
           onChange={handleInputChange}
           autoComplete="off"
           type="text"

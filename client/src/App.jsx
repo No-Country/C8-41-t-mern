@@ -21,6 +21,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux"
 import UserProfile from "./components/UserPanel/UserPerfil";
 import EditProfile from "./components/UserPanel/EditProfile";
+import PasswordReset from "./components/PasswordReset";
+import NewPassword from "./components/NewPassword";
 
 
 
@@ -56,6 +58,9 @@ function App() {
           <Route path="detalle/:id" element={<ProductDetail />} />
           <Route path="register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
+          <Route path="/newpassword/token" element={<NewPassword />} />
+
           <Route path="/detalle-busqueda" element={<DetalleBusqueda />} />
           <Route path="/restringido" element={<Forbidden />} />
 

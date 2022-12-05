@@ -44,9 +44,9 @@ function getMessagePassword(user, link) {
   };
 }
 
-async function sendRecoveryPasswordMail(userPassword, link) {
+async function sendRecoveryPasswordMail(userPassword, link, token) {
   try {
-    await sgMail.send(getMessagePassword(userPassword, link));
+    await sgMail.send(getMessagePassword(userPassword, link, token));
     console.log("Mensaje de recuperación enviado correctamente");
   } catch (error) {
     console.error("Error al enviar el mensaje");
