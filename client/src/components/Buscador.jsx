@@ -34,7 +34,7 @@ const Buscador = () => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="input-group w-auto my-auto mx-auto d-none d-sm-flex"
+        className="input-group w-auto my-auto mx-auto d-none d-sm-flex searchbox"
       >
         <input
           value={buscar}
@@ -47,9 +47,9 @@ const Buscador = () => {
 
           //   style="min-width: 125px;"
         />
-        <span className="input-group-text border-0 d-none d-lg-flex trasparent bg-dark "></span>
-        <button className="btn btn-success" type="submit">
-          Buscar
+        {/* <span className="input-group-text border-0 d-none d-lg-flex trasparent bg-dark "></span> */}
+        <button className="btn btn-warning" type="submit">
+        <i className="input-icon text-white fa-solid fa-search"></i>
         </button>
       </form>
     </>

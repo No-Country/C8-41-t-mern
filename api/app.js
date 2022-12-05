@@ -2,7 +2,6 @@ import "dotenv/config.js";
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-// import routerProducts from "./route/products.js";
 import config from "./config/config.js";
 import routerApi from "./route/index.js";
 dotenv.config();
@@ -24,7 +23,10 @@ const corsOptions = {
   },
 };
 
+
  app.use(cors(corsOptions));
+
+
 
 routerApi(app);
 
