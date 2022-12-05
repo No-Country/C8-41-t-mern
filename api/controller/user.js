@@ -13,9 +13,9 @@ const getUsers = async (req, res) => {
 //Crear usuario
 const createUser = async (req, res) => {
   const body = req.body;
-  const { name, email, passwordHash, street, phone, zip } = body;
+  const { name, email, passwordHash, street, phone, zip, isAdmin } = body;
 
-  const user = new User({ name, email, passwordHash, street, phone, zip });
+  const user = new User({ name, email, passwordHash, street, phone, zip, isAdmin });
 
   //Verificar si el correo existe
   const repeatedEmail = await User.findOne({ email });
