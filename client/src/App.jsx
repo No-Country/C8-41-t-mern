@@ -18,8 +18,9 @@ import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
 import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
-import UserProfile from "./components/UserPanel/UserPerfil";
+import UserProfile from "./components/UserPanel/UserProfile";
 import EditProfile from "./components/UserPanel/EditProfile";
+import MyProfile from "./components/UserPanel/MyProfile";
 
 
 
@@ -63,8 +64,7 @@ function App() {
             path="micuenta"
             element={user ? <UserPanel /> : <Navigate to="/login" replace />}
           >
-            <Route index element={<h3>Account panel</h3>} />
-            <Route path="perfil" element={<UserProfile />} />
+            <Route index element={<UserProfile />} />
             <Route path="editar" element={<EditProfile />} />
             <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
@@ -79,7 +79,7 @@ function App() {
               isAdmin ? <AdminPanel /> : <Navigate to="/restringido" replace />
             }
           >
-            <Route index element={<h3>Account panel</h3>} />
+            <Route index element={<h3>Admin panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<ManageUsers />} />
             <Route path="crear-producto" element={<CreateProduct />} />
