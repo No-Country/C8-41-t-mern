@@ -113,6 +113,10 @@ const Login = () => {
         <a href="/password-reset" className="login__btn-link">
           olvidaste tu contraseña?
         </a>
+        <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
   );

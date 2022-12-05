@@ -1,11 +1,9 @@
-
 import { useState } from "react";
 import axios from "axios";
-import "./register.css";
+import "../Register/Register.css";
 import Swal from "sweetalert2";
 
-const Register = () => {
-  
+const AddUsers = () => {
   let regUser = {
     name: "",
     email: "",
@@ -13,17 +11,15 @@ const Register = () => {
     street: "",
     phone: "",
     zip: "",
+    isAdmin:false,
   };
   const [user, setUser] = useState(regUser);
-  const [alerta, setAlerta] = useState('')
-  const {  name, email, passwordHash, street, phone, zip } = user
-  
-  let respuesta;
-  let emailRegex = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i
-  
+  const [alerta, setAlerta] = useState("");
+  const { name, email, passwordHash, street, phone, zip, isAdmin } = user;
 
- 
-   
+  let respuesta;
+  let emailRegex =
+    /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
 
   const handleInputChange = (e) => {
     setUser({
@@ -35,57 +31,71 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([name, email, passwordHash, street, phone, zip].some(inputs => inputs === '')) {
+    if (
+      [name, email, passwordHash, street, phone, zip, isAdmin].some(
+        (inputs) => inputs === ""
+      )
+    ) {
       setAlerta(
         <h3 className="alert alert-danger" role="alert">
           Todos los campos son obligatorios
         </h3>
       );
       setTimeout(() => {
-        setAlerta('')
+        setAlerta("");
       }, 3000);
-     return
-   }
+      return;
+    }
 
-   if (passwordHash.length < 7) {
-    setAlerta(
-      <h3 className="alert alert-danger" role="alert">
-        El password debe tener como minimo 6 caracteres
-      </h3>
-    );
-    setTimeout(() => {
-      setAlerta('')
-    }, 3000);
-   return
-    
-   }
-   if (!emailRegex.test(email)) {
-    setAlerta(
-      <h3 className="alert alert-danger" role="alert">
-        El email ingresado no contiene caracteres válidos
-      </h3>
-    );
-    setTimeout(() => {
-      setAlerta('')
-    }, 3000);
-   return
-    
-   }
+    if (passwordHash.length < 7) {
+      setAlerta(
+        <h3 className="alert alert-danger" role="alert">
+          El password debe tener como minimo 6 caracteres
+        </h3>
+      );
+      setTimeout(() => {
+        setAlerta("");
+      }, 3000);
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      setAlerta(
+        <h3 className="alert alert-danger" role="alert">
+          El email ingresao no contiene caracteres válidos
+        </h3>
+      );
+      setTimeout(() => {
+        setAlerta("");
+      }, 3000);
+      return;
+    }
 
     const URL = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
 
     await axios
       .post(URL, user)
-      .then((res) => (respuesta = res.data.name))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        respuesta = res.data.name;
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `El usuario ${respuesta} fue creado de forma exitosa`,
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: `El usuario no ha sido creado. Error: ${err} a`,
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        //Swal.fire('El usuario no ha sido eliminado', '', 'info');
+        console.log(err);
+      });
 
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: `El usuario ${respuesta} fue creada de forma exitosa`,
-      showConfirmButton: false,
-      timer: 2500,
-    });
     setUser(
       (regUser = {
         name: "",
@@ -94,6 +104,7 @@ const Register = () => {
         street: "",
         phone: "",
         zip: "",
+        isAdmin:false,
       })
     );
   };
@@ -105,8 +116,8 @@ const Register = () => {
         className="login__card"
         style={{ marginTop: "50px" }}
       >
-      {alerta}
-        <h2 className="login__title">Register!</h2>
+        {alerta}
+        <h2 className="login__title">Crear Usuario</h2>
         <div className="login__field">
           <i className="input-icon fa-solid fa-user"></i>
           <input
@@ -192,16 +203,27 @@ const Register = () => {
             autoComplete="off"
             placeholder="Codigo Postal"
             className="login__input-field"
-            type='number'
+            type="number"
             id="zip"
           />
         </div>
+        <div className="login__field">
+        <i className="input-icon fa-solid fa-house"></i>
+        <select className="login__input-field" onChange={handleInputChange} 
+        aria-label="Default select user" name="isAdmin"
+          id="isAdmin">
+        <option selected>Seleccione Tipo de Usuario</option>
+        <option value={false}>Usuario Normal</option>
+        <option value={true} >Usuario Administrador</option>
+        </select>
+
+      </div>
 
         <button className="login__btn" type="submit">
-          Registrate
+          Register
         </button>
         <a href="/login" className="login__btn-link">
-          Ya tienes cuenta?
+          Already got an account?
         </a>
         <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
@@ -212,4 +234,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default AddUsers;

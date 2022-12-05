@@ -7,6 +7,7 @@ import { Table, Container, Button, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import EditProfiles from "./EditProfiles";
+import AddUsers from "./AddUsers";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -75,8 +76,9 @@ const ManageUsers = () => {
     // Modal de Editar Usuario
     const [show, setShow] = useState(false);
     const [user, setUser] = useState();
+    const [edit, setEdit] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = (user, e) =>{
+    const handleShow = (e, user) =>{
         e.preventDefault();
         setShow(true);
         setUser(user);
@@ -110,7 +112,7 @@ const ManageUsers = () => {
                   <td>{user.isAdmin? 'Si' : 'No'}</td>
                   <td>
                     <Button variant="success"  onClick={(e) => {
-                        handleShow(user, e);
+                        handleShow(e, user, setEdit(true));
                       }}>Editar</Button>{" "}
                     {/* <Button variant="warning">Ed</Button>{' '} */}
                     <Button
@@ -128,12 +130,18 @@ const ManageUsers = () => {
             })}
           </tbody>
         </Table>
+        <Button className="btn btn-success float-end" onClick={(e) => {
+                        handleShow( e,{}, setEdit(false));
+                      }}>
+            Adñadir Usuario <i className=" fa-solid fa-plus"></i>
+          </Button>
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="py-0 my-0"><EditProfiles user={user} token={token} /></Modal.Body>
+        <Modal.Body className="py-0 my-0">{edit==true?<EditProfiles user={user} token={token} />:<AddUsers/>}</Modal.Body>
+        {/*  */}
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -143,6 +151,7 @@ const ManageUsers = () => {
           </Button>
         </Modal.Footer> */}
       </Modal>
+
     </>
   );
 };
