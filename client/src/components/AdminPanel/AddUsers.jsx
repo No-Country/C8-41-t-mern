@@ -88,7 +88,7 @@ const AddUsers = () => {
         Swal.fire({
           position: "center",
           icon: "warning",
-          title: `El usuario no ha sido creado. Error: ${ErrorEvent} a`,
+          title: `El usuario no ha sido creado. Error: ${err} a`,
           showConfirmButton: false,
           timer: 2500,
         });
