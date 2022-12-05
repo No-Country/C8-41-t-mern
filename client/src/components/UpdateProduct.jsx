@@ -30,6 +30,7 @@ const UpdateProduct = ({item}) => {
 
     let respuesta;
     let { name, image, materials, description, price, delay, sold } = product;
+    console.log(product)
 
     if (
       [name, image, materials, description, price, delay, sold].includes("")
