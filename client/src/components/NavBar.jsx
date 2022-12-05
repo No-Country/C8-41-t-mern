@@ -28,7 +28,7 @@ const NavBar = () => {
   };
 useEffect(() => {
   
-  auth.user.cart? setCart(auth.user.cart) : setCart([{}]);
+  auth.user.cart? setCart(auth.user.cart) : '';
   //esperando para el componente carrito
   //console.log(cart);
   
