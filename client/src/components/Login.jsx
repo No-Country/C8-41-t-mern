@@ -110,6 +110,10 @@ const Login = () => {
         <a href="/register" className="login__btn-link">
           No tienes cuenta?
         </a>
+        <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+        <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Product from "./Product";
+// import products from "./dummyData.json"
 
 
 import "./Products.css";

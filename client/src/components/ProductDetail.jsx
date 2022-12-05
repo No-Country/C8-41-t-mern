@@ -53,7 +53,7 @@ const ProductDetail = () => {
         </Col>
       </Row>
       <Link to='/' >
-        <button className="btn btn-success mx-2 my-2 " >
+        <button style={{background: "rgb(255,193,7)", border: "1px solid rgb(255,193,7)"}} className="btn btn-success mx-2 my-2 " >
           Volver
         </button>
       </Link>
