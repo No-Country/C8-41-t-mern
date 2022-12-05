@@ -28,11 +28,11 @@ const SimpleSidebar = () => {
             <Link to="ordenes">Mis Ordenes</Link>
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link eventKey="link-1">
             <Link to="perfil">Perfil</Link>
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         <Nav.Item>
           <Nav.Link eventKey="link-1">
             <Link to="editar">Editar Perfil </Link>
