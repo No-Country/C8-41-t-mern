@@ -3,8 +3,8 @@
     "$oid": "637efd23d9bf4a7ba109cf36"
   },
   "name": "mascara 1",
-  "description": "kasakjk",
-  "image": "aaa",
+  "description": "Lorem ipsum dolor, sit amet consectetur!",
+  "image": "https://www.aua2014.org/wp-content/uploads/2017/06/mascaras-fiestasmix.jpg",
   "materials": "hierro",
   "price": 300,
   "delay": "15 days",
@@ -25,8 +25,8 @@
     "$oid": "637efd27d9bf4a7ba109cf38"
   },
   "name": "mascara 2",
-  "description": "kasakjk",
-  "image": "aaa",
+  "description": "Lorem ipsum dolor, sit amet consectetur!",
+  "image": "https://www.aua2014.org/wp-content/uploads/2017/06/mascaras-fiestasmix.jpg",
   "materials": "hierro",
   "price": 300,
   "delay": "15 days",
@@ -47,8 +47,8 @@
     "$oid": "637efd2ad9bf4a7ba109cf3a"
   },
   "name": "mascara 3",
-  "description": "kasakjk",
-  "image": "aaa",
+  "description": "Lorem ipsum dolor, sit amet consectetur!",
+  "image": "https://www.aua2014.org/wp-content/uploads/2017/06/mascaras-fiestasmix.jpg",
   "materials": "hierro",
   "price": 300,
   "delay": "15 days",
@@ -69,8 +69,8 @@
     "$oid": "637efd2fd9bf4a7ba109cf3c"
   },
   "name": "mascara 4",
-  "description": "kasakjk",
-  "image": "aaa",
+  "description": "Lorem ipsum dolor, sit amet consectetur!",
+  "image": "https://www.aua2014.org/wp-content/uploads/2017/06/mascaras-fiestasmix.jpg",
   "materials": "hierro",
   "price": 300,
   "delay": "15 days",

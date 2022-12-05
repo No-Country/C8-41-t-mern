@@ -62,7 +62,7 @@ const Register = () => {
    if (!emailRegex.test(email)) {
     setAlerta(
       <h3 className="alert alert-danger" role="alert">
-        El email ingresao no contiene caracteres válidos
+        El email ingresado no contiene caracteres válidos
       </h3>
     );
     setTimeout(() => {
@@ -198,10 +198,10 @@ const Register = () => {
         </div>
 
         <button className="login__btn" type="submit">
-          Register
+          Registrate
         </button>
         <a href="/login" className="login__btn-link">
-          Already got an account?
+          Ya tienes cuenta?
         </a>
         <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>

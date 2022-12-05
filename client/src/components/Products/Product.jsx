@@ -12,13 +12,22 @@ const Product = ({ item }) => {
           <img src={item.image} alt={item.name} />
         </div>
         <div className="products__list-item__content">
-          <h2>{item.name}</h2>
-          <p>{item.description}</p>
+          <h2 className="products__list-item__content-title">{item.name}</h2>
+          <p className="products__list-item__content-description">{item.description}</p>
+          <div className="products__list-item__content-extra">
+            <p>${item.price}</p>
+            <div className="products__list-item__content-extra__stars">
+              <i className="products__list-item__content-extra__stars-star fa-solid fa-star"></i>
+              <i className="products__list-item__content-extra__stars-star fa-solid fa-star"></i>
+              <i className="products__list-item__content-extra__stars-star fa-solid fa-star"></i>
+              <i className="products__list-item__content-extra__stars-star fa-solid fa-star"></i>
+              <i className="products__list-item__content-extra__stars-star fa-solid fa-star"></i>
+            </div>  
+          </div>
           <div className="products__list-item__content-btn">
-            <p>{item.price}</p>
-            <button>BUY NOW</button>
+            <button className="products__list-item__content-btn__buy">Comprar</button>
             <Link to={`/detalle/${item._id}`}>
-              <button>Ver detalle</button>
+              <button className="products__list-item__content-btn__details">Detalles</button>
             </Link>
           </div>
         </div>

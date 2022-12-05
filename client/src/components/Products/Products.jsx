@@ -2,27 +2,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Product from "./Product";
+import products from "./dummyData.json"
 
 
 import "./Products.css";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    console.log("doc is "+import.meta.env.VITE_BACKEND_URL);
-    const traerProductos = () => {
-      const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
+  // useEffect(() => {
+  //   console.log("doc is "+import.meta.env.VITE_BACKEND_URL);
+  //   const traerProductos = () => {
+  //     const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
 
-      axios
-        .get(url)
-        .then((res) => setProducts(res.data))
-        .catch((error) => console.log(error));
-    };
-    traerProductos();
-  }, []);
+  //     axios
+  //       .get(url)
+  //       .then((res) => setProducts(res.data))
+  //       .catch((error) => console.log(error));
+  //   };
+  //   traerProductos();
+  // }, []);
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className="products">
