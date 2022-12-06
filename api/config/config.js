@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(`mongodb://127.0.0.1:27017/c81`);
+  await mongoose.connect(process.env.MONGO_URL);
 
   //Poblando la base de datos user
   const user = await User.find();
@@ -27,7 +27,6 @@ async function main() {
 
   //Poblando la base de datos Products
   const productos = await products.find();
-  console.log(productos);
 
   if (productos.length === 0) {
     console.log("Products poblada con datos de prueba");
