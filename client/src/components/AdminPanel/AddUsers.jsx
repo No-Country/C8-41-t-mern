@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "../Register/Register.css";
+// import "../Register/Register.css";
 import Swal from "sweetalert2";
 
 const AddUsers = () => {

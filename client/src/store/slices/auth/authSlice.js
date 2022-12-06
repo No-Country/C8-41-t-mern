@@ -7,6 +7,7 @@ initialState: {
         user: {},
         errorMessage: undefined, 
         
+        
   },
   reducers: {
       onChecking: (state) => {
@@ -18,13 +19,15 @@ initialState: {
        onLogin: (state, { payload }) => {
           state.status = 'authenticated';
           state.user = payload;
-          state.errorMessage = undefined
+          state.errorMessage = undefined;
+          state.user.cart = payload.cart;
 
        },
        onLogout: (state, { payload }) => {
           state.status = 'not-authenticated';
+          state.user.cart =null;
           state.user = {};
-          state.errorMessage = payload
+          state.errorMessage = payload;
 
        },
 
@@ -37,7 +40,10 @@ initialState: {
        },
 
        onAddToCart: (state, { payload }) => {
+
          state.user.cart = payload.user?.cart,
+
+        
          state.errorMessage = undefined
 
        },

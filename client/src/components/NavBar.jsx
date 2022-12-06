@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Stack from "react-bootstrap/Stack";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import Buscador from "./Buscador";
 
@@ -17,24 +17,24 @@ const NavBar = () => {
   // const auth = useSelector(state => state.auth)
   const auth = useSelector((state) => state) || "";
   let user = auth.user;
+  let cartItems = auth.user.cart;
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
-  const [cart, setCart]=useState([]);
+  const [cart, setCart] = useState([]);
   const handleClick = () => {
+    cartItems = null;
+    setCart([cartItems]);
     dispatch(startLogout());
   };
 
   const handleLogin = () => {
     navigate("/login");
   };
-useEffect(() => {
-  
-  auth.user.cart? setCart(auth.user.cart) : '';
-  console.log("cart is....")
-  console.log(auth.user.cart);
-  //esperando para el componente carrito
-  //console.log(cart);
-  
-}, [cart])
+  useEffect(() => {
+    console.log(auth);
+    auth.user.cart ? setCart(cartItems) : {};
+    //esperando para el componente carrito
+    //console.log(cart);
+  }, [cartItems]);
 
   //console.log(state.payload.user)
 
@@ -47,15 +47,14 @@ useEffect(() => {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container fluid>
           <Navbar.Brand href="/">
-            Ecommerce <br /> Artistico
+            <img src="../../images/logo.png" alt="mortchikian" />
           </Navbar.Brand>
-         
-          
+
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-            <Nav.Link href="#features">{auth.user.name}</Nav.Link>
-            <Buscador />
+              <Nav.Link href="#features">{auth.user.name}</Nav.Link>
+              <Buscador />
               <Nav.Link href="/">Ver productos</Nav.Link>
 
               {user ? (
@@ -89,24 +88,28 @@ useEffect(() => {
 
             <Stack direction="horizontal" gap={3}>
               {/* <Nav> */}
+              <Link to="cart">
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
+
                   {cart.length>1?<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {cart.cart}<span class="visually-hidden">Cart items</span>
                   </span>: ''}
+
                 </button>
+              </Link>
               {/* </Nav> */}
               {/* <vr /> */}
               {/* <Nav> */}
-                {user ? (
-                  <button className="btn btn-danger" onClick={handleClick}>
-                    Cerrar Sesion
-                  </button>
-                ) : (
-                  <button className="btn btn-primary" onClick={handleLogin}>
-                    Iniciar Sesion
-                  </button>
-                )}
+              {user ? (
+                <button className="btn btn-danger" onClick={handleClick}>
+                  Cerrar Sesion
+                </button>
+              ) : (
+                <button className="btn btn-primary" onClick={handleLogin}>
+                  Iniciar Sesion
+                </button>
+              )}
               {/* </Nav> */}
             </Stack>
           </Navbar.Collapse>
