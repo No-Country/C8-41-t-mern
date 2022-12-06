@@ -1,19 +1,17 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Product from "./Product";
-// import products from "./dummyData.json"
+import productss from "./dummyData.json";
 import { useSelector } from "react-redux";
-
 
 import "./Products.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const userId= useSelector( state => state.user.uid)
+  const userId = useSelector((state) => state.user.uid);
 
   useEffect(() => {
-    console.log("doc is "+import.meta.env.VITE_BACKEND_URL);
+    console.log("doc is " + import.meta.env.VITE_BACKEND_URL);
     const traerProductos = () => {
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
 
@@ -29,13 +27,11 @@ const Products = () => {
 
   return (
     <div className="products">
-
       <ul className="products__list">
-        {products.map((item, index) => {
+        {productss.map((item, index) => {
           return <Product item={item} key={index} userId={userId} />;
         })}
       </ul>
-
     </div>
   );
 };
