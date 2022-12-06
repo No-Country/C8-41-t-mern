@@ -26,7 +26,7 @@ const deleteCart = async (req, res) => {
   res.json(updateUser);
 };
 
-const updateCartQuality = async (req, res) => {
+const updateCartQuantity= async (req, res) => {
   const { id } = req.params;
   const { idProduct, quantity } = req.body;
   const user = await User.findById(id);
@@ -36,4 +36,4 @@ const updateCartQuality = async (req, res) => {
   res.json(user.cart);
 };
 
-export { addCart, deleteCart, updateCartQuality };
+export { addCart, deleteCart, updateCartQuantity };

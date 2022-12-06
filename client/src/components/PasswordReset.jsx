@@ -1,5 +1,7 @@
 import { useState } from "react"
 import axios from 'axios'
+import Swal from "sweetalert2";
+
 
 
 const PasswordReset = () => {
@@ -46,19 +48,28 @@ const PasswordReset = () => {
                     const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/password-reset`, { email })
                     
                     
-                } catch (error) {
+                    
+                  } catch (error) {
                     console.log(error)
                     
+                  }
+                  
+                  
+                  
                 }
-
-                            
-
-           }
+               setEmail('')
 
            enviarEmail()
-
-
-
+            Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Se ha enviado un link con instrucciones al mail indicado`,
+            showConfirmButton: false,
+            timer: 2500,
+          });
+          
+          
+          
     }
 
 

@@ -1,10 +1,27 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { useAuthStore } from "../../hooks/useAuthStore";
 import ProductDetail from "../ProductDetail";
 
-const Product = ({ item }) => {
+const Product = ({ item, userId }) => {
+
+
+ // console.log(userId)
+
+  const { startAddToCart } = useAuthStore()
+
+  const dispatch = useDispatch()
+  
+  const handleClick = () => {
+    let quantity=1;
+    startAddToCart(item, userId, quantity)
+
+
+  }
+
   return (
     <>
       <li className="products__list-item">
@@ -25,7 +42,7 @@ const Product = ({ item }) => {
             </div>  
           </div>
           <div className="products__list-item__content-btn">
-            <button className="products__list-item__content-btn__buy">Comprar</button>
+            <button className="products__list-item__content-btn__buy" onClick={handleClick}>Agregar al Carrito</button>
             <Link to={`/detalle/${item._id}`}>
               <button className="products__list-item__content-btn__details">Detalles</button>
             </Link>

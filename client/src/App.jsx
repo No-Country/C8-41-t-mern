@@ -20,11 +20,10 @@ import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
 import UserProfile from "./components/UserPanel/UserProfile";
 import EditProfile from "./components/UserPanel/EditProfile";
-
 import PasswordReset from "./components/PasswordReset";
 import NewPassword from "./components/NewPassword";
-
 import MyProfile from "./components/UserPanel/MyProfile";
+import Cart from "./components/Cart/Cart";
 
 
 
@@ -60,12 +59,12 @@ function App() {
           <Route index element={<Products />} />
           <Route path="detalle/:id" element={<ProductDetail />} />
           <Route path="register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/password-reset" element={<PasswordReset />} />
-          <Route path="/newpassword/token" element={<NewPassword />} />
-
-          <Route path="/detalle-busqueda" element={<DetalleBusqueda />} />
-          <Route path="/restringido" element={<Forbidden />} />
+          <Route path="login" element={<Login />} />
+          <Route path="password-reset" element={<PasswordReset />} />
+          <Route path="newpassword/:id" element={<NewPassword />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="detalle-busqueda" element={<DetalleBusqueda />} />
+          <Route path="restringido" element={<Forbidden />} />
 
           {/* Rutas del Panel de Usuario */}
           <Route

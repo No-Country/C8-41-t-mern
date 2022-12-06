@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 const NewPassword = () => {
 
    let params = useParams()
+   let token = localStorage.getItem('token')
 
-    const parametros = window.location.search
-    console.log(params)
+   
+    console.log(params,token)
     // console.log(uid)
 
     const [password, setPassword] = useState('');
@@ -18,22 +19,22 @@ const NewPassword = () => {
 
         
 
-        //    const nuevoPassword = async () => {
+           const nuevoPassword = async () => {
               
-        //         try {
-        //             const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/password-reset`, { email })
+                try {
+                    const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/password-reset`, { email })
                     
                     
-        //         } catch (error) {
-        //             console.log(error)
+                } catch (error) {
+                    console.log(error)
                     
-        //         }
+                }
 
                             
 
-        //    }
+           }
 
-        //    nuevoPassword()
+           nuevoPassword()
 
 
 

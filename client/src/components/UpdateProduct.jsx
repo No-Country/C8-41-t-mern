@@ -52,7 +52,7 @@ const UpdateProduct = ({item}) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: `El producto ${respuesta} fue creada de forma exitosa`,
+        title: `El producto ${respuesta} se ha actualizado de forma exitosa`,
         showConfirmButton: false,
         timer: 2500,
       });
