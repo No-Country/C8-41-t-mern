@@ -1,9 +1,7 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Product from "./Product";
-// import products from "./dummyData.json"
-
+// import products from "./dummyData.json";
 
 import "./Products.css";
 
@@ -11,7 +9,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log("doc is "+import.meta.env.VITE_BACKEND_URL);
+    console.log("doc is " + import.meta.env.VITE_BACKEND_URL);
     const traerProductos = () => {
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
 
@@ -27,13 +25,11 @@ const Products = () => {
 
   return (
     <div className="products">
-
       <ul className="products__list">
         {products.map((item, index) => {
           return <Product item={item} key={index} />;
         })}
       </ul>
-
     </div>
   );
 };
