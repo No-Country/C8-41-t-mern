@@ -47,7 +47,7 @@ const NavBar = () => {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container fluid>
           <Navbar.Brand href="/">
-            <img src="../../images/logo2.png" alt="mortchikian" />
+            <img src="../../images/logo.png" alt="mortchikian" />
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

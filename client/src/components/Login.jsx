@@ -1,72 +1,52 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { redirect } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
-
 const Login = () => {
-  
-  const { startLogin, errorMessage } = useAuthStore()
-  const navigate = useNavigate()
+  const { startLogin, errorMessage } = useAuthStore();
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const [nav, setNav] = useState([])
+  const [nav, setNav] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState();
 
-  const name = localStorage.getItem('user')
-
- 
+  const name = localStorage.getItem("user");
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      Swal.fire('Error en la autenticacion', errorMessage, 'error')
+      Swal.fire("Error en la autenticacion", errorMessage, "error");
     }
-    
-  }, [errorMessage])
-  
-  const handleSubmit =  (e) => {
+  }, [errorMessage]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    
+    startLogin({ email, password });
+    Swal.fire("Bienvenido/a!", `${name}`, "success");
 
-      startLogin({email, password})
-      Swal.fire(
-        'Bienvenido/a!',
-        `${name}`,
-        'success'
-      )
-     
-      
-    
-    
     // if ([email, password].includes("")) {
     //   Swal.fire('Todos los campos son obligatorios', errorMessage, 'error')
     //   return;
     //
- };
-
- 
+  };
 
   return (
     <div className="login__container">
-   
       <form
         onSubmit={handleSubmit}
         className="login__card"
         style={{ marginTop: "50px" }}
       >
         <h2 className="login__title">Login!</h2>
-        {
-      alerta
-    }
+        {alerta}
         <div className="login__field">
           <svg
             className="input-icon"
@@ -111,7 +91,7 @@ const Login = () => {
           No tienes cuenta?
         </a>
         <a href="/password-reset" className="login__btn-link">
-          olvidaste tu contraseña?
+          Olvidaste tu contraseña?
         </a>
         <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
