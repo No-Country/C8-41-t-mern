@@ -25,8 +25,8 @@ export const useAuthStore = () => {
             localStorage.setItem("token-init-date", new Date().getTime()); // Podes calcular cuando caduca el token
             localStorage.setItem("user", data.user.name)
             sessionStorage.setItem("user",data.user.name)
-            
-            dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin }))
+            console.log(data);
+            dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin, cart: data.user.cart }))
             navigate("/micuenta");
         } catch (error) {
             let err = error.response.data.error?.map(err => err.msg)
@@ -86,8 +86,7 @@ export const useAuthStore = () => {
                 
         }
         const startAddToCart = async (item, id, quantity, token) => {
-          //  console.log("item is...")
-               // console.log(item);
+          
                 const cart= {
                     cart: {
                     productID:item._id,
@@ -97,14 +96,13 @@ export const useAuthStore = () => {
                     }
                     
                 }
-                //console.log("cart is");
-                //console.log(cart);
+                
                 try {
                     const  {data}  = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/addcart/${id}`, cart, { headers: { 'x-token': ` ${token}` } }  )
-
-                    dispatch(onAddToCart(data))
                     console.log("data is")
                     console.log(data);
+                    dispatch(onAddToCart(data))
+                    
                     
                 } catch (error) {
                    

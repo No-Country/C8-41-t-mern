@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Stack from "react-bootstrap/Stack";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import Buscador from "./Buscador";
 
@@ -17,24 +17,26 @@ const NavBar = () => {
   // const auth = useSelector(state => state.auth)
   const auth = useSelector((state) => state) || "";
   let user = auth.user;
+  let cartItems= auth.user.cart;
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart]=useState([]);
   const handleClick = () => {
+    cartItems=null;
+    setCart([cartItems]);
     dispatch(startLogout());
+    
   };
 
   const handleLogin = () => {
     navigate("/login");
   };
 useEffect(() => {
-  
-  auth.user.cart? setCart(auth.user.cart) : '';
-  console.log("cart is....")
-  console.log(auth.user.cart);
+  console.log(auth);
+  auth.user.cart? setCart(cartItems) : {};
   //esperando para el componente carrito
   //console.log(cart);
   
-}, [cart])
+}, [cartItems])
 
   //console.log(state.payload.user)
 
@@ -89,12 +91,14 @@ useEffect(() => {
 
             <Stack direction="horizontal" gap={3}>
               {/* <Nav> */}
+              <Link to="cart">
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
                   {cart.length>1?<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {cart.length}<span class="visually-hidden">Cart items</span>
                   </span>: ''}
                 </button>
+                </Link>
               {/* </Nav> */}
               {/* <vr /> */}
               {/* <Nav> */}
