@@ -21,7 +21,15 @@ const Cart = () => {
 
     <ul className="cart__items">
     {cart?.map((item, index) => {
-        return <h1>{item}</h1>;
+        return(
+          <>
+          <ol key={index}>
+          <h1>{item.productName} - Cantidad: {item.quantity} </h1>
+          </ol>
+          
+
+          </>
+        ) ;
     })}
     </ul>
     </div>
