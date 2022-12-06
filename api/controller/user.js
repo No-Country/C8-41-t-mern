@@ -109,10 +109,10 @@ const passwordReset = async (req, res) => {
     if (!token) return res.status(400).send("Token inválido o expirado");
 
     //Enlace que recibirá el usuario
-    const link = `${process.env.BASE_URL}/password-reset/${user.uid}/${token}`;
+    const link = `${process.env.BASE_URL}/${user.uid}`;
     console.log(link);
     //Envío de correo con link de recuperación
-    sendRecoveryPasswordMail(user, link);
+    sendRecoveryPasswordMail(user, link, token);
 
     res.send(message);
   } catch (error) {
@@ -125,6 +125,7 @@ const passwordReset = async (req, res) => {
 const passwordResetUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
+    console.log
     if (!user) return res.status(400).send("Enlace inválido o expirado");
 
     //Encriptar contraseña

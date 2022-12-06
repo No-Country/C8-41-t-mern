@@ -36,6 +36,19 @@ initialState: {
          
        },
 
+       onAddToCart: (state, { payload }) => {
+         state.user.cart = payload.user.cart,
+         state.errorMessage = undefined
+
+       },
+       onDeleteCart: (state, { payload }) => {
+         state.user.cart = []
+       },
+       onUpdateCartQuantity: (state, { payload }) => {
+         state.user.cart = payload
+
+       },
+
       
 
        clearErrorMessage: (state) => {
@@ -47,4 +60,4 @@ initialState: {
 
 
 // Action creators are generated for each case reducer function
-export const { onLogin, onChecking, onLogout, clearErrorMessage, onEditProfile, onEditMyProfile } = authSlice.actions;
+export const { onLogin, onChecking, onLogout, clearErrorMessage, onEditProfile, onEditMyProfile, onAddToCart, onDeleteCart, onUpdateCartQuantity } = authSlice.actions;

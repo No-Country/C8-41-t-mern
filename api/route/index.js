@@ -6,6 +6,7 @@ import authRouter from "./auth.js";
 import ordersRouter from "./orders.js";
 import passwordReset from "./passwordReset.js";
 import compraRouter from "./mercadopago.js";
+import cartRouter from "./cart.js";
 const app = express();
 
 function routerApi(app) {
@@ -16,6 +17,7 @@ function routerApi(app) {
   app.use("/api/orders", ordersRouter);
   app.use("/api/password-reset", passwordReset);
   app.use("/api/compra", compraRouter);
+  app.use("/api/cart", cartRouter);
 }
 
 export default routerApi;

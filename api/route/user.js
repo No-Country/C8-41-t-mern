@@ -1,5 +1,5 @@
 import express from "express";
-import { addCart, deleteCart, updateCartQuality } from "../controller/cart.js";
+
 import {
   getUsers,
   createUser,
@@ -38,8 +38,5 @@ router.delete(
 );
 router.patch("/passChange/:id", validateJWT, changePass);
 
-//Rutas para carrito
-router.delete("/deletecart/:id", deleteCart);
-router.patch("/addcart/:id", addCart);
-router.patch("/Uquantity/:id", updateCartQuality);
+
 export default router;

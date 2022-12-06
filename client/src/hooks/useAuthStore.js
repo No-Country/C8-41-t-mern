@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout} from "../store/slices/auth/authSlice"
+import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout, onAddToCart} from "../store/slices/auth/authSlice"
 import { redirect } from "react-router-dom";
 
 export const useAuthStore = () => {
@@ -85,6 +85,36 @@ export const useAuthStore = () => {
                 // console.log(perfil.uid)
                 
         }
+        const startAddToCart = async (item, id, quantity, token) => {
+          //  console.log("item is...")
+               // console.log(item);
+                const cart= {
+                    cart: {
+                    productID:item._id,
+                    productName: item.name,
+                    quantity:quantity,
+
+                    }
+                    
+                }
+                //console.log("cart is");
+                //console.log(cart);
+                try {
+                    const  {data}  = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/addcart/${id}`, cart, { headers: { 'x-token': ` ${token}` } }  )
+
+                    dispatch(onAddToCart(data))
+                    console.log("data is")
+                    console.log(data);
+                    
+                } catch (error) {
+                   
+                    console.log(error)
+                   
+                    
+                }
+                // console.log(perfil.uid)
+                
+        }
 
        
 
@@ -97,7 +127,8 @@ export const useAuthStore = () => {
         startLogin,
         startLogout,
         startEditMyProfile,
-        startEditProfile
+        startEditProfile,
+        startAddToCart
         
         
     }
