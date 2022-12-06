@@ -10,6 +10,6 @@ const router = express.Router();
 router.use(express.json());
 
 router.post("/", passwordReset);
-router.put("/:userId/:token", [validateResetPassword, validateJWTPass], passwordResetUser);
+router.post("/:userId/:token", [validateResetPassword, validateJWTPass], passwordResetUser);
 
 export default router;

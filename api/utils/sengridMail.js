@@ -1,5 +1,6 @@
 import sgMail from "@sendgrid/mail";
 
+const URL_FRONT = process.env.URL_FRONT
 const SengridApiKey = process.env.SENGRID_API;
 
 sgMail.setApiKey(SengridApiKey);
@@ -30,7 +31,7 @@ async function sendEmail(userCreate) {
 }
 
 //Recuperar contraseña
-function getMessagePassword(user, link) {
+function getMessagePassword(user, link, token) {
   const body =
     "Buen día, ha solicitado recuperar su contraseña en nuestro sitio web, hacer click en el siguiente enlace:";
   return {
@@ -40,9 +41,13 @@ function getMessagePassword(user, link) {
     text: body,
     html: `<strong>${body}</strong> 
     
-    <a> ${link} </a>`,
+    
+    <a href=${URL_FRONT}/newpassword/${user.uid}?token=${token} > Haga click en el siguiente Link </a>
+    
+    `,
   };
 }
+{/* <a href=${link} > ${link} </a> */}
 
 async function sendRecoveryPasswordMail(userPassword, link, token) {
   try {

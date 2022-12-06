@@ -1,32 +1,76 @@
+import axios from "axios";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 
 const NewPassword = () => {
 
-   let params = useParams()
-   let token = localStorage.getItem('token')
+  const navigate = useNavigate()
+
+   let { id } = useParams()
+ 
+   let  tokenURL  = window.location.search;
+
+   let token = tokenURL.substring(7)
 
    
-    console.log(params,token)
-    // console.log(uid)
+    console.log(id)
+    console.log(token)
 
     const [password, setPassword] = useState('');
     const [alerta, setAlerta] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (password === '') {
+          setAlerta(
+            <h3 className="alert alert-danger" role="alert">
+              Debe introducir una nueva contraseña
+            </h3>
+          );
+          setTimeout(() => {
+            setAlerta('')
+          }, 3000);
+         return
+       }
 
+       if (password.length < 7) {
+        setAlerta(
+          <h3 className="alert alert-danger" role="alert">
+            El password debe tener como minimo 6 caracteres
+          </h3>
+        );
+        setTimeout(() => {
+          setAlerta('')
+        }, 3000);
+       return
+       }
         
 
            const nuevoPassword = async () => {
               
                 try {
-                    const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/password-reset`, { email })
-                    
+                    const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/password-reset/${id}/${token}`, {password} )
+                    console.log(data)                      
+                    Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: `${data.msg}`,
+                      showConfirmButton: false,
+                      timer: 2500,
+                    });
+                    navigate('/login')
                     
                 } catch (error) {
-                    console.log(error)
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: `${error}`,
+                    showConfirmButton: false,
+                    timer: 2500,
+                  });
                     
                 }
 

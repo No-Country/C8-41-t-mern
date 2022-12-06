@@ -40,8 +40,10 @@ initialState: {
        },
 
        onAddToCart: (state, { payload }) => {
-         //state.cart = payload.cart,
-         state.user.cart = payload.cart,
+
+         state.user.cart = payload.user?.cart,
+
+        
          state.errorMessage = undefined
 
        },
