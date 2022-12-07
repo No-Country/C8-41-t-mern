@@ -191,20 +191,3 @@
 }
 
 
-@media (min-width: 800px) {
-   
-    .products__list-item{
-        flex-direction: row;
-        width: 500px;
-    }
-    .products__list-item__img{
-        width: 50%;
-        height: 100%;
-    }
-    
-    .products__list-item__content{
-        width: 50%;
-        height: 100%;
-    }
-  }
-
