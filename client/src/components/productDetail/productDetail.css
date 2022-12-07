@@ -1,0 +1,122 @@
+
+.productDetailsWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.productDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+    margin: 40px 0;
+    text-align: center;
+    max-width: 500px;
+}
+
+
+.productDetails__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.productDetails__img-image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.productDetails__content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    align-items: flex-start;
+    gap: 1em;
+    padding: 40px;
+}
+
+.productDetails__content-label{
+    padding: 6px 10px;
+    background-color: rgb(108, 196, 108);
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.productDetails__content-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 35px;
+    color: rgb(255,193,7);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: capitalize;
+ 
+}
+
+.productDetails__content-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 15px;
+    width: 200px;
+    gap: 1em;
+    border: 3px solid rgb(255,193,7);
+    border-radius: 20px;
+    margin: 10px 0;
+}
+
+.productDetails__content-details__price{
+    padding: 6px 12px;
+    background-color: rgb(228, 228, 228);
+    border-radius: 15px;
+    color: gray;
+    font-size: 14px;
+}
+.productDetails__content-details__stock{
+    padding: 6px 12px;
+    background-color: rgb(228, 228, 228);
+    color: gray;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.productDetails__content-description{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    color: rgb(148, 148, 148);
+}
+
+.productDetails__content-description-title{
+    text-align: left;
+    padding:  0 0 10px 0;
+    width: 100%;
+    font-size: 18px;
+    border-bottom: 3px solid rgb(228, 228, 228);
+}
+.productDetails__content-delay{
+    width: 100%;
+    color: rgb(148, 148, 148);
+    text-align: left;
+}

@@ -93,3 +93,21 @@ body {
   background-color: rgb(225, 225, 225);
 
 }
+
+
+.link{
+  text-decoration: none;
+  color: white;
+  
+}
+.link:hover{
+  text-decoration: none;
+  color: var(--Button-color);
+  
+}
+
+.footer-title{
+  color: var(--Button-color);
+  letter-spacing: 2px;
+  font-weight: 800;
+}
