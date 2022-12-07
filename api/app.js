@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
- const dominiosPertmitidos = ["http://localhost:3000", "https://vite-production-68d8.up.railway.app"];
+ const dominiosPertmitidos = ["http://localhost:3000", "https://vite-production-68d8.up.railway.app:4173"];
 
  const corsOptions = {
    origin: function (origin, callback) {
