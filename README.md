@@ -48,9 +48,8 @@
 
 ## 🚀 Getting Started
 
-First, run the development server:
 
-###FRONTEND
+### FRONTEND
 
 First, run the development server:
 ```bash
@@ -64,7 +63,7 @@ $ npm i
 $ npm run dev
 ```
 
-###BACKEND
+### BACKEND
 
 First, run the development server:
 
