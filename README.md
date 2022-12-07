@@ -50,6 +50,22 @@
 
 First, run the development server:
 
+###FRONTEND 
+First, run the development server:
+```bash
+# Clone Repository
+$ git clone https://github.com/No-Country/C8-41-t-mern.git
+# Go to a specific folder
+$ cd client
+# Install Dependencies
+$ npm i
+# Run Aplication with ViteJS
+$ npm run dev
+```
+
+###BACKEND
+First, run the development server:
+
 ```bash
 # Clone Repository
 $ git clone https://github.com/No-Country/C8-41-t-mern.git
