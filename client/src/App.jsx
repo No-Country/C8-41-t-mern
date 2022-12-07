@@ -58,13 +58,13 @@ function App() {
         <Routes>
           <Route index element={<Products />} />
           <Route path="detalle/:id" element={<ProductDetail />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="password-reset" element={<PasswordReset />} />
-          <Route path="newpassword/:id" element={<NewPassword />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="detalle-busqueda" element={<DetalleBusqueda />} />
-          <Route path="restringido" element={<Forbidden />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
+          <Route path="/newpassword/:id" element={<NewPassword />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/detalle-busqueda" element={<DetalleBusqueda />} />
+          <Route path="/restringido" element={<Forbidden />} />
 
           {/* Rutas del Panel de Usuario */}
           <Route
