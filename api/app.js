@@ -14,7 +14,7 @@ const dominiosPertmitidos = ["https://c8-41-t-mern.vercel.app"];
 
  const corsOptions = {
    origin: function (origin, callback) {
-     if (dominiosPertmitidos.indexOf(origin) !== -1) {
+     if (dominiosPertmitidos.indexOf(origin) !== -1 || !origin) {
        //El origen del request esta permitido
        callback(null, true);
      } else {
