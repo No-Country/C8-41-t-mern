@@ -92,10 +92,14 @@ const NavBar = () => {
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
 
-                  {cart.length>1?<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cart.length}<span class="visually-hidden">Cart items</span>
-                  </span>: ''}
-
+                  {cart.length > 1 ? (
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {cart.length}
+                      <span class="visually-hidden">Cart items</span>
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </button>
               </Link>
               {/* </Nav> */}
