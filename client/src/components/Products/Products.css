@@ -61,7 +61,7 @@
     justify-content: center;
     width: 100%;
     height: 50%;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .products__list-item__content p{
@@ -120,14 +120,6 @@
 }
 
 
-.products__list-item button{
-    padding: 10px 16px;
-    border-radius: 10px;
-    border-style: none;
-    color: white;
-    border: 1px solid rgb(255, 255, 255);
-    
-}
 
 .products__list-item__content-extra__price{
 
@@ -138,9 +130,17 @@
 
 .products__list-item__content-btn__buy{
     background-color: rgb(33,37,41);
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: white;
+    border-bottom: 1px solid rgb(33,37,41);
 }
 
 .products__list-item__content-btn__details{
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: white;
+    border: 1px solid rgb(255,193,7);
     background-color: rgb(255,193,7);
     justify-content: center;
     align-self: center;
@@ -205,6 +205,10 @@
     .products__list-item__content{
         width: 50%;
         height: 100%;
+        padding: 0px 20px;
+
     }
+
+    
   }
 

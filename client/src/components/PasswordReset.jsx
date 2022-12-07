@@ -85,7 +85,10 @@ const PasswordReset = () => {
             id="email"
           />
         </div>
-        <button type="submit" className="login__btn">
+        <button
+          type="submit"
+          className="products__list-item__content-btn__details login__btn"
+        >
           Enviar
         </button>
         <a href="/register" className="login__btn-link">

@@ -1,12 +1,9 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const UpdateProduct = ({item}) => {
-
-
-
+const UpdateProduct = ({ item }) => {
   const [product, setProduct] = useState({});
   const [alerta, setAlerta] = useState("");
 
@@ -14,8 +11,8 @@ const UpdateProduct = ({item}) => {
     setProduct(item);
     console.log("item is");
     console.log(product);
-  }, [])
-  
+  }, []);
+
   const handleInput = (e) => {
     setProduct({
       ...product,
@@ -23,13 +20,12 @@ const UpdateProduct = ({item}) => {
     });
   };
 
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     let respuesta;
-    let { _id, name, image, materials, description, price, delay, sold } = product;
+    let { _id, name, image, materials, description, price, delay, sold } =
+      product;
 
     if (
       [name, image, materials, description, price, delay, sold].includes("")
@@ -40,13 +36,16 @@ const UpdateProduct = ({item}) => {
         </h3>
       );
       setTimeout(() => {
-        setAlerta('')
+        setAlerta("");
       }, 3000);
 
       return;
     } else {
       await axios
-      .patch(`${import.meta.env.VITE_BACKEND_URL}/api/products/${_id}`, product)
+        .patch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/products/${_id}`,
+          product
+        )
         .then((resp) => (respuesta = resp.data.name));
 
       Swal.fire({
@@ -56,10 +55,7 @@ const UpdateProduct = ({item}) => {
         showConfirmButton: false,
         timer: 2500,
       });
-      
     }
-    
-
   };
 
   return (
@@ -70,7 +66,7 @@ const UpdateProduct = ({item}) => {
         style={{ marginTop: "50px" }}
       >
         <h2 className="login__title">Editar Producto</h2>
-      {alerta}
+        {alerta}
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-user"></i> */}
           <input
@@ -112,7 +108,7 @@ const UpdateProduct = ({item}) => {
             type="file"
             accept=".png, .jpg, .jpeg"
             id="image"
-            value={''}
+            value={""}
             name="image"
             onChange={handleInput}
             // required={true}
@@ -200,7 +196,10 @@ const UpdateProduct = ({item}) => {
           />
         </div>
 
-        <button type="submit" className="login__btn">
+        <button
+          type="submit"
+          className="products__list-item__content-btn__details login__btn"
+        >
           Create Product
         </button>
         {/* <a href="#" className="login__btn-link">
@@ -213,6 +212,6 @@ const UpdateProduct = ({item}) => {
       </form>
     </div>
   );
-}
+};
 
-export default UpdateProduct
+export default UpdateProduct;
