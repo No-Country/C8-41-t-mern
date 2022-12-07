@@ -29,8 +29,12 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    startLogin({ email, password });
-    Swal.fire("Bienvenido/a!", `${name}`, "success");
+    startLogin({ email, password }).then(()=>{
+      Swal.fire("Bienvenido/a!", `${name}`, "success");
+    }
+      
+    )
+    
 
     // if ([email, password].includes("")) {
     //   Swal.fire('Todos los campos son obligatorios', errorMessage, 'error')
