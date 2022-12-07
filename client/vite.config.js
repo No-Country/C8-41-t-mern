@@ -9,7 +9,7 @@ export default defineConfig({
 
   },
   preview: {
-    port: import.meta.env.$PORT,
+    port: import.meta.env.PORT,
     host: '0.0.0.0',
   }
 })
