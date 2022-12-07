@@ -70,12 +70,17 @@ First, run the development server:
 ```bash
 # Clone Repository
 $ git clone https://github.com/No-Country/C8-41-t-mern.git
-# Go to a specific folder
-$ cd client / api
 # Install Dependencies
 $ npm i
-# Run Aplication with ViteJS
-$ npm run dev
+# Create .env for Environment Variables.
+$ cp .env.example .env
+# Configure the .env with your Connection Data.
+  DB_NAME= 
+  PORT=
+  SECRETORPRIVATEKEY=
+  ACCESS_TOKEN=
+# Run Aplication
+$ npm start
 ```
 
 ---
@@ -100,6 +105,7 @@ The following tools were used in the construction of the project:
 - **[NodeJS](https://nodejs.org/en/)**
 - **[ExpressJS](https://expressjs.com/)**
 - **[MongoBD](https://www.mongodb.com/)**
+- **[Bootstrap](https://getbootstrap.com/)**
 
 ---
 
@@ -121,37 +127,37 @@ Contributions are what make the open source community such an amazing place to b
 | <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>|
 |:-:|
 | Fausto Centurion |
-|<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="#"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
-| <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>|
+| <img src="https://avatars.githubusercontent.com/u/18898891?v=4" width=80>|
 |:-:|
-| Hristo Oviedo |
-|<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+| Hristo S. Oviedo |
+|<a href="https://github.com/hristoviedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hristoviedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 | <img src="./client/images/authors/pepe.jpg" width=80>|
 |:-:|
 | José Andrés Gavilanes |
 |<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
-| <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>|
+| <img src="https://avatars.githubusercontent.com/u/91755159?v=4" width=80>|
 |:-:|
 | Miguel Guerrero |
-|<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/Eiine"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
-| <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>|
+| <img src="https://avatars.githubusercontent.com/u/41965141?v=4" width=80>|
 |:-:|
 | Rafael León |
-|<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/rafa2701"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
-| <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>|
+| <img src="https://avatars.githubusercontent.com/u/88241852?v=4" width=80>|
 |:-:|
 | Sergio Calbiño |
-|<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/SergioCalbino"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
-| <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>|
+| <img src="https://avatars.githubusercontent.com/u/33527556?v=4" width=80>|
 |:-:|
 | Yohan Bello |
-|<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/yohanolmedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 
 
