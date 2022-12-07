@@ -90,7 +90,10 @@ const Login = () => {
         <a href="/register" className="login__btn-link">
           No tienes cuenta?
         </a>
-        <a href="/password-reset" className="login__btn-link">
+        <a
+          href="/password-reset"
+          className="products__list-item__content-btn__details login__btn-link"
+        >
           Olvidaste tu contraseña?
         </a>
         <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>

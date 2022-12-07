@@ -194,7 +194,10 @@ const Register = () => {
           />
         </div>
 
-        <button className="login__btn" type="submit">
+        <button
+          className="products__list-item__content-btn__details login__btn"
+          type="submit"
+        >
           Registrate
         </button>
         <a href="/login" className="login__btn-link">

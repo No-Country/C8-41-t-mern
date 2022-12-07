@@ -11,7 +11,7 @@ const AddUsers = () => {
     street: "",
     phone: "",
     zip: "",
-    isAdmin:false,
+    isAdmin: false,
   };
   const [user, setUser] = useState(regUser);
   const [alerta, setAlerta] = useState("");
@@ -104,7 +104,7 @@ const AddUsers = () => {
         street: "",
         phone: "",
         zip: "",
-        isAdmin:false,
+        isAdmin: false,
       })
     );
   };
@@ -208,18 +208,24 @@ const AddUsers = () => {
           />
         </div>
         <div className="login__field">
-        <i className="input-icon fa-solid fa-house"></i>
-        <select className="login__input-field" onChange={handleInputChange} 
-        aria-label="Default select user" name="isAdmin"
-          id="isAdmin">
-        <option selected>Seleccione Tipo de Usuario</option>
-        <option value={false}>Usuario Normal</option>
-        <option value={true} >Usuario Administrador</option>
-        </select>
+          <i className="input-icon fa-solid fa-house"></i>
+          <select
+            className="login__input-field"
+            onChange={handleInputChange}
+            aria-label="Default select user"
+            name="isAdmin"
+            id="isAdmin"
+          >
+            <option selected>Seleccione Tipo de Usuario</option>
+            <option value={false}>Usuario Normal</option>
+            <option value={true}>Usuario Administrador</option>
+          </select>
+        </div>
 
-      </div>
-
-        <button className="login__btn" type="submit">
+        <button
+          className="products__list-item__content-btn__details login__btn"
+          type="submit"
+        >
           Register
         </button>
         <a href="/login" className="login__btn-link">
