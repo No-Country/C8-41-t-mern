@@ -61,7 +61,7 @@
     justify-content: center;
     width: 100%;
     height: 50%;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .products__list-item__content p{
@@ -89,7 +89,8 @@
 
 .products__list-item__content-description{
     font-size: 12px;
-    margin-bottom: 8px;
+    margin: 8px 0;
+    max-width: 200px;
 }
 
 .products__list-item__content-title{
