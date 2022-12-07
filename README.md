@@ -23,7 +23,7 @@
 <h4 align="center">
 	🚧 Status: Building 🚀  🚧
 
-  <p align="center">___link deploy___</p>
+  <p align="center"> c8-41-t-mern.vercel.app </p>
 
 </h4>
 
