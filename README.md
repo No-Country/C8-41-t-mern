@@ -50,7 +50,8 @@
 
 First, run the development server:
 
-###FRONTEND 
+###FRONTEND
+
 First, run the development server:
 ```bash
 # Clone Repository
@@ -64,6 +65,7 @@ $ npm run dev
 ```
 
 ###BACKEND
+
 First, run the development server:
 
 ```bash
