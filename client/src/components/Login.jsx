@@ -84,16 +84,19 @@ const Login = () => {
             id="password"
           />
         </div>
-        <button type="submit" className="login__btn">
+        <button
+          type="submit"
+          className="products__list-item__content-btn__details login__btn"
+        >
           Login
         </button>
-        
+
         <Link to="/register" className="login__btn-link">
-        No tienes cuenta?
-                        </Link>
-        <Link to="/password-reset" className="products__list-item__content-btn__details login__btn-link">
-        Olvidaste tu contraseña?
-                        </Link>
+          No tienes cuenta?
+        </Link>
+        <Link to="/password-reset" className="login__btn-link">
+          Olvidaste tu contraseña?
+        </Link>
         <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
