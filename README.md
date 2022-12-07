@@ -1,6 +1,6 @@
 # C8-41-t-mern
 <div align="center">
-  <img alt="logo"  src="">
+  <img alt="logo"  src="./client/images/logo.png">
 </div>
 
 <h3 align="center">
