@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
- const dominiosPertmitidos = ["http://localhost:3000", "https://tranquil-lily-148d76.netlify.app"];
+ const dominiosPertmitidos = ["http://localhost:3000", "https://aesthetic-gaufre-27a94a.netlify.app"];
 
  const corsOptions = {
    origin: function (origin, callback) {
