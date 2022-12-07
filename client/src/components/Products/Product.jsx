@@ -27,12 +27,6 @@ const Product = ({ item, userId }) => {
           <h2 className="products__list-item__content-title">{item.name}</h2>
           <div className="products__list-item__content-labels">
             <p className="products__list-item__content-materials">
-              {item.materials}
-            </p>
-            <p className="products__list-item__content-materials">
-              {item.delay}
-            </p>
-            <p className="products__list-item__content-materials">
               {item.sold} sold
             </p>
           </div>
