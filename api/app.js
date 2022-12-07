@@ -5,7 +5,7 @@ import cors from "cors";
 import config from "./config/config.js";
 import routerApi from "./route/index.js";
 dotenv.config();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
