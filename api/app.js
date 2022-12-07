@@ -15,7 +15,7 @@ const dominiosPertmitidos = ["http://localhost:3000", "https://c8-41-t-mern.verc
  const corsOptions = {
    origin: function (origin, callback) {
      if (dominiosPertmitidos.indexOf(origin) !== -1) {
-       El origen del request esta permitido
+       //El origen del request esta permitido
        callback(null, true);
      } else {
       callback(new Error("No permitido por CORS"));
