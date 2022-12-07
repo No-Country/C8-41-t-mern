@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { redirect } from "react-router-dom";
 
@@ -87,15 +87,13 @@ const Login = () => {
         <button type="submit" className="login__btn">
           Login
         </button>
-        <a href="/register" className="login__btn-link">
-          No tienes cuenta?
-        </a>
-        <a
-          href="/password-reset"
-          className="products__list-item__content-btn__details login__btn-link"
-        >
-          Olvidaste tu contraseña?
-        </a>
+        
+        <Link to="/register" className="login__btn-link">
+        No tienes cuenta?
+                        </Link>
+        <Link to="/password-reset" className="products__list-item__content-btn__details login__btn-link">
+        Olvidaste tu contraseña?
+                        </Link>
         <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
