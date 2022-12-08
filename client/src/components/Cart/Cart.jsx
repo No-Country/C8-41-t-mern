@@ -29,7 +29,7 @@ const Cart = () => {
     });
   };
   const handleSubmit = () => {
-    localStorage.setItem("checkout", "")
+    localStorage.setItem("checkout", "");
     localStorage.setItem("total", "");
     //gestionar checkout
   };
@@ -37,7 +37,10 @@ const Cart = () => {
   return (
     <>
       <Container className="my-3">
-        <h1> Carrito de compras </h1>
+        <h1 style={{ color: "rgb(255,193,7)", textAlign: "center" }}>
+          {" "}
+          Carrito de compras{" "}
+        </h1>
         <h2> Productos en el carrito: {cart.length} </h2>
 
         <Accordion>
@@ -48,7 +51,10 @@ const Cart = () => {
             total += item.price;
             return (
               <>
-                <Accordion.Item eventKey={index}>
+                <Accordion.Item
+                  eventKey={index}
+                  style={{ marginBottom: "20px" }}
+                >
                   <Accordion.Header>
                     Nombre del Producto: {item.productName} <span> </span>{" "}
                   </Accordion.Header>
@@ -59,7 +65,7 @@ const Cart = () => {
                       onClick={() => handleDelete(userId, item._id)}
                     >
                       {" "}
-                      Eliminar{" "}
+                      <i class="fa-solid fa-trash-can"></i>{" "}
                     </Button>
                   </div>
                   <div className="text-end my-1 mx-1">Precio: {item.price}</div>
@@ -83,7 +89,7 @@ const Cart = () => {
         <h2 className="text-end">Total: {total}</h2>
         <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
-            <Button>Comprar</Button>
+            <Button className="link">Comprar</Button>
           </div>
         </form>
       </Container>
