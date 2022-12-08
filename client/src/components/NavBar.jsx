@@ -71,7 +71,7 @@ const NavBar = () => {
                     <NavDropdown.Item>
                       <Link
                         to="micuenta"
-                        style={{ color: "rgb(255,193,7)" }}
+                        style={{ color: "rgb(255,193,7)", background: "none" }}
                         className="link"
                       >
                         Panel de Usuario
@@ -81,7 +81,10 @@ const NavBar = () => {
                       <NavDropdown.Item>
                         <Link
                           to="admin"
-                          style={{ color: "rgb(255,193,7)" }}
+                          style={{
+                            color: "rgb(255,193,7)",
+                            background: "none",
+                          }}
                           className="link"
                         >
                           Panel Administrativo
