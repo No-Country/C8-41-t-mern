@@ -58,7 +58,7 @@ const NavBar = () => {
             <Nav className="me-auto">
               {auth.user.name}
               <Buscador />
-              <Link to="index">>Ver productos</Nav.Link>
+              <Nav.Link><Link to="index">Ver productos</Link></Nav.Link>
               {user ? (
                 <>
                   <NavDropdown
