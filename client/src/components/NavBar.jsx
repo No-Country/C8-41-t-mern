@@ -30,7 +30,9 @@ const NavBar = () => {
     navigate("/login");
   };
   useEffect(() => {
+    console.log("cart items are...")
     console.log(auth);
+    console.log(auth.user.cart);
     auth.user.cart ? setCart(cartItems) : {};
     //esperando para el componente carrito
     //console.log(cart);
@@ -44,31 +46,51 @@ const NavBar = () => {
   return (
     <>
       {/* <!-- Navbar --> */}
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect sticky="top" expand="lg" bg="dark" variant="dark">
         <Container fluid>
-          <Navbar.Brand href="/">
-            <img src="../../logo.png" alt="mortchikian" />
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>
+              <img src="logo.png" alt="mortchikian" />
+            </Navbar.Brand>
+          </Link>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">{auth.user.name}</Nav.Link>
+              {auth.user.name}
               <Buscador />
-              <Nav.Link href="/">Ver productos</Nav.Link>
-
+              <Nav.Link>
+                <Link to="/" className="link">
+                  Ver productos
+                </Link>
+              </Nav.Link>
               {user ? (
                 <>
                   <NavDropdown
                     title="Opciones de Usuario"
                     id="collasible-nav-dropdown"
                   >
-                    <NavDropdown.Item href="/micuenta">
-                      Panel de Usuario
+                    <NavDropdown.Item>
+                      <Link
+                        to="micuenta"
+                        style={{ color: "rgb(255,193,7)", background: "none" }}
+                        className="link navBarLink"
+                      >
+                        Panel de Usuario
+                      </Link>
                     </NavDropdown.Item>
                     {user.isAdmin ? (
-                      <NavDropdown.Item href="/admin">
-                        Panel Administrativo
+                      <NavDropdown.Item>
+                        <Link
+                          to="admin"
+                          style={{
+                            color: "rgb(255,193,7)",
+                            background: "none",
+                          }}
+                          className="link navBarLink"
+                        >
+                          Panel Administrativo
+                        </Link>
                       </NavDropdown.Item>
                     ) : (
                       ""
