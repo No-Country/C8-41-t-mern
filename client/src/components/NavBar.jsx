@@ -9,6 +9,7 @@ import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import Buscador from "./Buscador";
 import Cart from "./Cart/Cart";
+import { CartProvider, useCart } from "react-use-cart";
 
 const NavBar = () => {
   const { startLogout } = useAuthStore();
@@ -22,6 +23,7 @@ const NavBar = () => {
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart] = useState([cartItems]);
   console.log(auth)
+  const { items } = useCart();
   
   const handleClick = () => {
     cartItems = null;
@@ -35,11 +37,13 @@ const NavBar = () => {
   useEffect(() => {
     console.log("cart items are...")
     //console.log(auth);
-    console.log(auth.user.cart);
-    auth.user.cart ? setCart(cartItems) : {};
+    //console.log(auth.user.cart);
+    //auth.user.cart ? setCart(cartItems) : {};
+    items? setCart(items) : {};
     //esperando para el componente carrito
     //console.log(cart);
-  }, [cartItems]);
+
+  }, [items]);
 
   //console.log(state.payload.user)
 
@@ -117,9 +121,9 @@ const NavBar = () => {
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
 
-                  {cart.length > 0 ? (
+                  {items.length > 0 ? (
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {cart.length}
+                      {items.length}
                     <Link to='/cart' > <span class="visually-hidden">Cart items</span></Link> 
                     </span>
                   ) : (
