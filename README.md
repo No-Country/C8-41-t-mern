@@ -92,6 +92,44 @@ The ecommerce preview:
 
 **NOTE:** In each image, there will be a short review of how the process was to build the result seen.
 
+---
+
+### Footer
+
+![screen home](./client/images/preview/footer.png)
+
+---
+
+### Single Card
+
+![screen home](./client/images/preview/card.png)
+
+---
+
+### Footer
+
+![screen home](./client/images/preview/footer.png)
+
+---
+
+### Footer
+
+![screen home](./client/images/preview/footer.png)
+
+---
+
+### Footer
+
+![screen home](./client/images/preview/footer.png)
+
+---
+
+### Footer
+
+![screen home](./client/images/preview/footer.png)
+
+---
+
 ### Footer
 
 ![screen home](./client/images/preview/footer.png)
