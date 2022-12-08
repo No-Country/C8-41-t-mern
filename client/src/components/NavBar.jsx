@@ -20,11 +20,12 @@ const NavBar = () => {
   let user = auth.user;
   let cartItems = auth.user.cart;
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([cartItems]);
+  console.log(auth)
   
   const handleClick = () => {
     cartItems = null;
-    setCart([cartItems]);
+    setCart([...cartItems]);
     dispatch(startLogout());
   };
 
@@ -33,12 +34,12 @@ const NavBar = () => {
   };
   useEffect(() => {
     console.log("cart items are...")
-    console.log(auth);
+    //console.log(auth);
     console.log(auth.user.cart);
     auth.user.cart ? setCart(cartItems) : {};
     //esperando para el componente carrito
     //console.log(cart);
-  }, [cartItems]);
+  }, []);
 
   //console.log(state.payload.user)
 
@@ -116,7 +117,7 @@ const NavBar = () => {
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
 
-                  {cart.length > 1 ? (
+                  {cart.length > 0 ? (
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       {cart.length}
                     <Link to='/cart' > <span class="visually-hidden">Cart items</span></Link> 

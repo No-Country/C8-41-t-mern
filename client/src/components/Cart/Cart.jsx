@@ -14,22 +14,30 @@ const Cart = () => {
     const cartItems = useSelector(state => state.user.cart)
     const userId = useSelector(state => state.user.uid)
    
-     
+
+    
    
    
     const [cart, setCart] = useState([]);
-    
+    let total=0;
+
     useEffect(() => {
         setCart(cartItems);
-    
-      }, [cart])
+        //let total=cart.price.reduce((x, y) => x + y);
+        console.log(total);
+        cart.forEach( (item)=>{
+          total=total+(item.price);
+        });
+        //let total=0;
+      
+      }, [])
       
       
       const handleDelete = ( userId, productId) => {
        
-        console.log('id de producto es' + productId);
-        console.log('id de usuario es' + userId);
-        startDeleteToCart( userId, productId)
+        startDeleteToCart( userId, productId).then(()=>{
+          setCart(cartItems);
+        })
     }
     
   return (
@@ -47,7 +55,7 @@ const Cart = () => {
         <Accordion.Item eventKey={index}>
             <Accordion.Header>Nombre del Producto: {item.productName} <span>{' '} </span>  </Accordion.Header>
             {/* <Accordion.Header></Accordion.Header> */}
-            <Button variant='danger' onClick={() => handleDelete(userId, item._id)}> Eliminar </Button>
+            <div className="text-end my-1 mx-1"><Button variant='danger'  onClick={() => handleDelete(userId, item._id)}> Eliminar </Button></div> 
             
             
             <Accordion.Body> Descripcion: 
@@ -60,6 +68,7 @@ const Cart = () => {
               culpa qui officia deserunt mollit anim id est laborum.
             </Accordion.Body>
             </Accordion.Item>
+            
           </>
 
             )
@@ -67,7 +76,7 @@ const Cart = () => {
         }
       
       </Accordion>
-      <h2 className='text-end' >Total</h2>
+      <h2 className='text-end' >Total: {total}</h2>
         <div className='text-end' >
             <Button>Comprar</Button>
 

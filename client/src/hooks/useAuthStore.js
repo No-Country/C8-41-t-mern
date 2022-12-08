@@ -99,8 +99,7 @@ export const useAuthStore = () => {
                 
                 try {
                     const  {data}  = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/addcart/${id}`, cart, { headers: { 'x-token': ` ${token}` } }  )
-                    console.log("data is")
-                    console.log(data);
+                    
                     dispatch(onAddToCart(data))
                     
                     
@@ -124,6 +123,7 @@ export const useAuthStore = () => {
                 
                 try {
                     const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/deletecart/${id}`, { idProduct }, { headers: { 'x-token': ` ${token}` } })
+                    console.log("data is")
                     console.log(data)
                     dispatch(onDeleteCart(data))
                 } catch (error) {
