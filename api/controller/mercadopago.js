@@ -2,7 +2,7 @@ import axios from "axios";
 
 const compraMp = async (req, res) => {
   const { user } = req.body;
-  console.log(user);
+
   const url = "https://api.mercadopago.com/checkout/preferences";
   try {
     const cuerpo = {

@@ -26,7 +26,7 @@ const deleteCart = async (req, res) => {
   res.json(updateUser);
 };
 
-const updateCartQuantity= async (req, res) => {
+const updateCartQuantity = async (req, res) => {
   const { id } = req.params;
   const { idProduct, quantity } = req.body;
   const user = await User.findById(id);
