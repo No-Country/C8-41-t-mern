@@ -75,6 +75,7 @@ const Cart = () => {
                     Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id est laborum.
                   </Accordion.Body>
+                  <h2 className="text-end" >Cantidad: {item.quantity}</h2>
                 </Accordion.Item>
               </>
             );
@@ -83,7 +84,7 @@ const Cart = () => {
         <h2 className="text-end">Total: {total}</h2>
         <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
-            <Button>Comprar</Button>
+             <Button> Comprar</Button>
           </div>
         </form>
       </Container>

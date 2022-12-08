@@ -25,8 +25,8 @@ const NavBar = () => {
   
   const handleClick = () => {
     cartItems = null;
-    setCart([...cartItems]);
     dispatch(startLogout());
+    setCart([...cartItems]);
   };
 
   const handleLogin = () => {
