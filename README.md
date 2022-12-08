@@ -34,19 +34,28 @@
 
 <h2 id="about-the-project" > ⏰📈 About The Project </h2>
 
-1.
-2.
-3.
-4.
-
+**Ecommerce** developed by the **C8-41-t-mern** team using the **MERN** stack as part of **Cohorte 8**, a work environment simulator sponsored by **No Country**.
+### Introduction
+Mortchikian is a company dedicated to the manufacture and distribution of masks, their price varies according to the design and the material used. Despite being known and recommended by his customers, Mortchikian wants to extend his reach and offer his products to potential customers around the world at a low cost and thus increase his profits, but how could he do it?
+### Project Justification
+This project aims to provide Mortchikian with a technological boost so that its products have greater reach and visibility; its masks can be purchased by current and new customers; maximizing its sales at a lower cost and guaranteeing customer satisfaction from the moment they enter the platform until the delivery of the product.
+### Project Objective
+1. To develop for Mortchikian a platform for the sale of masks.
+2. To support Mortchikian in reaching more people with their products.
+3. Create a platform that maximizes mask sales at a low cost.
+4. Design a platform that guarantees customer satisfaction.
+### Features
+This project features:
+1. **CRUD** for *products, orders* and *users*.
+2. **Routes** for *users, login, products, orders* and *shopping cart*.
+3. **Validations** for *users, products* and *orders*.
+4. **Roles** for *customer* and *administrator* users.
+5. **Cards** to display each *product**.
+6. **Password recovery**.
+7. **Error handling** and more.
 ## Next features:
-
 - [ ] ;
-- [ ] ;
-- [ ] ;
-
 ---
-
 ## 🚀 Getting Started
 
 ### FRONTEND
@@ -197,7 +206,7 @@ Contributions are what make the open source community such an amazing place to b
 |                                                                                                                                          <img src="https://avatars.githubusercontent.com/u/41965141?v=4" width=80>                                                                                                                                          |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
 |                                                                                                                                                                         Rafael León                                                                                                                                                                         |
-| <a href="https://github.com/rafa2701"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
+| <a href="https://github.com/rafa2701"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/rafa2701/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
 |                                                                                                                                            <img src="https://avatars.githubusercontent.com/u/88241852?v=4" width=80>                                                                                                                                             |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
