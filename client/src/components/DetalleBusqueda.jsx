@@ -15,7 +15,7 @@ const DetalleBusqueda = () => {
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/search/${busqueda}`)
       .then((res) => setDetalleBusqueda(res.data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [detalleBusqueda]);
 
   return (
     <>
