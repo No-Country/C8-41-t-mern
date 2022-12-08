@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout, onAddToCart} from "../store/slices/auth/authSlice"
+import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout, onAddToCart, onDeleteCart} from "../store/slices/auth/authSlice"
 import { redirect } from "react-router-dom";
 
 export const useAuthStore = () => {
@@ -110,10 +110,33 @@ export const useAuthStore = () => {
                    
                     
                 }
-                // console.log(perfil.uid)
                 
-        }
+            };
+            
+            const startDeleteToCart = async (userId, productId) => {
+              console.log(productId)
+              console.log(userId)
+              const token = localStorage.getItem('token')
+                const cart= {
+                    cart: {
+                    productID:productId,
+                   
 
+                    }
+                    
+                }
+                
+                try {
+                    const { data } = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/cart/deletecart/${userId}`, {productId} ,{ headers: { 'x-token': ` ${token}` } })
+                    console.log(data)
+                    dispatch(onDeleteCart(data))
+                } catch (error) {
+                    console.log(error)
+                    
+                }
+
+
+            }
        
 
     return {
@@ -126,7 +149,8 @@ export const useAuthStore = () => {
         startLogout,
         startEditMyProfile,
         startEditProfile,
-        startAddToCart
+        startAddToCart,
+        startDeleteToCart
         
         
     }

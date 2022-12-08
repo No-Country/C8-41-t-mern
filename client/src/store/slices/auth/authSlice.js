@@ -48,7 +48,9 @@ initialState: {
 
        },
        onDeleteCart: (state, { payload }) => {
-         state.user.cart = []
+     
+         state.user.cart = payload.cart
+         state.errorMessage = undefined
        },
        onUpdateCartQuantity: (state, { payload }) => {
          state.user.cart = payload

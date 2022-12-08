@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import Buscador from "./Buscador";
+import Cart from "./Cart/Cart";
 
 const NavBar = () => {
   const { startLogout } = useAuthStore();
@@ -20,6 +21,7 @@ const NavBar = () => {
   let cartItems = auth.user.cart;
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart] = useState([]);
+  
   const handleClick = () => {
     cartItems = null;
     setCart([cartItems]);
@@ -30,7 +32,7 @@ const NavBar = () => {
     navigate("/login");
   };
   useEffect(() => {
-    console.log(auth);
+    // console.log(auth);
     auth.user.cart ? setCart(cartItems) : {};
     //esperando para el componente carrito
     //console.log(cart);
@@ -95,7 +97,7 @@ const NavBar = () => {
                   {cart.length > 1 ? (
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       {cart.length}
-                      <span class="visually-hidden">Cart items</span>
+                    <Link to='/cart' > <span class="visually-hidden">Cart items</span></Link> 
                     </span>
                   ) : (
                     ""
