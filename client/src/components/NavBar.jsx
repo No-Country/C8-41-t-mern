@@ -23,7 +23,7 @@ const NavBar = () => {
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart] = useState([cartItems]);
   console.log(auth)
-  const { items } = useCart();
+  const { items, totalItems } = useCart();
   
   const handleClick = () => {
     cartItems = null;
@@ -121,9 +121,9 @@ const NavBar = () => {
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
 
-                  {items.length > 0 ? (
+                  {totalItems > 0 ? (
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {items.length}
+                      {totalItems}
                     <Link to='/cart' > <span class="visually-hidden">Cart items</span></Link> 
                     </span>
                   ) : (

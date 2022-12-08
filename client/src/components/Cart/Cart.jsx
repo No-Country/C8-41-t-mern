@@ -1,5 +1,8 @@
 import React from 'react'
 import { CartProvider, useCart } from "react-use-cart";
+import Accordion from "react-bootstrap/Accordion";
+import Button from "react-bootstrap/esm/Button";
+import Container from "react-bootstrap/esm/Container";
 
 const Cart = () => {
     const {
@@ -8,12 +11,16 @@ const Cart = () => {
         items,
         updateItemQuantity,
         removeItem,
+        cartTotal,
       } = useCart();
-    
+      //let total = 0.0;
       if (isEmpty) return <p>Your cart is empty</p>;
-    
+    const handleSubmit =()=>{
+    e.preventDefault();
+    }
   return (
     <>
+    <Container>
       <h1>Cart ({totalUniqueItems})</h1>
 
       <ul>
@@ -34,6 +41,13 @@ const Cart = () => {
           </li>
         ))}
       </ul>
+      <h2 className="text-end">Total: {cartTotal}</h2>
+        <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
+          <div className="text-end">
+            <Button>Comprar</Button>
+          </div>
+        </form>
+        </Container>
     </>
   )
 }
