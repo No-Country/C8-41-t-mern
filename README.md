@@ -94,7 +94,7 @@ The ecommerce preview:
 
 ### Footer
 
-![screen home](../C8-41-t-mern/client/images/preview/footer.png)
+![screen home](./client/images/preview/footer.png)
 
 ---
 
