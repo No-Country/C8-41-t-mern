@@ -19,15 +19,12 @@ const Cart = () => {
    
    
     const [cart, setCart] = useState([]);
-    let total=0;
+    let total=0.0;
 
     useEffect(() => {
         setCart(cartItems);
         //let total=cart.price.reduce((x, y) => x + y);
-        console.log(total);
-        cart.forEach( (item)=>{
-          total=total+(item.price);
-        });
+        
         //let total=0;
       
       }, [])
@@ -50,6 +47,7 @@ const Cart = () => {
         {
           cart?.map((item, index) => {
             {/* console.log(item) */}
+            total+=item.price;
             return (
           <>
         <Accordion.Item eventKey={index}>
