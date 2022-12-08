@@ -94,9 +94,16 @@ The ecommerce preview:
 
 ---
 
-### Footer
 
-![screen home](./client/images/preview/footer.png)
+### Home
+
+![screen home](./client/images/preview/home.png)
+
+---
+
+### NavBar
+
+![screen home](./client/images/preview/navbar.png)
 
 ---
 
@@ -106,35 +113,34 @@ The ecommerce preview:
 
 ---
 
+### Footer
+
+![screen home](./client/images/preview/footer.png)
+
+---
+
 ### Product Detail
 
 ![screen home](./client/images/preview/productDetail.png)
 
 ---
 
-### Footer
+### Register
 
-![screen home](./client/images/preview/footer.png)
-
----
-
-### Footer
-
-![screen home](./client/images/preview/footer.png)
+![screen home](./client/images/preview/register.png)
 
 ---
 
-### Footer
+### Login
 
-![screen home](./client/images/preview/footer.png)
-
----
-
-### Footer
-
-![screen home](./client/images/preview/footer.png)
+![screen home](./client/images/preview/login.png)
 
 ---
+
+### Password recovery
+
+![screen home](../C8-41-t-mern/client/images/preview/password.png)
+
 
 ---
 
