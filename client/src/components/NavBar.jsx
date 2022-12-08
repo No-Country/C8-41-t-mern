@@ -46,7 +46,7 @@ const NavBar = () => {
       {/* <!-- Navbar --> */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container fluid>
-        <Link to="/">
+        <Link to="index">
         <Navbar.Brand >
             <img src="https://drive.google.com/file/d/1VeCnYUxD_Sv4uCFUerSBpKTsfteu7SIE/view?usp=sharing" alt="mortchikian" />
           </Navbar.Brand>
@@ -58,20 +58,20 @@ const NavBar = () => {
             <Nav className="me-auto">
               <Nav.Link>{auth.user.name}</Nav.Link>
               <Buscador />
-              <Link to="/"><Nav.Link>Ver productos</Nav.Link></Link>
+              <Link to="index"><Nav.Link>Ver productos</Nav.Link></Link>
               {user ? (
                 <>
                   <NavDropdown
                     title="Opciones de Usuario"
                     id="collasible-nav-dropdown"
                   >
-                    <Link to="/micuenta">
+                    <Link to="micuenta">
                     <NavDropdown.Item >
                       Panel de Usuario
                     </NavDropdown.Item>
                      </Link>
                     {user.isAdmin ? (
-                      <Link to="/admin">
+                      <Link to="admin">
                       <NavDropdown.Item>
                         Panel Administrativo
                       </NavDropdown.Item>
