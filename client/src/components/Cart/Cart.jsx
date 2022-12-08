@@ -5,13 +5,13 @@ import { useSelector } from 'react-redux'
 
 const Cart = () => {
 
-    const cartItems = useSelector(state => state.user.cart)
+    const itemsCart = useSelector(state => state.user.cart)
    
     const [cart, setCart]=useState([]);
     useEffect(() => {
-        setCart(cartItems);
+        setCart(itemsCart);
     
-    }, [cart])
+    }, [itemsCart])
     
     console.log(cart);
     
