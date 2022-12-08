@@ -92,11 +92,55 @@ The ecommerce preview:
 
 **NOTE:** In each image, there will be a short review of how the process was to build the result seen.
 
-### Footer
+---
 
-![screen home](../C8-41-t-mern/client/images/preview/footer.png)
+
+### Home
+
+![screen home](./client/images/preview/home.png)
 
 ---
+
+### NavBar
+
+![screen home](./client/images/preview/navbar.png)
+
+---
+
+### Single Card
+
+![screen home](./client/images/preview/card.png)
+
+---
+
+### Footer
+
+![screen home](./client/images/preview/footer.png)
+
+---
+
+### Product Detail
+
+![screen home](./client/images/preview/productDetail.png)
+
+---
+
+### Register
+
+![screen home](./client/images/preview/register.png)
+
+---
+
+### Login
+
+![screen home](./client/images/preview/login.png)
+
+---
+
+### Password recovery
+
+![screen home](./client/images/preview/password.png)
+
 
 ---
 
