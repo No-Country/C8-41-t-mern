@@ -6,6 +6,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import { useAuthStore } from "../../hooks/useAuthStore";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { startDeleteToCart } = useAuthStore();
@@ -94,6 +95,7 @@ const Cart = () => {
                     Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id est laborum.
                   </Accordion.Body>
+                  <h2 className="text-end" >Cantidad: {item.quantity}</h2>
                 </Accordion.Item>
               </>
             );
@@ -102,7 +104,10 @@ const Cart = () => {
         <h2 className="text-end">Total: {total}</h2>
         <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
-            <Button className="link">Comprar</Button>
+
+            <Link to='/comprar' > <Button> Ver compra</Button> </Link>
+
+
           </div>
         </form>
       </Container>

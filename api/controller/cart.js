@@ -5,12 +5,13 @@ const addCart = async (req, res) => {
   const { id } = req.params;
   const { cart } = req.body;
 
-  const updateUser = await User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
     {
       _id: id,
     },
     { $push: { cart: cart } }
   );
+  const updateUser = await User.findById({ _id: id });
   res.json(updateUser);
 };
 
@@ -25,7 +26,7 @@ const deleteCart = async (req, res) => {
   //   { $pull: { cart: { _id: idProduct } } }
   // );
 
-  const updateUser = await User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
     {
       _id: id,
     },
@@ -33,6 +34,7 @@ const deleteCart = async (req, res) => {
   );
 
    
+  const updateUser = await User.findById({ _id: id });
 
     console.log(updateUser);
   res.json(updateUser);
