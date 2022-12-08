@@ -21,7 +21,7 @@ const NavBar = () => {
   let cartItems = auth.user.cart;
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart] = useState([cartItems]);
-  console.log(auth)
+  // console.log(auth)
   
   const handleClick = () => {
     cartItems = null;
@@ -33,9 +33,9 @@ const NavBar = () => {
     navigate("/login");
   };
   useEffect(() => {
-    console.log("cart items are...")
+    // console.log("cart items are...")
     //console.log(auth);
-    console.log(auth.user.cart);
+    // console.log(auth.user.cart);
     auth.user.cart ? setCart(cartItems) : {};
     //esperando para el componente carrito
     //console.log(cart);

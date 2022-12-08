@@ -24,6 +24,7 @@ import PasswordReset from "./components/PasswordReset";
 import NewPassword from "./components/NewPassword";
 import MyProfile from "./components/UserPanel/MyProfile";
 import Cart from "./components/Cart/Cart";
+import Comprar from "./components/Comprar";
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
           <Route path="password-reset" element={<PasswordReset />} />
           <Route path="newpassword/:id" element={<NewPassword />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="comprar" element={<Comprar/>} > </Route>
           <Route path="detalle-busqueda" element={<DetalleBusqueda />} />
           <Route path="restringido" element={<Forbidden />} />
 
