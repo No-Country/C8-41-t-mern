@@ -31,7 +31,8 @@ const NavBar = () => {
   };
   useEffect(() => {
     console.log("cart items are...")
-    console.log(cartItems);
+    console.log(auth);
+    console.log(auth.user.cart?);
     auth.user.cart ? setCart(cartItems) : {};
     //esperando para el componente carrito
     //console.log(cart);
