@@ -88,14 +88,13 @@ const ManageProducts = () => {
   };
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(false);
-    const [product, setProduct] = useState();
-    const handleClose = () => setShow(false);
-    const handleShow = (e, item, title) =>{
-        e.preventDefault();
-        setShow(true);
-        setProduct(item);
-       
-    } 
+  const [product, setProduct] = useState();
+  const handleClose = () => setShow(false);
+  const handleShow = (e, item, title) => {
+    e.preventDefault();
+    setShow(true);
+    setProduct(item);
+  };
   return (
     <>
       <Container>
@@ -120,9 +119,12 @@ const ManageProducts = () => {
                   <td>{item.sold}</td>
                   <td>
                     <Button variant="success">
-                      <i className=" fa-solid fa-edit"  onClick={(e) => {
-                        handleShow( e,item, setEdit(true));
-                      }}></i>
+                      <i
+                        className=" fa-solid fa-edit"
+                        onClick={(e) => {
+                          handleShow(e, item, setEdit(true));
+                        }}
+                      ></i>
                     </Button>{" "}
                     {/* <Button variant="warning">Ed</Button>{' '} */}
                     <Button
@@ -142,18 +144,23 @@ const ManageProducts = () => {
         </Table>
 
         {/* <div className="position-sticky"> */}
-          <Button className="btn btn-success float-end" onClick={(e) => {
-                        handleShow( e,{}, setEdit(false));
-                      }}>
-            Adñadir Producto <i className=" fa-solid fa-plus"></i>
-          </Button>
+        <Button
+          className="products__list-item__content-btn__details"
+          onClick={(e) => {
+            handleShow(e, {}, setEdit(false));
+          }}
+        >
+          Añadir Producto <i className=" fa-solid fa-plus"></i>
+        </Button>
         {/* </div> */}
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="py-0 my-0">{edit==true?<UpdateProduct item={product} />:<CreateProduct />}</Modal.Body>
+        <Modal.Body className="py-0 my-0">
+          {edit == true ? <UpdateProduct item={product} /> : <CreateProduct />}
+        </Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
