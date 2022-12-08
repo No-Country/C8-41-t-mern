@@ -45,7 +45,7 @@ const EditProfiles = ({ user }) => {
 
   return (
     <>
-      <div className="login__container">
+      <div className="login__container" style={{ marginBottom: "20px" }}>
         <form
           onSubmit={handleSubmit}
           className="login__card"
