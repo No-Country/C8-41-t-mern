@@ -46,7 +46,7 @@ const NavBar = () => {
   return (
     <>
       {/* <!-- Navbar --> */}
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect sticky="top" expand="lg" bg="dark" variant="dark">
         <Container fluid>
           <Link to="/">
             <Navbar.Brand>
