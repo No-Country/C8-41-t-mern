@@ -68,7 +68,10 @@ const Cart = () => {
                       <i class="fa-solid fa-trash-can"></i>{" "}
                     </Button>
                   </div>
-                  <div className="text-end my-1 mx-1">Precio: {item.price}</div>
+                  <div className="text-end my-1 mx-1">
+                    Precio:
+                    {item.price === " " ? "300" : item.price}
+                  </div>
 
                   <Accordion.Body>
                     {" "}
