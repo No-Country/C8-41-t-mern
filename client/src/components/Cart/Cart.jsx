@@ -37,7 +37,14 @@ const Cart = () => {
   return (
     <>
       <Container className="my-3">
-        <h1 style={{ color: "rgb(255,193,7)", textAlign: "center" }}>
+        <h1
+          style={{
+            color: "rgb(255,193,7)",
+            textAlign: "center",
+            fontWeight: "600",
+            letterSpacing: "1.5px",
+          }}
+        >
           {" "}
           Carrito de compras{" "}
         </h1>
@@ -53,13 +60,13 @@ const Cart = () => {
               <>
                 <Accordion.Item
                   eventKey={index}
-                  style={{ marginBottom: "20px" }}
+                  style={{ marginBottom: "20px", borderRadius: "20px" }}
                 >
                   <Accordion.Header>
                     Nombre del Producto: {item.productName} <span> </span>{" "}
                   </Accordion.Header>
                   {/* <Accordion.Header></Accordion.Header> */}
-                  <div className="text-end my-1 mx-3">
+                  <div className="text-end my-3 mx-3">
                     <Button
                       variant="danger"
                       onClick={() => handleDelete(userId, item._id)}
@@ -68,7 +75,10 @@ const Cart = () => {
                       <i class="fa-solid fa-trash-can"></i>{" "}
                     </Button>
                   </div>
-                  <div className="text-end my-1 mx-3">
+                  <div
+                    className="text-end my-3 mx-3"
+                    style={{ color: "rgb(255,193,7)", fontWeight: "600" }}
+                  >
                     Precio:
                     {item.price === "" ? "$300" : item.price}
                   </div>
