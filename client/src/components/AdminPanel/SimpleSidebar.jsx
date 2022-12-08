@@ -22,13 +22,17 @@ const SimpleSidebar = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-1" className="link">
-            <Link to="usuarios">Usuarios</Link>
+          <Nav.Link eventKey="link-1">
+            <Link to="usuarios" className="link">
+              Usuarios
+            </Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2" className="link">
-            <Link to="crear-producto">Crear Producto</Link>
+          <Nav.Link eventKey="link-2">
+            <Link to="crear-producto" className="link">
+              Crear Producto
+            </Link>
           </Nav.Link>
         </Nav.Item>
       </Nav>

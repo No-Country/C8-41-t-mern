@@ -85,7 +85,7 @@ const ManageUsers = () => {
 
   return (
     <>
-      <Container>
+      <Container style={{ marginBottom: "40px" }}>
         <Table striped>
           <thead>
             <tr>
