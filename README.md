@@ -106,9 +106,9 @@ The ecommerce preview:
 
 ---
 
-### Footer
+### Product Detail
 
-![screen home](./client/images/preview/footer.png)
+![screen home](./client/images/preview/productDetail.png)
 
 ---
 
