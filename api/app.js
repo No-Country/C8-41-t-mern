@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-const dominiosPertmitidos = ["https://c8-41-t-mern.vercel.app"];
+const dominiosPertmitidos = ["https://c8-41-t-mern.vercel.app", "http://localhost:3000"];
 
  const corsOptions = {
    origin: function (origin, callback) {
