@@ -139,7 +139,7 @@ The ecommerce preview:
 
 ### Password recovery
 
-![screen home](../C8-41-t-mern/client/images/preview/password.png)
+![screen home](./client/images/preview/password.png)
 
 
 ---
