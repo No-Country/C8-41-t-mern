@@ -74,7 +74,7 @@ const NavBar = () => {
                       <Link
                         to="micuenta"
                         style={{ color: "rgb(255,193,7)", background: "none" }}
-                        className="link"
+                        className="link navBarLink"
                       >
                         Panel de Usuario
                       </Link>
@@ -87,7 +87,7 @@ const NavBar = () => {
                             color: "rgb(255,193,7)",
                             background: "none",
                           }}
-                          className="link"
+                          className="link navBarLink"
                         >
                           Panel Administrativo
                         </Link>

@@ -112,3 +112,7 @@ body {
   letter-spacing: 2px;
   font-weight: 800;
 }
+
+.navBarLink:active{
+  background-color: rgb(221, 221, 221);
+}
