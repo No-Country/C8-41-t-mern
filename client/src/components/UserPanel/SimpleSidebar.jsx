@@ -16,16 +16,20 @@ const SimpleSidebar = () => {
 
   return (
     <>
-     <Nav className="col d-none d-md-block bg-dark sidebar">
+      <Nav className="col d-none d-md-block bg-dark sidebar">
         <div className="sidebar-sticky"></div>
         <Nav.Item>
           <Nav.Link>
-            <Link to="/micuenta">Mi Cuenta</Link>
+            <Link to="/micuenta" className="link">
+              Mi Cuenta
+            </Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link>
-            <Link to="ordenes">Mis Ordenes</Link>
+            <Link to="ordenes" className="link">
+              Mis Ordenes
+            </Link>
           </Nav.Link>
         </Nav.Item>
         {/* <Nav.Item>
@@ -35,12 +39,16 @@ const SimpleSidebar = () => {
         </Nav.Item> */}
         <Nav.Item>
           <Nav.Link eventKey="link-1">
-            <Link to="editar">Editar Perfil </Link>
+            <Link to="editar" className="link">
+              Editar Perfil{" "}
+            </Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-1">
-            <Link to="mensajes">Mensajes</Link>
+            <Link to="mensajes" className="link">
+              Mensajes
+            </Link>
           </Nav.Link>
         </Nav.Item>
 
