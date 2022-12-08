@@ -47,7 +47,9 @@ const NavBar = () => {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container fluid>
         <Link to="/">
-        <Nav.Link>Ver productos</Nav.Link>
+        <Navbar.Brand href="/">
+            <img src="https://drive.google.com/file/d/1VeCnYUxD_Sv4uCFUerSBpKTsfteu7SIE/view?usp=sharing" alt="mortchikian" />
+          </Navbar.Brand>
         </Link>
           
 
