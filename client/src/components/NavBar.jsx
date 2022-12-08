@@ -46,30 +46,37 @@ const NavBar = () => {
       {/* <!-- Navbar --> */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container fluid>
-          <Navbar.Brand href="/">
-            <img src="../../logo.png" alt="mortchikian" />
+        <Link to="/">
+        <Navbar.Brand >
+            <img src="https://drive.google.com/file/d/1VeCnYUxD_Sv4uCFUerSBpKTsfteu7SIE/view?usp=sharing" alt="mortchikian" />
           </Navbar.Brand>
+        </Link>
+          
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">{auth.user.name}</Nav.Link>
+              <Nav.Link>{auth.user.name}</Nav.Link>
               <Buscador />
-              <Nav.Link href="/">Ver productos</Nav.Link>
-
+              <Link to="/"><Nav.Link>Ver productos</Nav.Link></Link>
               {user ? (
                 <>
                   <NavDropdown
                     title="Opciones de Usuario"
                     id="collasible-nav-dropdown"
                   >
-                    <NavDropdown.Item href="/micuenta">
+                    <Link to="/micuenta">
+                    <NavDropdown.Item >
                       Panel de Usuario
                     </NavDropdown.Item>
+                     </Link>
                     {user.isAdmin ? (
-                      <NavDropdown.Item href="/admin">
+                      <Link to="/admin">
+                      <NavDropdown.Item>
                         Panel Administrativo
                       </NavDropdown.Item>
+                      </Link>
+                      
                     ) : (
                       ""
                     )}
