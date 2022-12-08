@@ -74,7 +74,7 @@ const OrdersList = () => {
                
                 <td>{item.orderStatus}</td>
                 <td>{item.phone}</td>
-                <td>{item.shippingAddress.address}</td>
+                <td>{item.shippingAddress.name}</td>
                 <td>{item.shippingAddress.city}</td>
                 <td>{item.shippingAddress.zip}</td>
                 <td>{item.totalPrice}</td>
