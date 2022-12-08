@@ -17,6 +17,8 @@ const Cart = () => {
       if (isEmpty) return <p>Your cart is empty</p>;
     const handleSubmit =()=>{
     e.preventDefault();
+    //ESTABLECER METODO PARA CHECKOUT AQUI
+    
     }
   return (
     <>
