@@ -17,7 +17,7 @@ const Cart = () => {
      
    
    
-    const [cart, setCart]=useState([]);
+    const [cart, setCart] = useState([]);
     
     useEffect(() => {
         setCart(cartItems);
@@ -25,11 +25,11 @@ const Cart = () => {
       }, [cart])
       
       
-      const handleDelete = ( userId, productId, e) => {
+      const handleDelete = ( userId, productId) => {
        
-        console.log(productId);
-        console.log(userId);
-        startDeleteToCart( userId, productId, e)
+        console.log('id de producto es' + productId);
+        console.log('id de usuario es' + userId);
+        startDeleteToCart( userId, productId)
     }
     
   return (
@@ -47,7 +47,7 @@ const Cart = () => {
         <Accordion.Item eventKey={index}>
             <Accordion.Header>Nombre del Producto: {item.productName} <span>{' '} </span>  </Accordion.Header>
             {/* <Accordion.Header></Accordion.Header> */}
-            <Button variant='danger' onClick={(e) => handleDelete(userId, item._id,  e)}> Eliminar </Button>
+            <Button variant='danger' onClick={() => handleDelete(userId, item._id)}> Eliminar </Button>
             
             
             <Accordion.Body> Descripcion: 

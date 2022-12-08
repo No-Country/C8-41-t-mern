@@ -113,14 +113,17 @@ export const useAuthStore = () => {
                 
             };
             
-            const startDeleteToCart = async (userId, productId) => {
-              console.log(productId)
-              console.log(userId)
+            const startDeleteToCart = async (id, idProduct) => {
+              console.log(idProduct)
+              console.log(id)
               const token = localStorage.getItem('token')
-               
+              
+            //   const item = {
+            //     idProduct: itemId,
+            //   } 
                 
                 try {
-                    const { data } = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/cart/deletecart/${userId}`, {productId} ,{ headers: { 'x-token': ` ${token}` } })
+                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/deletecart/${id}`, { idProduct }, { headers: { 'x-token': ` ${token}` } })
                     console.log(data)
                     dispatch(onDeleteCart(data))
                 } catch (error) {

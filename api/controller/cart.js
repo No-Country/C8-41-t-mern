@@ -18,6 +18,8 @@ const deleteCart = async (req, res) => {
   const { id } = req.params;
   const { idProduct } = req.body;
 
+  console.log(idProduct);
+  console.log(req.body);
   const updateUser = await User.updateOne(
     { id },
     { $pull: { cart: { _id: idProduct } } }
