@@ -32,7 +32,7 @@ const UserProfile = () => {
         <h1>Bienvenido {auth.user.name}</h1>
         <Row>
           <Col clasName="d-flex">
-            <Card>
+            <Card style={{ borderRadius: "50%" }}>
               <Card.Img
                 style={{ width: "18rem", borderRadius: "50%" }}
                 variant="top"
@@ -43,14 +43,16 @@ const UserProfile = () => {
           <Col>
             <Card style={{ width: "25rem" }}>
               <Card.Body>
-                <Card.Title>Mi Perfil</Card.Title>
+                <Card.Title style={{ color: "rgb(255,193,7)" }}>
+                  Mi Perfil
+                </Card.Title>
                 {/* <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text> */}
               </Card.Body>
               <ListGroup className="list-group-flush">
-                <ListGroup.Item>id de Usuario: {auth.user.uid}</ListGroup.Item>
+                <ListGroup.Item>ID de Usuario: {auth.user.uid}</ListGroup.Item>
                 <ListGroup.Item>Nombre: {auth.user.name}</ListGroup.Item>
                 <ListGroup.Item>Email: {auth.user.email}</ListGroup.Item>
                 <ListGroup.Item>Telefono: {auth.user.phone}</ListGroup.Item>

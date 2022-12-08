@@ -69,13 +69,21 @@ const NavBar = () => {
                     id="collasible-nav-dropdown"
                   >
                     <NavDropdown.Item>
-                      <Link to="micuenta" className="link">
+                      <Link
+                        to="micuenta"
+                        style={{ color: "rgb(255,193,7)" }}
+                        className="link"
+                      >
                         Panel de Usuario
                       </Link>
                     </NavDropdown.Item>
                     {user.isAdmin ? (
                       <NavDropdown.Item>
-                        <Link to="admin" className="link">
+                        <Link
+                          to="admin"
+                          style={{ color: "rgb(255,193,7)" }}
+                          className="link"
+                        >
                           Panel Administrativo
                         </Link>
                       </NavDropdown.Item>
