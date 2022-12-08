@@ -1,4 +1,5 @@
 # C8-41-t-mern
+
 <div align="center">
   <img alt="logo"  src="./client/images/logo.png">
 </div>
@@ -33,10 +34,10 @@
 
 <h2 id="about-the-project" > ⏰📈 About The Project </h2>
 
-1. 
-2. 
-3. 
-4. 
+1.
+2.
+3.
+4.
 
 ## Next features:
 
@@ -48,10 +49,10 @@
 
 ## 🚀 Getting Started
 
-
 ### FRONTEND
 
 First, run the development server:
+
 ```bash
 # Clone Repository
 $ git clone https://github.com/No-Country/C8-41-t-mern.git
@@ -75,7 +76,7 @@ $ npm i
 # Create .env for Environment Variables.
 $ cp .env.example .env
 # Configure the .env with your Connection Data.
-  DB_NAME= 
+  DB_NAME=
   PORT=
   SECRETORPRIVATEKEY=
   ACCESS_TOKEN=
@@ -90,6 +91,12 @@ $ npm start
 The ecommerce preview:
 
 **NOTE:** In each image, there will be a short review of how the process was to build the result seen.
+
+### Footer
+
+![screen home](../C8-41-t-mern/client/images/preview/footer.png)
+
+---
 
 ---
 
@@ -123,43 +130,40 @@ Contributions are what make the open source community such an amazing place to b
 
 <h2 id="authors"> 💻 Authors </h2>
 
+|                                                                                                              <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>                                                                                                               |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
+|                                                                                                                                                         Fausto Centurion                                                                                                                                                          |
+| <a href="#"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
-| <img src="https://www.imagar.com/wp-content/uploads/2020/11/analista_programador-scaled.jpg" width=80>|
-|:-:|
-| Fausto Centurion |
-|<a href="#"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|                                                                                                                                 <img src="https://avatars.githubusercontent.com/u/18898891?v=4" width=80>                                                                                                                                  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
+|                                                                                                                                                              Hristo S. Oviedo                                                                                                                                                              |
+| <a href="https://github.com/hristoviedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hristoviedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
-| <img src="https://avatars.githubusercontent.com/u/18898891?v=4" width=80>|
-|:-:|
-| Hristo S. Oviedo |
-|<a href="https://github.com/hristoviedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hristoviedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|                                                                                                                                                         <img src="./client/images/authors/pepe.jpg" width=80>                                                                                                                                                          |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
+|                                                                                                                                                                         José Andrés Gavilanes                                                                                                                                                                          |
+| <a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
-| <img src="./client/images/authors/pepe.jpg" width=80>|
-|:-:|
-| José Andrés Gavilanes |
-|<a href="https://github.com/joseandresgavilanes"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|                                                                                                                                        <img src="https://avatars.githubusercontent.com/u/91755159?v=4" width=80>                                                                                                                                         |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
+|                                                                                                                                                                     Miguel Guerrero                                                                                                                                                                      |
+| <a href="https://github.com/Eiine"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
-| <img src="https://avatars.githubusercontent.com/u/91755159?v=4" width=80>|
-|:-:|
-| Miguel Guerrero |
-|<a href="https://github.com/Eiine"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|                                                                                                                                          <img src="https://avatars.githubusercontent.com/u/41965141?v=4" width=80>                                                                                                                                          |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
+|                                                                                                                                                                         Rafael León                                                                                                                                                                         |
+| <a href="https://github.com/rafa2701"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
-| <img src="https://avatars.githubusercontent.com/u/41965141?v=4" width=80>|
-|:-:|
-| Rafael León |
-|<a href="https://github.com/rafa2701"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|                                                                                                                                            <img src="https://avatars.githubusercontent.com/u/88241852?v=4" width=80>                                                                                                                                             |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
+|                                                                                                                                                                          Sergio Calbiño                                                                                                                                                                          |
+| <a href="https://github.com/SergioCalbino"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
-| <img src="https://avatars.githubusercontent.com/u/88241852?v=4" width=80>|
-|:-:|
-| Sergio Calbiño |
-|<a href="https://github.com/SergioCalbino"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
-
-| <img src="https://avatars.githubusercontent.com/u/33527556?v=4" width=80>|
-|:-:|
-| Yohan Bello |
-|<a href="https://github.com/yohanolmedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
-
-
+|                                                                                                                                           <img src="https://avatars.githubusercontent.com/u/33527556?v=4" width=80>                                                                                                                                            |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --- |
+|                                                                                                                                                                          Yohan Bello                                                                                                                                                                           |
+| <a href="https://github.com/yohanolmedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jose-andres-gavilanes-2954691b5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |     |
 
 ---
 
