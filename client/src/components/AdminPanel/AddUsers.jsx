@@ -226,7 +226,7 @@ const AddUsers = () => {
           className="products__list-item__content-btn__details login__btn"
           type="submit"
         >
-          Register
+          Crear
         </button>
         <a href="/login" className="login__btn-link">
           Already got an account?

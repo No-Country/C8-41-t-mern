@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout, onAddToCart} from "../store/slices/auth/authSlice"
+import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout, onAddToCart, onDeleteCart} from "../store/slices/auth/authSlice"
 import { redirect } from "react-router-dom";
 
 export const useAuthStore = () => {
@@ -103,8 +103,7 @@ export const useAuthStore = () => {
                 
                 try {
                     const  {data}  = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/addcart/${id}`, cart, { headers: { 'x-token': ` ${token}` } }  )
-                    console.log("data is")
-                    console.log(data);
+                    
                     dispatch(onAddToCart(data))
                     
                     
@@ -114,10 +113,30 @@ export const useAuthStore = () => {
                    
                     
                 }
-                // console.log(perfil.uid)
                 
-        }
+            };
+            
+            const startDeleteToCart = async (id, idProduct) => {
+              console.log(idProduct)
+              console.log(id)
+              const token = localStorage.getItem('token')
+              
+            //   const item = {
+            //     idProduct: itemId,
+            //   } 
+                
+                try {
+                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/deletecart/${id}`, { idProduct }, { headers: { 'x-token': ` ${token}` } })
+                    console.log("data is")
+                    console.log(data)
+                    dispatch(onDeleteCart(data))
+                } catch (error) {
+                    console.log(error)
+                    
+                }
 
+
+            }
        
 
     return {
@@ -130,7 +149,8 @@ export const useAuthStore = () => {
         startLogout,
         startEditMyProfile,
         startEditProfile,
-        startAddToCart
+        startAddToCart,
+        startDeleteToCart
         
         
     }
