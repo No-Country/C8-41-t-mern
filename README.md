@@ -1,4 +1,4 @@
-# C8-41-t-mern
+# C8-41-T-MERN
 
 <div align="center">
   <img alt="logo"  src="./client/images/logo.png">
