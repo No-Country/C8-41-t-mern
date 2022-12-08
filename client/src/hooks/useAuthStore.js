@@ -92,6 +92,10 @@ export const useAuthStore = () => {
                     productID:item._id,
                     productName: item.name,
                     quantity:quantity,
+                    price:item.price,
+                    description:item.description,
+                    image:item.image,
+
 
                     }
                     
