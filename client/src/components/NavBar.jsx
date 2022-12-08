@@ -39,7 +39,7 @@ const NavBar = () => {
     auth.user.cart ? setCart(cartItems) : {};
     //esperando para el componente carrito
     //console.log(cart);
-  }, []);
+  }, [cartItems]);
 
   //console.log(state.payload.user)
 
