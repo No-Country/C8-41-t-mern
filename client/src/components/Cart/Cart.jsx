@@ -27,7 +27,7 @@ const Cart = () => {
         
         //let total=0;
       
-      }, [])
+      }, [cartItems])
       
       
       const handleDelete = ( userId, productId) => {
@@ -53,7 +53,8 @@ const Cart = () => {
         <Accordion.Item eventKey={index}>
             <Accordion.Header>Nombre del Producto: {item.productName} <span>{' '} </span>  </Accordion.Header>
             {/* <Accordion.Header></Accordion.Header> */}
-            <div className="text-end my-1 mx-1"><Button variant='danger'  onClick={() => handleDelete(userId, item._id)}> Eliminar </Button></div> 
+            <div className="text-start my-1 mx-1"><Button variant='danger'  onClick={() => handleDelete(userId, item._id)}> Eliminar </Button></div>
+            <div className="text-end my-1 mx-1">Precio: {item.price}</div>  
             
             
             <Accordion.Body> Descripcion: 
