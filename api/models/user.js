@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     {
       productID: types.ObjectId,
       productName: String,
-      quantity: Number,
+      quantity: Number, 
     },
   ],
   street: {

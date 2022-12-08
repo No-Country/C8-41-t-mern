@@ -18,7 +18,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState();
 
-  const name = localStorage.getItem("user");
+  
 
   useEffect(() => {
     if (errorMessage !== undefined) {
@@ -29,8 +29,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    startLogin({ email, password });
-    Swal.fire("Bienvenido/a!", `${name}`, "success");
+    startLogin({ email, password }).then(()=>{
+      const name = localStorage.getItem("user");
+      Swal.fire("Bienvenido/a!", `${name}`, "success");
+    }
+      
+    )
+    
 
     // if ([email, password].includes("")) {
     //   Swal.fire('Todos los campos son obligatorios', errorMessage, 'error')

@@ -110,7 +110,7 @@ const AddUsers = () => {
   };
 
   return (
-    <div className="login__container">
+    <div className="login__container" style={{ marginBottom: "40px" }}>
       <form
         onSubmit={handleSubmit}
         className="login__card"

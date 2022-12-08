@@ -14,33 +14,34 @@ const ManageUsers = () => {
   const auth = useSelector((state) => state) || "";
   const token = localStorage.getItem("token");
   //console.log("token is "+token);
-  
+
   useEffect(() => {
-   // console.log("url " + import.meta.env.VITE_BACKEND_URL);
+    // console.log("url " + import.meta.env.VITE_BACKEND_URL);
     const traerUsuarios = () => {
-     const url = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
 
       axios
-        .get(url, { headers: { 'x-token': ` ${token}` } })
-        .then((res) => {setUsers(res.data);
-          console.log(res.data)})
+        .get(url, { headers: { "x-token": ` ${token}` } })
+        .then((res) => {
+          setUsers(res.data);
+          console.log(res.data);
+        })
         .catch((error) => console.log(error));
     };
     traerUsuarios();
-    
   }, [users]);
 
   const handleDelete = async (id, e, user) => {
     e.preventDefault();
-    console.log("id is "+id);
+    console.log("id is " + id);
     const target = `${import.meta.env.VITE_BACKEND_URL}/api/users/${id}`;
     await Swal.fire({
       position: "center",
       icon: "warning",
       title: `Desea Eliminar el usuario ${user} ?`,
       showDenyButton: true,
-      confirmButtonText: 'Si',
-      confirmButtonColor: 'green',
+      confirmButtonText: "Si",
+      confirmButtonColor: "green",
       denyButtonText: `No`,
       buttons: true,
       //dangerMode: true,
@@ -48,45 +49,43 @@ const ManageUsers = () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         axios
-        .delete(target, { headers: { 'x-token': ` ${token}` } })
-        .then((res) => {
-          console.log({res});
-          console.log("usuario eliminado");
-          //necesito forzar update
-          // 
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `El usuario ${user} fue eliminado exitosamente`,
-            showConfirmButton: false,
-            timer: 2500,
-          });
-          
-        })
-        .catch((error) => console.log(error));
+          .delete(target, { headers: { "x-token": ` ${token}` } })
+          .then((res) => {
+            console.log({ res });
+            console.log("usuario eliminado");
+            //necesito forzar update
+            //
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: `El usuario ${user} fue eliminado exitosamente`,
+              showConfirmButton: false,
+              timer: 2500,
+            });
+          })
+          .catch((error) => console.log(error));
         //Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('El usuario no ha sido eliminado', '', 'info')
-      }});
-    };
-    const handleEdit = async (id, e, user) => {
+        Swal.fire("El usuario no ha sido eliminado", "", "info");
+      }
+    });
+  };
+  const handleEdit = async (id, e, user) => {};
 
-    }
-
-    // Modal de Editar Usuario
-    const [show, setShow] = useState(false);
-    const [user, setUser] = useState();
-    const [edit, setEdit] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = (e, user) =>{
-        e.preventDefault();
-        setShow(true);
-        setUser(user);
-    } 
+  // Modal de Editar Usuario
+  const [show, setShow] = useState(false);
+  const [user, setUser] = useState();
+  const [edit, setEdit] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (e, user) => {
+    e.preventDefault();
+    setShow(true);
+    setUser(user);
+  };
 
   return (
     <>
-      <Container>
+      <Container style={{ marginBottom: "40px" }}>
         <Table striped>
           <thead>
             <tr>
@@ -100,7 +99,7 @@ const ManageUsers = () => {
           </thead>
           <tbody>
             {users.map((user, index) => {
-             //console.log("user is...");
+              //console.log("user is...");
               //console.log(user);
               return (
                 <tr key={index}>
@@ -109,11 +108,16 @@ const ManageUsers = () => {
                   {/* <td>{checkStock(user.stock)}</td> */}
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
-                  <td>{user.isAdmin? 'Si' : 'No'}</td>
+                  <td>{user.isAdmin ? "Si" : "No"}</td>
                   <td>
-                    <Button variant="success"  onClick={(e) => {
+                    <Button
+                      variant="success"
+                      onClick={(e) => {
                         handleShow(e, user, setEdit(true));
-                      }}>Editar</Button>{" "}
+                      }}
+                    >
+                      Editar
+                    </Button>{" "}
                     {/* <Button variant="warning">Ed</Button>{' '} */}
                     <Button
                       variant="danger"
@@ -130,17 +134,26 @@ const ManageUsers = () => {
             })}
           </tbody>
         </Table>
-        <Button className="btn btn-success float-end" onClick={(e) => {
-                        handleShow( e,{}, setEdit(false));
-                      }}>
-            Adñadir Usuario <i className=" fa-solid fa-plus"></i>
-          </Button>
+        <Button
+          className="products__list-item__content-btn__details"
+          onClick={(e) => {
+            handleShow(e, {}, setEdit(false));
+          }}
+        >
+          Añadir Usuario <i className=" fa-solid fa-plus"></i>
+        </Button>
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           {/* <Modal.Title>Editar Usuario</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="py-0 my-0">{edit==true?<EditProfiles user={user} token={token} />:<AddUsers/>}</Modal.Body>
+        <Modal.Body className="py-0 my-0">
+          {edit == true ? (
+            <EditProfiles user={user} token={token} />
+          ) : (
+            <AddUsers />
+          )}
+        </Modal.Body>
         {/*  */}
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -151,7 +164,6 @@ const ManageUsers = () => {
           </Button>
         </Modal.Footer> */}
       </Modal>
-
     </>
   );
 };
