@@ -117,14 +117,7 @@ export const useAuthStore = () => {
               console.log(productId)
               console.log(userId)
               const token = localStorage.getItem('token')
-                const cart= {
-                    cart: {
-                    productID:productId,
-                   
-
-                    }
-                    
-                }
+               
                 
                 try {
                     const { data } = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/cart/deletecart/${userId}`, {productId} ,{ headers: { 'x-token': ` ${token}` } })
