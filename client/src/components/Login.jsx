@@ -18,7 +18,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState();
 
-  const name = localStorage.getItem("user");
+  
 
   useEffect(() => {
     if (errorMessage !== undefined) {
@@ -30,6 +30,7 @@ const Login = () => {
     e.preventDefault();
 
     startLogin({ email, password }).then(()=>{
+      const name = localStorage.getItem("user");
       Swal.fire("Bienvenido/a!", `${name}`, "success");
     }
       
