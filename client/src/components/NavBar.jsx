@@ -48,7 +48,7 @@ const NavBar = () => {
         <Container fluid>
         <Link to="/">
         <Navbar.Brand >
-            <img src="https://drive.google.com/file/d/1VeCnYUxD_Sv4uCFUerSBpKTsfteu7SIE/view?usp=sharing" alt="mortchikian" />
+            <img src="logo.png" alt="mortchikian" />
           </Navbar.Brand>
         </Link>
           
