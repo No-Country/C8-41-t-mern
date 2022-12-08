@@ -18,8 +18,9 @@ const Cart = () => {
     const handleSubmit =()=>{
     e.preventDefault();
     //ESTABLECER METODO PARA CHECKOUT AQUI
-    
+
     }
+    console.log(items);
   return (
     <>
     <Container>
