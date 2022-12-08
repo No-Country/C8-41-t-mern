@@ -59,7 +59,7 @@ const Cart = () => {
                     Nombre del Producto: {item.productName} <span> </span>{" "}
                   </Accordion.Header>
                   {/* <Accordion.Header></Accordion.Header> */}
-                  <div className="text-start my-1 mx-1">
+                  <div className="text-end my-1 mx-3">
                     <Button
                       variant="danger"
                       onClick={() => handleDelete(userId, item._id)}
@@ -68,9 +68,9 @@ const Cart = () => {
                       <i class="fa-solid fa-trash-can"></i>{" "}
                     </Button>
                   </div>
-                  <div className="text-end my-1 mx-1">
+                  <div className="text-end my-1 mx-3">
                     Precio:
-                    {item.price === " " ? "300" : item.price}
+                    {item.price === "" ? "$300" : item.price}
                   </div>
 
                   <Accordion.Body>
