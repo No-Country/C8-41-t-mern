@@ -18,12 +18,13 @@ import OrdersList from "./components/UserPanel/OrdersList";
 import Login from "./components/Login";
 import Forbidden from "./components/Forbidden/Forbidden";
 import DetalleBusqueda from "./components/DetalleBusqueda";
-import UserProfile from "./components/UserPanel/UserPerfil";
+import UserProfile from "./components/UserPanel/UserProfile";
 import EditProfile from "./components/UserPanel/EditProfile";
-
-
-
-
+import PasswordReset from "./components/PasswordReset";
+import NewPassword from "./components/NewPassword";
+import MyProfile from "./components/UserPanel/MyProfile";
+import Cart from "./components/Cart/Cart";
+import Comprar from "./components/Comprar";
 
 
 function App() {
@@ -54,17 +55,20 @@ function App() {
           <Route index element={<Products />} />
           <Route path="detalle/:id" element={<ProductDetail />} />
           <Route path="register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/detalle-busqueda" element={<DetalleBusqueda />} />
-          <Route path="/restringido" element={<Forbidden />} />
+          <Route path="login" element={<Login />} />
+          <Route path="password-reset" element={<PasswordReset />} />
+          <Route path="newpassword/:id" element={<NewPassword />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="comprar" element={<Comprar/>} > </Route>
+          <Route path="detalle-busqueda" element={<DetalleBusqueda />} />
+          <Route path="restringido" element={<Forbidden />} />
 
           {/* Rutas del Panel de Usuario */}
           <Route
             path="micuenta"
             element={user ? <UserPanel /> : <Navigate to="/login" replace />}
           >
-            <Route index element={<h3>Account panel</h3>} />
-            <Route path="perfil" element={<UserProfile />} />
+            <Route index element={<UserProfile />} />
             <Route path="editar" element={<EditProfile />} />
             <Route path="ordenes" element={<OrdersList />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
@@ -79,7 +83,7 @@ function App() {
               isAdmin ? <AdminPanel /> : <Navigate to="/restringido" replace />
             }
           >
-            <Route index element={<h3>Account panel</h3>} />
+            <Route index element={<h3>Admin panel</h3>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<ManageUsers />} />
             <Route path="crear-producto" element={<CreateProduct />} />

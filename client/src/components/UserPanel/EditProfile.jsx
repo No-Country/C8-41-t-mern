@@ -1,88 +1,72 @@
-import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useAuthStore } from '../../hooks/useAuthStore';
-import Swal from 'sweetalert2'
-
-
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useAuthStore } from "../../hooks/useAuthStore";
+import Swal from "sweetalert2";
 
 const EditProfile = () => {
+  const { startEditMyProfile } = useAuthStore();
+  const auth = useSelector((state) => state.user);
+  const [perfil, setPerfil] = useState({});
+  const token = localStorage.getItem("token");
+  let response = "";
 
-   const {  startEditMyProfile } = useAuthStore()
-    const auth = useSelector( state => state.user );
-    const [perfil, setPerfil] = useState({})
-    const token = localStorage.getItem("token");
-    let response = '';
-    
-   
-    useEffect(() => {
-      setPerfil(auth)
-    }, [])
-    
-    
-    
-    
-    const handleInputChange = (e) => {
-      setPerfil({
-        ...perfil,
-        [e.target.name] : e.target.value
-      })
-      
-    }
-    
-    const handleSubmit =  async (e) => {
-      e.preventDefault();
-      
-      startEditMyProfile(perfil, token).then(async()=>{
-        console.log("response is...");
+  useEffect(() => {
+    setPerfil(auth);
+  }, []);
+
+  const handleInputChange = (e) => {
+    setPerfil({
+      ...perfil,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    startEditMyProfile(perfil, token).then(async () => {
+      console.log("response is...");
       console.log(response);
-      response=localStorage.getItem("res")
-        if(response==='success'){
-          await Swal.fire(
-            '¡Exito!',
-            'Tu perfil se ha actualizado de forma exitosa',
-            'success'
-          )
-        }else{
-          await Swal.fire(
-            '¡Error!',
-            `${response}`,
-            'warning'
-          )
-        }
-      })
-      localStorage.setItem("res", "")
+      response = localStorage.getItem("res");
+      if (response === "success") {
+        await Swal.fire(
+          "¡Exito!",
+          "Tu perfil se ha actualizado de forma exitosa",
+          "success"
+        );
+      } else {
+        await Swal.fire("¡Error!", `${response}`, "warning");
       }
-   
+    });
+    localStorage.setItem("res", "");
+  };
 
   return (
     <>
-    <div className="login__container">
-    <form onSubmit={handleSubmit}
-      
-      className="login__card"
-      style={{ marginTop: "50px" }}
-    >
-      <h2 className="login__title">Editar Perfil!</h2>
-      <div className="login__field">
-        <i className="input-icon fa-solid fa-user"></i>
-        <input
-          value={perfil.name || ''}
-          name='name'
-          onChange={handleInputChange}
-          autoComplete="on"
-          placeholder="Full name"
-          className="login__input-field"
-          type="text"
-          id="name"
-        />
-       
+      <div className="login__container">
+        <form
+          onSubmit={handleSubmit}
+          className="login__card"
+          style={{ marginTop: "50px" }}
+        >
+          <h2 className="login__title">Editar Perfil!</h2>
+          <div className="login__field">
+            <i className="input-icon fa-solid fa-user"></i>
+            <input
+              value={perfil.name || ""}
+              name="name"
+              onChange={handleInputChange}
+              autoComplete="on"
+              placeholder="Full name"
+              className="login__input-field"
+              type="text"
+              id="name"
+            />
+          </div>
 
-        
-      </div>
-
-      <div className="login__field">
+          {/* <div className="login__field">
         <svg
           className="input-icon"
           viewBox="0 0 500 500"
@@ -100,8 +84,8 @@ const EditProfile = () => {
           type="email"
           id="email"
         />
-      </div>
-      <div className="login__field">
+      </div> */}
+          {/* <div className="login__field">
         <svg
           className="input-icon"
           viewBox="0 0 500 500"
@@ -119,47 +103,65 @@ const EditProfile = () => {
           name="password"
           id="password"
         />
-      </div>
-      <div className="login__field">
-        <i className="input-icon fa-solid fa-phone"></i>
-        <input
-            value={perfil.phone || ''}
-          onChange={handleInputChange}
-          autoComplete="off"
-          type="tel"
-          placeholder="Cellphone"
-          className="login__input-field"
-          name="phone"
-          id="cellphone"
-        />
-      </div>
-      <div className="login__field">
-        <i className="input-icon fa-solid fa-street"></i>
-        <input
-          value={perfil.street || ''}
-          onChange={handleInputChange}
-          autoComplete="off"
-          type="text"
-          placeholder="Street"
-          className="login__input-field"
-          name="street"
-          id="street"
-        />
-      </div>
-      
+      </div> */}
+          <div className="login__field">
+            <i className="input-icon fa-solid fa-phone"></i>
+            <input
+              value={perfil.phone || ""}
+              onChange={handleInputChange}
+              autoComplete="off"
+              type="tel"
+              placeholder="Cellphone"
+              className="login__input-field"
+              name="phone"
+              id="cellphone"
+            />
+          </div>
+          <div className="login__field">
+            <i className="input-icon fa-solid fa-home"></i>
+            <input
+              value={perfil.street || ""}
+              onChange={handleInputChange}
+              autoComplete="off"
+              type="text"
+              placeholder="Street"
+              className="login__input-field"
+              name="street"
+              id="street"
+            />
+          </div>
 
-      <button className="login__btn" type='submit' >Actualizar Perfil</button>
-      {/* <a href="#" className="login__btn-link">
+          <div className="login__field">
+            <i className="input-icon fa-solid fa-home"></i>
+            <input
+              value={perfil.zip || ""}
+              onChange={handleInputChange}
+              autoComplete="off"
+              type="text"
+              placeholder="Street"
+              className="login__input-field"
+              name="street"
+              id="street"
+            />
+          </div>
+
+          <button
+            className="products__list-item__content-btn__details login__btn"
+            type="submit"
+          >
+            Actualizar Perfil
+          </button>
+          {/* <a href="#" className="login__btn-link">
         Already got an account?
       </a> */}
-      <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
-      <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
-      <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
-      <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
-    </form>
-  </div>
-  </>
-  )
-}
+          <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
+          <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>
+          <i className="register__icon3 register__icon fa-solid fa-masks-theater"></i>
+          <i className="register__icon4 register__icon fa-solid fa-masks-theater"></i>
+        </form>
+      </div>
+    </>
+  );
+};
 
-export default EditProfile
+export default EditProfile;

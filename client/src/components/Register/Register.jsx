@@ -1,11 +1,9 @@
-
 import { useState } from "react";
 import axios from "axios";
 import "./register.css";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  
   let regUser = {
     name: "",
     email: "",
@@ -15,15 +13,12 @@ const Register = () => {
     zip: "",
   };
   const [user, setUser] = useState(regUser);
-  const [alerta, setAlerta] = useState('')
-  const {  name, email, passwordHash, street, phone, zip } = user
-  
-  let respuesta;
-  let emailRegex = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i
-  
+  const [alerta, setAlerta] = useState("");
+  const { name, email, passwordHash, street, phone, zip } = user;
 
- 
-   
+  let respuesta;
+  let emailRegex =
+    /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
 
   const handleInputChange = (e) => {
     setUser({
@@ -35,42 +30,44 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([name, email, passwordHash, street, phone, zip].some(inputs => inputs === '')) {
+    if (
+      [name, email, passwordHash, street, phone, zip].some(
+        (inputs) => inputs === ""
+      )
+    ) {
       setAlerta(
         <h3 className="alert alert-danger" role="alert">
           Todos los campos son obligatorios
         </h3>
       );
       setTimeout(() => {
-        setAlerta('')
+        setAlerta("");
       }, 3000);
-     return
-   }
+      return;
+    }
 
-   if (passwordHash.length < 7) {
-    setAlerta(
-      <h3 className="alert alert-danger" role="alert">
-        El password debe tener como minimo 6 caracteres
-      </h3>
-    );
-    setTimeout(() => {
-      setAlerta('')
-    }, 3000);
-   return
-    
-   }
-   if (!emailRegex.test(email)) {
-    setAlerta(
-      <h3 className="alert alert-danger" role="alert">
-        El email ingresao no contiene caracteres válidos
-      </h3>
-    );
-    setTimeout(() => {
-      setAlerta('')
-    }, 3000);
-   return
-    
-   }
+    if (passwordHash.length < 7) {
+      setAlerta(
+        <h3 className="alert alert-danger" role="alert">
+          El password debe tener como minimo 6 caracteres
+        </h3>
+      );
+      setTimeout(() => {
+        setAlerta("");
+      }, 3000);
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      setAlerta(
+        <h3 className="alert alert-danger" role="alert">
+          El email ingresado no contiene caracteres válidos
+        </h3>
+      );
+      setTimeout(() => {
+        setAlerta("");
+      }, 3000);
+      return;
+    }
 
     const URL = `${import.meta.env.VITE_BACKEND_URL}/api/users`;
 
@@ -105,7 +102,7 @@ const Register = () => {
         className="login__card"
         style={{ marginTop: "50px" }}
       >
-      {alerta}
+        {alerta}
         <h2 className="login__title">Register!</h2>
         <div className="login__field">
           <i className="input-icon fa-solid fa-user"></i>
@@ -165,7 +162,7 @@ const Register = () => {
             value={user.phone}
             name="phone"
             onChange={handleInputChange}
-            type="number"
+            type="tel"
             placeholder="Telefono"
             className="login__input-field"
             id="phone"
@@ -192,16 +189,19 @@ const Register = () => {
             autoComplete="off"
             placeholder="Codigo Postal"
             className="login__input-field"
-            type='number'
+            type="number"
             id="zip"
           />
         </div>
 
-        <button className="login__btn" type="submit">
-          Register
+        <button
+          className="products__list-item__content-btn__details login__btn"
+          type="submit"
+        >
+          Registrate
         </button>
         <a href="/login" className="login__btn-link">
-          Already got an account?
+          Ya tienes cuenta?
         </a>
         <i className="register__icon1 register__icon fa-solid fa-masks-theater"></i>
         <i className="register__icon2 register__icon fa-solid fa-masks-theater"></i>

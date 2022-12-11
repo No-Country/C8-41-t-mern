@@ -5,25 +5,29 @@ import cors from "cors";
 import config from "./config/config.js";
 import routerApi from "./route/index.js";
 dotenv.config();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
 
-const dominiosPertmitidos = ["http://localhost:3000"];
+const dominiosPertmitidos = ["https://c8-41-t-mern.vercel.app", "http://localhost:3000"];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (dominiosPertmitidos.indexOf(origin) !== -1) {
-      // El origen del request esta permitido
-      callback(null, true);
-    } else {
+ const corsOptions = {
+   origin: function (origin, callback) {
+     if (dominiosPertmitidos.indexOf(origin) !== -1 || !origin) {
+       //El origen del request esta permitido
+       callback(null, true);
+     } else {
       callback(new Error("No permitido por CORS"));
     }
   },
-};
+ };
 
-// app.use(cors(corsOptions));
+
+ app.use(cors(corsOptions));
+
+
+
 
 routerApi(app);
 

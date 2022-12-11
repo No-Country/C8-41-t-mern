@@ -9,11 +9,7 @@ import { validateResetPassword } from "../validator/resetPassword.js";
 const router = express.Router();
 router.use(express.json());
 
-router.get("/", passwordReset);
-router.put(
-  "/:userId/:token",
-  [validateResetPassword, validateJWTPass],
-  passwordResetUser
-);
+router.post("/", passwordReset);
+router.post("/:userId/:token", [validateResetPassword, validateJWTPass], passwordResetUser);
 
 export default router;

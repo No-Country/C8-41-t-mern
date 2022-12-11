@@ -13,9 +13,9 @@ const getUsers = async (req, res) => {
 //Crear usuario
 const createUser = async (req, res) => {
   const body = req.body;
-  const { name, email, passwordHash, street, phone, zip } = body;
+  const { name, email, passwordHash, street, phone, zip, isAdmin } = body;
 
-  const user = new User({ name, email, passwordHash, street, phone, zip });
+  const user = new User({ name, email, passwordHash, street, phone, zip, isAdmin });
 
   //Verificar si el correo existe
   const repeatedEmail = await User.findOne({ email });
@@ -108,11 +108,13 @@ const passwordReset = async (req, res) => {
     const token = await generateJWT(user.uid);
     if (!token) return res.status(400).send("Token inválido o expirado");
 
+   
+    
     //Enlace que recibirá el usuario
-    const link = `${process.env.BASE_URL}/password-reset/${user.uid}/${token}`;
+    const link = `${process.env.BASE_URL}password-reset/${user.uid}/${token}`;
     console.log(link);
     //Envío de correo con link de recuperación
-    sendRecoveryPasswordMail(user, link);
+    sendRecoveryPasswordMail(user, link, token);
 
     res.send(message);
   } catch (error) {
@@ -125,6 +127,8 @@ const passwordReset = async (req, res) => {
 const passwordResetUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
+    const token = req.params
+    console.log
     if (!user) return res.status(400).send("Enlace inválido o expirado");
 
     //Encriptar contraseña
@@ -132,6 +136,7 @@ const passwordResetUser = async (req, res) => {
     let userPassword = req.body.password;
     userPassword = bcrypt.hashSync(userPassword, salt);
     user.passwordHash = userPassword;
+    user.token = token
     await user.save();
 
     res.json({

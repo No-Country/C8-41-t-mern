@@ -1,36 +1,37 @@
 import axios from "axios";
 
 const compraMp = async (req, res) => {
-  const { items } = req.body;
-
+  const { user } = req.body;
+  console.log(user);
   const url = "https://api.mercadopago.com/checkout/preferences";
   try {
-    console.log(items[0].quantity);
     const cuerpo = {
       items: [
         {
-          title: items[0].title,
-          description: items[0].description,
+          title: "orden-1",
+          description: "hola",
           currency_id: "ARS",
-          quantity: items[0].quantity,
+          quantity: 1,
           unit_price: 10,
           //notification_url: `${{}}`,
         },
       ],
       payer: {
-        phone: { 3873: "356181" },
+        phone: { area_code: "3873", number: "356181" },
         identification: {},
         address: {
           zip_code: "2585",
           street_name: "avenida siempre viva",
           street_number: 1234,
         },
+        email: "hola@htmail.com",
       },
       back_urls: {
         success: "Todo salio bien",
         pending: "Su pago esta pendiente",
         failure: "El pago a fallado",
       },
+      notification_url: "",
     };
 
     const result = await axios({

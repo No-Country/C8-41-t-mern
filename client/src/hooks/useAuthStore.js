@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout} from "../store/slices/auth/authSlice"
+import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout, onAddToCart, onDeleteCart} from "../store/slices/auth/authSlice"
 import { redirect } from "react-router-dom";
 
 export const useAuthStore = () => {
@@ -25,8 +25,8 @@ export const useAuthStore = () => {
             localStorage.setItem("token-init-date", new Date().getTime()); // Podes calcular cuando caduca el token
             localStorage.setItem("user", data.user.name)
             sessionStorage.setItem("user",data.user.name)
-            
-            dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin }))
+            console.log(data);
+            dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin, cart: data.user.cart }))
             navigate("/micuenta");
         } catch (error) {
             let err = error.response.data.error?.map(err => err.msg)
@@ -85,7 +85,58 @@ export const useAuthStore = () => {
                 // console.log(perfil.uid)
                 
         }
+        const startAddToCart = async (item, id, quantity, token) => {
+          
+                const cart= {
+                    cart: {
+                    productID:item._id,
+                    productName: item.name,
+                    quantity:quantity,
+                    price:item.price,
+                    description:item.description,
+                    image:item.image,
 
+
+                    }
+                    
+                }
+                
+                try {
+                    const  {data}  = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/addcart/${id}`, cart, { headers: { 'x-token': ` ${token}` } }  )
+                    
+                    dispatch(onAddToCart(data))
+                    
+                    
+                } catch (error) {
+                   
+                    console.log(error)
+                   
+                    
+                }
+                
+            };
+            
+            const startDeleteToCart = async (id, idProduct) => {
+              console.log(idProduct)
+              console.log(id)
+              const token = localStorage.getItem('token')
+              
+            //   const item = {
+            //     idProduct: itemId,
+            //   } 
+                
+                try {
+                    const { data } = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/deletecart/${id}`, { idProduct }, { headers: { 'x-token': ` ${token}` } })
+                    console.log("data is")
+                    console.log(data)
+                    dispatch(onDeleteCart(data))
+                } catch (error) {
+                    console.log(error)
+                    
+                }
+
+
+            }
        
 
     return {
@@ -97,7 +148,9 @@ export const useAuthStore = () => {
         startLogin,
         startLogout,
         startEditMyProfile,
-        startEditProfile
+        startEditProfile,
+        startAddToCart,
+        startDeleteToCart
         
         
     }

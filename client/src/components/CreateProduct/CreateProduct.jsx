@@ -40,13 +40,13 @@ const CreateProduct = () => {
         </h3>
       );
       setTimeout(() => {
-        setAlerta('')
+        setAlerta("");
       }, 3000);
 
       return;
     } else {
       await axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, producto)
+        .post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, producto)
         .then((resp) => (respuesta = resp.data.name));
 
       Swal.fire({
@@ -56,29 +56,29 @@ const CreateProduct = () => {
         showConfirmButton: false,
         timer: 2500,
       });
-      setProducto(newProducto = {
-        name: "",
-        image: "",
-        materials: "",
-        description: "",
-        price: "",
-        delay: "",
-        sold: "",
-      })
+      setProducto(
+        (newProducto = {
+          name: "",
+          image: "",
+          materials: "",
+          description: "",
+          price: "",
+          delay: "",
+          sold: "",
+        })
+      );
     }
-    
-
   };
 
   return (
-    <div className="login__container">
+    <div className="login__container" style={{ marginBottom: "40px" }}>
       <form
         onSubmit={handleSubmit}
         className="login__card"
         style={{ marginTop: "50px" }}
       >
         <h2 className="login__title">Create product!</h2>
-      {alerta}
+        {alerta}
         <div className="login__field">
           {/* <i className="input-icon fa-solid fa-user"></i> */}
           <input
@@ -208,7 +208,10 @@ const CreateProduct = () => {
           />
         </div>
 
-        <button type="submit" className="login__btn">
+        <button
+          type="submit"
+          className="products__list-item__content-btn__details login__btn"
+        >
           Create Product
         </button>
         {/* <a href="#" className="login__btn-link">

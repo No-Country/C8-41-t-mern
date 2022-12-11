@@ -7,6 +7,7 @@ initialState: {
         user: {},
         errorMessage: undefined, 
         
+        
   },
   reducers: {
       onChecking: (state) => {
@@ -18,13 +19,15 @@ initialState: {
        onLogin: (state, { payload }) => {
           state.status = 'authenticated';
           state.user = payload;
-          state.errorMessage = undefined
+          state.errorMessage = undefined;
+          state.user.cart = payload.cart;
 
        },
        onLogout: (state, { payload }) => {
           state.status = 'not-authenticated';
+          state.user.cart =null;
           state.user = {};
-          state.errorMessage = payload
+          state.errorMessage = payload;
 
        },
 
@@ -34,6 +37,23 @@ initialState: {
        },
        onEditProfile: (state, { payload }) => {
          
+       },
+
+       onAddToCart: (state, { payload }) => {
+
+         state.user.cart = payload.cart,
+
+         state.errorMessage = undefined
+
+       },
+       onDeleteCart: (state, { payload }) => {
+     
+         state.user.cart = payload.cart,
+         state.errorMessage = undefined
+       },
+       onUpdateCartQuantity: (state, { payload }) => {
+         state.user.cart = payload
+
        },
 
       
@@ -47,4 +67,4 @@ initialState: {
 
 
 // Action creators are generated for each case reducer function
-export const { onLogin, onChecking, onLogout, clearErrorMessage, onEditProfile, onEditMyProfile } = authSlice.actions;
+export const { onLogin, onChecking, onLogout, clearErrorMessage, onEditProfile, onEditMyProfile, onAddToCart, onDeleteCart, onUpdateCartQuantity } = authSlice.actions;
