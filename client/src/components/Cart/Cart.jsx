@@ -9,11 +9,13 @@ import { useSelector } from "react-redux";
 import PayForm from './PayForm';
 import Checkout from './MercadoPago';
 import axios from 'axios';
+import MercadoPago from './MercadoPago';
 
 
 const Cart = () => {
     const user = useSelector((state) => state.user) || "";
     const token = localStorage.getItem("token");
+    const [buyId,setBuyId]=useState(null);
     const {
         isEmpty,
         totalUniqueItems,
@@ -25,19 +27,34 @@ const Cart = () => {
       } = useCart();
       //let total = 0.0;
       if (isEmpty) return <p>Your cart is empty</p>;
+      let order={
+        orderItems: items,
+        shippingAddress:{
+          address:user.street,
+        } ,
+        phone: user.phone,
+        totalPrice: cartTotal,
+        email: user.email,
+        userId: user.uid,
+      }
+      useEffect(() => {
+         axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/api/compra`,  order, { headers: { "x-token": ` ${token}` } })
+        .then((resp) => {
+        //respuesta = resp.data;
+        console.log(resp);
+      setBuyId(resp); })
+        .catch((error) => console.log(error));
+      
+        
+        
+
+      }, [])
+      
     const handleClick = async(e)=>{
     e.preventDefault();
     console.log(items);
-    let order={
-      orderItems: items,
-      shippingAddress:{
-        address:user.street,
-      } ,
-      phone: user.phone,
-      totalPrice: cartTotal,
-      email: user.email,
-      userId: user.uid,
-    }
+    
     // const url=`${import.meta.env.VITE_BACKEND_URL}/api/orders`;
     // //ORDEN DE COMPRA (FUNCIONA)
     // await axios
@@ -48,12 +65,7 @@ const Cart = () => {
     //   })
     //     .catch((error) => console.log(error));
     //ESTABLECER METODO PARA CHECKOUT AQUI
-      await axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/api/compra`,  order, { headers: { "x-token": ` ${token}` } })
-        .then((resp) => {
-        //respuesta = resp.data;
-        console.log(resp); })
-        .catch((error) => console.log(error));
+      
     }
     console.log(items);
   return (
@@ -158,13 +170,11 @@ const Cart = () => {
           })}
         </Accordion>
         <h2 className="text-end">Total: {cartTotal}</h2>
-        <Button onClick={handleClick}>Confirmar Compra</Button>
+        <MercadoPago buyId={buyId}/>
+        {/* <Button onClick={handleClick}>Confirmar Compra</Button> */}
         {/* <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
-
             <Link to='/comprar' > <Button> Ver compra</Button> </Link>
-
-
           </div>
         </form> */}
       </Container>

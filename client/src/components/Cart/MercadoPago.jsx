@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMercadopago } from 'react-sdk-mercadopago';
 
-export default function MercadoPago(orderId) {
+export default function MercadoPago(buyId) {
     const mercadopago = useMercadopago.v2('TEST-8163893a-3cbe-4481-ab6e-7686a91eb7a9', {
         locale: 'es-AR'
     });
@@ -10,11 +10,12 @@ export default function MercadoPago(orderId) {
         if (mercadopago) {
             mercadopago.checkout({
                 preference: {
-                    id: orderId,
+                    id: `${buyId}`,
                 },
                 render: {
                     container: '.cho-container',
-                    label: 'Pay',
+                    label: 'Pagar Carrito',
+                    
                 }
             })
         }

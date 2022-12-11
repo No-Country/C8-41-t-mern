@@ -48,7 +48,7 @@ console.log(items);
     const result = await axios({
       method: "post",
       url: url,
-      headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}` },
+      headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,  },
       data: buyOrder,
     });
     
