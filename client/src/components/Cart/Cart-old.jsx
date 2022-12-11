@@ -6,6 +6,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import { useAuthStore } from "../../hooks/useAuthStore";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { startDeleteToCart } = useAuthStore();
@@ -29,7 +30,7 @@ const Cart = () => {
     });
   };
   const handleSubmit = () => {
-    localStorage.setItem("checkout", "")
+    localStorage.setItem("checkout", "");
     localStorage.setItem("total", "");
     //gestionar checkout
   };
@@ -37,7 +38,17 @@ const Cart = () => {
   return (
     <>
       <Container className="my-3">
-        <h1> Carrito de compras </h1>
+        <h1
+          style={{
+            color: "rgb(255,193,7)",
+            textAlign: "center",
+            fontWeight: "600",
+            letterSpacing: "1.5px",
+          }}
+        >
+          {" "}
+          Carrito de compras{" "}
+        </h1>
         <h2> Productos en el carrito: {cart.length} </h2>
 
         <Accordion>
@@ -48,21 +59,30 @@ const Cart = () => {
             total += item.price;
             return (
               <>
-                <Accordion.Item eventKey={index}>
+                <Accordion.Item
+                  eventKey={index}
+                  style={{ marginBottom: "20px", borderRadius: "20px" }}
+                >
                   <Accordion.Header>
                     Nombre del Producto: {item.productName} <span> </span>{" "}
                   </Accordion.Header>
                   {/* <Accordion.Header></Accordion.Header> */}
-                  <div className="text-start my-1 mx-1">
+                  <div className="text-end my-3 mx-3">
                     <Button
                       variant="danger"
                       onClick={() => handleDelete(userId, item._id)}
                     >
                       {" "}
-                      Eliminar{" "}
+                      <i class="fa-solid fa-trash-can"></i>{" "}
                     </Button>
                   </div>
-                  <div className="text-end my-1 mx-1">Precio: {item.price}</div>
+                  <div
+                    className="text-end my-3 mx-3"
+                    style={{ color: "rgb(255,193,7)", fontWeight: "600" }}
+                  >
+                    Precio:
+                    {item.price === "" ? "$300" : item.price}
+                  </div>
 
                   <Accordion.Body>
                     {" "}
@@ -75,6 +95,7 @@ const Cart = () => {
                     Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id est laborum.
                   </Accordion.Body>
+                  <h2 className="text-end" >Cantidad: {item.quantity}</h2>
                 </Accordion.Item>
               </>
             );
@@ -83,7 +104,10 @@ const Cart = () => {
         <h2 className="text-end">Total: {total}</h2>
         <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
-            <Button>Comprar</Button>
+
+            <Link to='/comprar' > <Button> Ver compra</Button> </Link>
+
+
           </div>
         </form>
       </Container>

@@ -49,7 +49,7 @@ const createOrder = async (req, res) => {
       orderItems,
       shippingAddress,
       phone,
-      orderStatus: "Confirmado",
+      orderStatus: "En Proceso",
       orderDate: new Date(),
       deliveryDate: new Date(), //TODO: Incrementar la fecha
       totalPrice,
