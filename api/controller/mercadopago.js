@@ -44,14 +44,14 @@ console.log(items);
       },
       notification_url: "",
     };
-    console.log(buyOrder)
+    
     const result = await axios({
       method: "post",
       url: url,
       headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,  },
       data: buyOrder,
     });
-    
+    console.log(result);
    // res.send(result.data.init_point); //ENLACE DE FORMATO DE PAGO
     res.send(result.data.id); //ID de preferencia del formato
   } catch (error) {

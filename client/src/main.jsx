@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 // import { store } from './store/store.js'
-import { CartProvider, useCart } from "react-use-cart";
+import { CartProvider } from "react-use-cart";
 import { Provider } from 'react-redux'
 import { persistor, store } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
