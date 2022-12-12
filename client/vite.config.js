@@ -8,14 +8,7 @@ export default defineConfig({
     port: 3000,
 
   },
-  build: {
-    rollupOptions:{
-      external:[
-        "react-use-cart",
-        "react-sdk-mercadopago"
-      ]
-    }
-  }
+  
   // preview: {
   //   port: 3000,
   //   host: '0.0.0.0',

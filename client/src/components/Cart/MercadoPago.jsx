@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useMercadopago } from '/react-sdk-mercadopago';
+import { useMercadopago } from 'react-sdk-mercadopago';
 
 export default function MercadoPago(buyId) {
     const mercadopago = useMercadopago.v2('TEST-8163893a-3cbe-4481-ab6e-7686a91eb7a9', {
