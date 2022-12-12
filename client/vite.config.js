@@ -8,6 +8,15 @@ export default defineConfig({
     port: 3000,
 
   },
+  build: {
+    rollupOptions:{
+      external:[
+        "react",
+        "react-dom",
+        "react-use-cart"
+      ]
+    }
+  }
   // preview: {
   //   port: 3000,
   //   host: '0.0.0.0',
