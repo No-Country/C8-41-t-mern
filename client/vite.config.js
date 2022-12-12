@@ -13,7 +13,8 @@ export default defineConfig({
       external:[
         "react",
         "react-dom",
-        "react-use-cart"
+        "react-use-cart",
+        "react-sdk-mercadopago",
       ]
     }
   }
