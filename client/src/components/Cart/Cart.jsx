@@ -1,5 +1,5 @@
 import React from 'react'
-import { CartProvider, useCart } from "react-use-cart";
+import { CartProvider, useCart } from "/react-use-cart";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
