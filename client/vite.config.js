@@ -11,10 +11,8 @@ export default defineConfig({
   build: {
     rollupOptions:{
       external:[
-        "react",
-        "react-dom",
         "react-use-cart",
-        "react-sdk-mercadopago",
+        "react-sdk-mercadopago"
       ]
     }
   }
