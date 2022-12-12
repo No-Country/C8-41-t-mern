@@ -26,7 +26,7 @@ const Cart = () => {
         cartTotal,
       } = useCart();
       //let total = 0.0;
-      if (isEmpty) return <p>Your cart is empty</p>;
+      if (isEmpty) return <p>Tu Carrito esta vacio</p>;
       let order={
         orderItems: items,
         shippingAddress:{
@@ -43,7 +43,7 @@ const Cart = () => {
         .then((resp) => {
         //respuesta = resp.data;
         console.log(resp);
-      setBuyId(resp); })
+      setBuyId(resp.data); })
         .catch((error) => console.log(error));
       
         
