@@ -28,6 +28,7 @@ import CheckoutResult from "./components/Checkout/CheckoutResult";
 import Checkout from "./components/Checkout/Checkout";
 
 
+
 function App() {
   const auth = useSelector((state) => state) || "";
   let user=null;
@@ -60,10 +61,11 @@ function App() {
           <Route path="password-reset" element={<PasswordReset />} />
           <Route path="newpassword/:id" element={<NewPassword />} />
           <Route path="cart" element={<Cart />} />
+
           <Route path="checkout" element={<Checkout />}>
           <Route path="result" element={user ? <CheckoutResult /> : <Navigate to="/login" replace/>} />
           </Route>
-          
+        
           <Route path="detalle-busqueda" element={<DetalleBusqueda />} />
           <Route path="restringido" element={<Forbidden />} />
 
