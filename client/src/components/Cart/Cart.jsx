@@ -49,7 +49,7 @@ const Cart = () => {
         
         
 
-      }, [])
+      }, [items])
       
     const handleClick = async(e)=>{
     e.preventDefault();

@@ -8,6 +8,7 @@ export default function MercadoPago({buyId}) {
         locale: 'es-AR'
     });
     // MERCADOPAGO V2
+   
     useEffect(() => {
         if (mercadopago) {
             mercadopago.checkout({
@@ -21,7 +22,7 @@ export default function MercadoPago({buyId}) {
                 }
             })
         }
-    }, [mercadopago])
+    }, [buyId])
    
    //MERCADOPAGO V1
     // useEffect(() => {
