@@ -1,94 +1,198 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from 'react'
+import { CartProvider, useCart } from "react-use-cart";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
-import { useAuthStore } from "../../hooks/useAuthStore";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import PayForm from './PayForm';
+import Checkout from './MercadoPago';
+import axios from 'axios';
+import MercadoPago from './MercadoPago';
+import { Link } from "react-router-dom";
+
 
 const Cart = () => {
-  const { startDeleteToCart } = useAuthStore();
+    const user = useSelector((state) => state.user) || "";
+    const token = localStorage.getItem("token");
+    const [buyId,setBuyId]=useState(null);
+    const {
+        isEmpty,
+        totalUniqueItems,
+        totalItems,
+        items,
+        updateItemQuantity,
+        removeItem,
+        cartTotal,
+      } = useCart();
+      //let total = 0.0;
+      if (isEmpty) return <p>Tu Carrito esta vacio</p>;
+      let order={
+        orderItems: items,
+        shippingAddress:{
+          address:user.street,
+        } ,
+        phone: user.phone,
+        totalPrice: cartTotal,
+        email: user.email,
+        userId: user.uid,
+      }
+      useEffect(() => {
+         axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/api/compra`,  order, { headers: { "x-token": ` ${token}` } })
+        .then((resp) => {
+        //respuesta = resp.data;
+        console.log(resp);
+      setBuyId(resp.data); })
+        .catch((error) => console.log(error));
+      
 
-  const cartItems = useSelector((state) => state.user.cart);
-  const userId = useSelector((state) => state.user.uid);
 
-  const [cart, setCart] = useState([]);
-  let total = 0.0;
-
-  useEffect(() => {
-    setCart(cartItems);
-    //let total=cart.price.reduce((x, y) => x + y);
-
-    //let total=0;
-  }, [cartItems]);
-
-  const handleDelete = (userId, productId) => {
-    startDeleteToCart(userId, productId).then(() => {
-      setCart(cartItems);
-    });
-  };
-  const handleSubmit = () => {
-    localStorage.setItem("checkout", "")
-    localStorage.setItem("total", "");
-    //gestionar checkout
-  };
-
+      }, [items])
+      
+    const handleClick = async(e)=>{
+    e.preventDefault();
+    console.log(items);
+    
+    // const url=`${import.meta.env.VITE_BACKEND_URL}/api/orders`;
+    // //ORDEN DE COMPRA (FUNCIONA)
+    // await axios
+    //     .post(url, order, { headers: { "x-token": ` ${token}` } })
+    //     .then((resp) => {
+    //     //respuesta = resp.data.name;
+    //     console.log(resp);
+    //   })
+    //     .catch((error) => console.log(error));
+    //ESTABLECER METODO PARA CHECKOUT AQUI
+      
+    }
+    console.log(items);
   return (
     <>
-      <Container className="my-3">
-        <h1> Carrito de compras </h1>
-        <h2> Productos en el carrito: {cart.length} </h2>
+
+    <Container>
+      <h1>Cart ({totalUniqueItems})</h1>
+
+      <ul>
+        {items.map((item) => (
+          <li key={item.id}>
+            {item.quantity} x {item.name} &mdash;
+            <button
+              onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+            >
+              -
+            </button>
+            <button
+              onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+            >
+              +
+            </button>
+            <button onClick={() => removeItem(item.id)}>&times;</button>
+          </li>
+        ))}
+      </ul>
+      <h2 className="text-end">Total: {cartTotal}</h2>
+        {/* <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
+          <div className="text-end">
+            <Button>Comprar</Button>
+          </div>
+        </form> */}
+        {/* <PayForm/>*/}
+         
+        </Container>
+        <Container className="my-3">
+
+        <h1
+          style={{
+            color: "rgb(255,193,7)",
+            textAlign: "center",
+            fontWeight: "600",
+            letterSpacing: "1.5px",
+          }}
+        >
+          {" "}
+          Carrito de compras{" "}
+        </h1>
+
+        <h2> Productos en el carrito: {totalItems} </h2>
+
 
         <Accordion>
-          {cart?.map((item, index) => {
-            {
-              /* console.log(item) */
-            }
-            total += item.price;
+          {items?.map((item, index) => {
+  
+  
             return (
               <>
-                <Accordion.Item eventKey={index}>
+                <Accordion.Item
+                  eventKey={index}
+
+                  key={item.id}
+
+                  style={{ marginBottom: "20px", borderRadius: "20px" }}
+                >
                   <Accordion.Header>
-                    Nombre del Producto: {item.productName} <span> </span>{" "}
+                    <h3>Nombre del Producto: {item.name} </h3><span> </span>{" "}
                   </Accordion.Header>
                   {/* <Accordion.Header></Accordion.Header> */}
-                  <div className="text-start my-1 mx-1">
-                    <Button
-                      variant="danger"
-                      onClick={() => handleDelete(userId, item._id)}
+                  <div className="text-end my-3 mx-3">
+
+                  <Button
+                      variant="warning"
+                      onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
                     >
                       {" "}
-                      Eliminar{" "}
+                      <i class="fa-solid fa-minus"></i>{" "}
+                    </Button>
+                  <Button
+                      variant="warning"
+                      onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+                    >
+                      {" "}
+                      <i class="fa-solid fa-plus"></i>{" "}
+                    </Button>
+
+                    <Button
+                      variant="danger"
+                      onClick={() => removeItem(item.id)}
+                    >
+                      {" "}
+                      <i class="fa-solid fa-trash-can"></i>{" "}
                     </Button>
                   </div>
-                  <div className="text-end my-1 mx-1">Precio: {item.price}</div>
+                  <div
+                    className="text-end my-3 mx-3"
+                    style={{ color: "rgb(255,193,7)", fontWeight: "600" }}
+                  >
+                    Precio:
+
+                    {item.price === "" ? "$500" : item.price}
+
+                  </div>
 
                   <Accordion.Body>
                     {" "}
-                    Descripcion: Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
                   </Accordion.Body>
+                  <h2 className="text-end" >Cantidad: {item.quantity}</h2>
                 </Accordion.Item>
               </>
             );
           })}
         </Accordion>
-        <h2 className="text-end">Total: {total}</h2>
-        <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
+        <h2 className="text-end">Total: {cartTotal}</h2>
+        <MercadoPago buyId={buyId}/>
+        {/* <Button onClick={handleClick}>Confirmar Compra</Button> */}
+        {/* <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
-            <Button>Comprar</Button>
+
+
+
+
           </div>
-        </form>
+        </form> */}
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

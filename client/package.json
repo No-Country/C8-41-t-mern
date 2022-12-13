@@ -20,6 +20,8 @@
     "react-hook-form": "^7.39.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
+    "react-sdk-mercadopago": "^1.1.1",
+    "react-use-cart": "^1.13.0",
     "redux-persist": "^6.0.0",
     "redux-toolkit": "^1.1.2",
     "redux-toolkit-persist": "^1.1.0",

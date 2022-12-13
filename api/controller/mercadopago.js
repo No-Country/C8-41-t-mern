@@ -1,30 +1,39 @@
 import axios from "axios";
 
 const compraMp = async (req, res) => {
-  const { user } = req.body;
-
+  const order = req.body;
+  console.log(order);
   const url = "https://api.mercadopago.com/checkout/preferences";
+  const items = order.orderItems.map((item) => {
+    return {
+      title: item.name,
+      description: item.description,
+      currency_id: "ARS",
+      quantity: item.quantity,
+      unit_price: item.price,
+    };
+
+    //notification_url: `${{}}`,
+  });
+  console.log("items are..");
+  console.log(items);
   try {
-    const cuerpo = {
-      items: [
-        {
-          title: "orden-1",
-          description: "hola",
-          currency_id: "ARS",
-          quantity: 1,
-          unit_price: 10,
-          //notification_url: `${{}}`,
-        },
-      ],
+    const buyOrder = {
+      items: items,
+
+      // {
+      //   title: order.orderItems.name,
+      //       description: order.orderItems.description,
+      //       currency_id: "ARS",
+      //       quantity: order.orderItems.quantity,
+      //       unit_price: order.orderItems.price,
+      //       //notification_url: `${{}}`,
+      // },
       payer: {
-        phone: { area_code: "3873", number: "356181" },
+        phone: { phone: order.phone },
         identification: {},
-        address: {
-          zip_code: "2585",
-          street_name: "avenida siempre viva",
-          street_number: 1234,
-        },
-        email: "hola@htmail.com",
+        address: order.shippingAddress,
+        email: order.email,
       },
       back_urls: {
         success: "Todo salio bien",
@@ -38,10 +47,11 @@ const compraMp = async (req, res) => {
       method: "post",
       url: url,
       headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}` },
-      data: cuerpo,
+      data: buyOrder,
     });
-
-    res.send(result.data.init_point);
+    console.log(result);
+    // res.send(result.data.init_point); //ENLACE DE FORMATO DE PAGO
+    res.send(result.data.id); //ID de preferencia del formato
   } catch (error) {
     console.log(error);
   }
