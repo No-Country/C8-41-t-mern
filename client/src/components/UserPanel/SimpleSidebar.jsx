@@ -4,6 +4,7 @@ import { Nav } from "react-bootstrap";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { useDispatch } from "react-redux";
 
+
 const SimpleSidebar = () => {
   const { startLogout } = useAuthStore();
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const SimpleSidebar = () => {
           <Nav.Link>
             <Link to="/micuenta" className="link">
               Mi Cuenta
+
             </Link>
           </Nav.Link>
         </Nav.Item>

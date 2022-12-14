@@ -14,7 +14,6 @@ const UserPanel = () => {
     const auth = useSelector(state => state) || ""
     const navigate = useNavigate()  
     console.log(auth)
-    Swal.fire("Bienvenido/a!", `${auth.user.name}`, "success")
     console.log(Object.keys(auth.user).length)
     //console.log(state.payload.user)
     if(Object.keys(auth.user).length===0){
