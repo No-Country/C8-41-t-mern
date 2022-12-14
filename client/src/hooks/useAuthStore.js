@@ -25,7 +25,8 @@ export const useAuthStore = () => {
             localStorage.setItem("token-init-date", new Date().getTime()); // Podes calcular cuando caduca el token
             localStorage.setItem("user", data.user.name)
             sessionStorage.setItem("user",data.user.name)
-            console.log(data);
+            let name = localStorage.getItem("user")
+            console.log(name);
             dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin, cart: data.user.cart }))
             navigate("/micuenta");
         } catch (error) {
