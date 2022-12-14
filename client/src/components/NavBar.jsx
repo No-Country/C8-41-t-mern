@@ -23,7 +23,7 @@ const NavBar = () => {
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart] = useState([cartItems]);
 
-  console.log(auth)
+  console.log(auth.user)
   const { items, totalItems } = useCart();
 
   

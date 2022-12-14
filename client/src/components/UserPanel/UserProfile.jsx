@@ -57,7 +57,7 @@ const UserProfile = () => {
                 <ListGroup.Item>Email: {auth.user.email}</ListGroup.Item>
                 <ListGroup.Item>Telefono: {auth.user.phone}</ListGroup.Item>
                 <ListGroup.Item>Direccion: {auth.user.street}</ListGroup.Item>
-                <ListGroup.Item>Usuario desde</ListGroup.Item>
+                <ListGroup.Item>Usuario desde: {auth.user.date}</ListGroup.Item>
               </ListGroup>
             </Card>
           </Col>

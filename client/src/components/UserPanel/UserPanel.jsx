@@ -7,6 +7,7 @@ import { Outlet, Link, redirect } from "react-router-dom";
 //import { useAuthStore } from "../../hooks/useAuthStore";
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2";
 
 
 const UserPanel = () => {
