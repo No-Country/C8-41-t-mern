@@ -68,7 +68,10 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              {auth.user.name}
+             {
+              user ? <span className="text-white p-2 " ><span className="text-danger">User:</span> {auth.user.name}</span>
+                    : ''
+             } 
               <Buscador />
               <Nav.Link>
                 <Link to="/" className="link">
