@@ -86,18 +86,18 @@ const Footer = () => {
                     Contacto
                   </h6>
                   <p className="link">
-                    <i className="fas fa-home me-3" /> New York, NY 10012, US
+                    <i className="fas fa-home me-3" /> Buenos Aires, Argentina AR
                   </p>
                   <p className="link">
                     <i className="fas fa-envelope me-3" />
-                    info@example.com
+                    mortchikteatro@gmail.com
                   </p>
                   <p className="link">
-                    <i className="fas fa-phone me-3" /> + 01 234 567 88
+                    <i className="fas fa-phone me-3" /> + 11 5503-7467
                   </p>
-                  <p className="link">
+                  {/* <p className="link">
                     <i className="fas fa-print me-3" /> + 01 234 567 89
-                  </p>
+                  </p> */}
                 </div>
                 {/* Grid column */}
               </div>

@@ -71,11 +71,11 @@ const Cart = () => {
   return (
     <>
 
-    <Container>
+    {/* <Container>
       <h1>Cart ({totalUniqueItems})</h1>
 
       <ul>
-        {items.map((item) => (
+        {  items.map((item) => (
           <li key={item.id}>
             {item.quantity} x {item.name} &mdash;
             <button
@@ -92,7 +92,7 @@ const Cart = () => {
           </li>
         ))}
       </ul>
-      <h2 className="text-end">Total: {cartTotal}</h2>
+      <h2 className="text-end">Total: {cartTotal}</h2> */}
         {/* <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
             <Button>Comprar</Button>
@@ -100,7 +100,7 @@ const Cart = () => {
         </form> */}
         {/* <PayForm/>*/}
          
-        </Container>
+        {/* </Container> */}
         <Container className="my-3">
 
         <h1
@@ -119,6 +119,7 @@ const Cart = () => {
 
 
         <Accordion>
+        
           {items?.map((item, index) => {
   
   
