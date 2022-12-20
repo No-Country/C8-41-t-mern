@@ -48,6 +48,13 @@ const SimpleSidebar = () => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-1">
+            <Link to="change-password" className="link">
+              Actualizar Contraseña{" "}
+            </Link>
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">
             <Link to="mensajes" className="link">
               Mensajes
             </Link>
