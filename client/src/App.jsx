@@ -27,6 +27,7 @@ import Cart from "./components/Cart/Cart";
 import CheckoutResult from "./components/Checkout/CheckoutResult";
 import Checkout from "./components/Checkout/Checkout";
 import AdminProfile from "./components/AdminPanel/AdminProfile";
+import ChangePass from "./components/UserPanel/ChangePass";
 
 
 
@@ -78,6 +79,7 @@ function App() {
             <Route index element={<UserProfile />} />
             <Route path="editar" element={<EditProfile />} />
             <Route path="ordenes" element={<OrdersList />} />
+            <Route path="change-password" element={<ChangePass />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
           </Route>
         </Routes>
