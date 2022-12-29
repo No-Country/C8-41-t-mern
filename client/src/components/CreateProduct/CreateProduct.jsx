@@ -128,6 +128,7 @@ const CreateProduct = () => {
           {/* <i className="input-icon fa-solid fa-user"></i> */}
           <input
             // {...register("name")}
+            //test
             value={producto.name}
             autoComplete="on"
             placeholder="Product Name"
