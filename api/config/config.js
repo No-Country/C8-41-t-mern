@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.MONGO_URL);
+  mongoose.connect("mongodb://localhost:27017/c81");
 
   //Poblando la base de datos user
   const user = await User.find();
