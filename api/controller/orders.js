@@ -41,33 +41,33 @@ const getOneOrder = async (req, res) => {
 };
 
 const createOrder = async (req, res) => {
+  
   try {
     const body = req.body;
-    // console.log(body)
+    console.log("body es..")
+     console.log(body)
+     const items = order.orderItems.map((item)=>{
+      return {
+       title: item.name,
+       description: item.description,
+       quantity: item.quantity,
+       unit_price: item.price,
+       id: item.id,
+      }     
+   })
 
-    const {street, phone, uid, totalPrice,cart } = body;
-    let total;
-    // console.log(street, phone, uid, cart, totalPrice)
-   
-    let suma = 0;
-    total = cart.map(element => {
-    console.log(element.price)
-      suma += element.price
-      // console.log(element.price)
-       console.log(typeof(suma))
-      
-    });
+    const {shippingAddress, phone, userId, totalPrice,cart } = body;
     
  
     const newOrder = new ordersModel({
-      
-      shippingAddress: street,
-      phone,
+      orderItems: items,
+      shippingAddress: shippingAddress.address,
+      phone: phone,
       orderStatus: "En Proceso",
       orderDate: new Date(),
       deliveryDate: new Date(), //TODO: Incrementar la fecha
-      totalPrice: suma,
-      userId: uid,
+      totalPrice: totalPrice,
+      userId: userId,
     });
     const saved = await newOrder.save();
     res.status(200).json(saved);

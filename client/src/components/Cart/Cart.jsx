@@ -6,17 +6,14 @@ import Container from "react-bootstrap/esm/Container";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import PayForm from './PayForm';
-import Checkout from './MercadoPago';
 import axios from 'axios';
-import MercadoPago from './MercadoPago';
-import { Link } from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 
 const Cart = () => {
     const user = useSelector((state) => state.user) || "";
     const token = localStorage.getItem("token");
-    const [buyId,setBuyId]=useState(null);
+   
     const {
         isEmpty,
         totalUniqueItems,
@@ -38,36 +35,35 @@ const Cart = () => {
         email: user.email,
         userId: user.uid,
       }
-      useEffect(() => {
-         axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/api/compra`,  order, { headers: { "x-token": ` ${token}` } })
-        .then((resp) => {
-        //respuesta = resp.data;
-        console.log(resp);
-      setBuyId(resp.data); })
-        .catch((error) => console.log(error));
-      
-
-
-      }, [items])
       
     const handleClick = async(e)=>{
     e.preventDefault();
-    console.log(items);
+    //console.log(items);
     
-    // const url=`${import.meta.env.VITE_BACKEND_URL}/api/orders`;
-    // //ORDEN DE COMPRA (FUNCIONA)
-    // await axios
-    //     .post(url, order, { headers: { "x-token": ` ${token}` } })
-    //     .then((resp) => {
-    //     //respuesta = resp.data.name;
-    //     console.log(resp);
-    //   })
-    //     .catch((error) => console.log(error));
-    //ESTABLECER METODO PARA CHECKOUT AQUI
+    const url=`${import.meta.env.VITE_BACKEND_URL}/api/orders`;
+    //ORDEN DE COMPRA (FUNCIONA)
+    await axios
+        .post(url, order, { headers: { "x-token": ` ${token}` } })
+        .then((resp) => {
+        //respuesta = resp.data.name;
+        
+        console.log(resp);
+        axios
+          .post(`${import.meta.env.VITE_BACKEND_URL}/api/compra`,  order, { headers: { "x-token": ` ${token}` } })
+          .then((res) => {
+          respuesta = res.data;
+          console.log(res);
+          localStorage.setItem("preferenceID", respuesta);
+          return redirect("/checkout");
+        })
+          
+          .catch((error) => console.log(error));
+      })
+        .catch((error) => console.log(error));
+    // ESTABLECER METODO PARA CHECKOUT AQUI
       
     }
-    console.log(items);
+   // console.log(items);
   return (
     <>
 
@@ -118,20 +114,18 @@ const Cart = () => {
         <h2> Productos en el carrito: {totalItems} </h2>
 
 
-        <Accordion>
         
-          {items?.map((item, index) => {
-  
-  
-            return (
-              <>
-                <Accordion.Item
+        <Accordion>
+          { items.map((item, index) => {
+              return (
+                <>
+                  <Accordion.Item
                   eventKey={index}
 
                   key={item.id}
 
                   style={{ marginBottom: "20px", borderRadius: "20px" }}
-                >
+                  >
                   <Accordion.Header>
                     <h3>Nombre del Producto: {item.name} </h3><span> </span>{" "}
                   </Accordion.Header>
@@ -177,12 +171,14 @@ const Cart = () => {
                   <h2 className="text-end" >Cantidad: {item.quantity}</h2>
                 </Accordion.Item>
               </>
-            );
-          })}
+              );
+            })
+            
+          }
         </Accordion>
         <h2 className="text-end">Total: {cartTotal}</h2>
-        <MercadoPago buyId={buyId}/>
-        {/* <Button onClick={handleClick}>Confirmar Compra</Button> */}
+        
+        <Button onClick={handleClick}>Confirmar Compra</Button>
         {/* <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">
 

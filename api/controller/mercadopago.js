@@ -2,7 +2,7 @@ import axios from "axios";
 
 const compraMp = async (req, res) => {
   const order = req.body;
-  console.log(order);
+  //console.log(order);
   const url = "https://api.mercadopago.com/checkout/preferences";
   const items = order.orderItems.map((item)=>{
      return {
@@ -16,8 +16,8 @@ const compraMp = async (req, res) => {
     //notification_url: `${{}}`,
   
 })
-console.log("items are..");
-console.log(items);
+//console.log("items are..");
+//console.log(items);
   try {
     const buyOrder = {
       items:  items
@@ -51,7 +51,7 @@ console.log(items);
       headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,  },
       data: buyOrder,
     });
-    console.log(result);
+    //console.log(result);
    // res.send(result.data.init_point); //ENLACE DE FORMATO DE PAGO
     res.send(result.data.id); //ID de preferencia del formato
   } catch (error) {

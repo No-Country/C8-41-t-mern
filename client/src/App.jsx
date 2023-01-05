@@ -33,6 +33,7 @@ import ChangePass from "./components/UserPanel/ChangePass";
 
 function App() {
   const auth = useSelector((state) => state) || "";
+  const preferenceID = localStorage.getItem("preferenceID")  || "";
   let user=null;
   let isAdmin=false;
 
@@ -64,7 +65,7 @@ function App() {
           <Route path="newpassword/:id" element={<NewPassword />} />
           <Route path="cart" element={<Cart />} />
 
-          <Route path="checkout" element={<Checkout />}>
+          <Route path="checkout" element={preferenceID? <Checkout /> : <Navigate to="restringido" replace/> }>
           <Route path="result" element={user ? <CheckoutResult /> : <Navigate to="/login" replace/>} />
           </Route>
         
