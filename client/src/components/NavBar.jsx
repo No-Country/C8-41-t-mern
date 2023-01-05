@@ -9,6 +9,7 @@ import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import Buscador from "./Buscador";
 import Cart from "./Cart/Cart";
+import { CartProvider, useCart } from "react-use-cart";
 
 const NavBar = () => {
   const { startLogout } = useAuthStore();
@@ -21,7 +22,10 @@ const NavBar = () => {
   let cartItems = auth.user.cart;
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart] = useState([cartItems]);
-  // console.log(auth)
+
+  // console.log(auth.user)
+  const { items, totalItems } = useCart();
+
   
   const handleClick = () => {
     cartItems = null;
@@ -35,11 +39,15 @@ const NavBar = () => {
   useEffect(() => {
     // console.log("cart items are...")
     //console.log(auth);
-    // console.log(auth.user.cart);
-    auth.user.cart ? setCart(cartItems) : {};
+
+    //console.log(auth.user.cart);
+    //auth.user.cart ? setCart(cartItems) : {};
+    items? setCart(items) : {};
+
     //esperando para el componente carrito
     //console.log(cart);
-  }, [cartItems]);
+
+  }, [items]);
 
   //console.log(state.payload.user)
 
@@ -60,7 +68,10 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              {auth.user.name}
+             {
+              user ? <span className="text-white p-2 " ><span className="text-danger">User:</span> {auth.user.name}</span>
+                    : ''
+             } 
               <Buscador />
               <Nav.Link>
                 <Link to="/" className="link">
@@ -117,9 +128,9 @@ const NavBar = () => {
                 <button type="button" class="btn btn-warning position-relative">
                   <i className="input-icon text-white fa-solid fa-cart-shopping"></i>
 
-                  {cart.length > 0 ? (
+                  {totalItems > 0 ? (
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {cart.length}
+                      {totalItems}
                     <Link to='/cart' > <span class="visually-hidden">Cart items</span></Link> 
                     </span>
                   ) : (

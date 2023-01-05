@@ -89,7 +89,9 @@ const ManageProducts = () => {
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(false);
   const [product, setProduct] = useState();
+  
   const handleClose = () => setShow(false);
+  
   const handleShow = (e, item, title) => {
     e.preventDefault();
     setShow(true);

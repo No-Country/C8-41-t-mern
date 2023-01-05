@@ -7,13 +7,14 @@ import { Outlet, Link, redirect } from "react-router-dom";
 //import { useAuthStore } from "../../hooks/useAuthStore";
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2";
 
 
 const UserPanel = () => {
     const auth = useSelector(state => state) || ""
     const navigate = useNavigate()  
-    console.log(auth)
-    console.log(Object.keys(auth.user).length)
+    // console.log(auth)
+    // console.log(Object.keys(auth.user).length)
     //console.log(state.payload.user)
     if(Object.keys(auth.user).length===0){
        // redirect("/login");

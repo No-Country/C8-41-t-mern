@@ -17,7 +17,7 @@ function routerApi(app) {
   app.use("/api/orders", ordersRouter);
   app.use("/api/password-reset", passwordReset);
   app.use("/api/compra", compraRouter);
-  app.use("/api/cart", cartRouter);
+  app.use("/api/cart", cartRouter); 
 }
 
 export default routerApi;

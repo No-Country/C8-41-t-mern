@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { clearErrorMessage, onChecking, onEditProfile, onEditMyProfile, onLogin, onLogout, onAddToCart, onDeleteCart} from "../store/slices/auth/authSlice"
 import { redirect } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const useAuthStore = () => {
 
@@ -24,6 +25,7 @@ export const useAuthStore = () => {
             localStorage.setItem("token", data.token);
             localStorage.setItem("token-init-date", new Date().getTime()); // Podes calcular cuando caduca el token
             localStorage.setItem("user", data.user.name)
+            Swal.fire("Bienvenido/a!",`${data.user.name}`, "success")
             sessionStorage.setItem("user",data.user.name)
             console.log(data);
             dispatch(onLogin({ name: data.user.name, email: data.user.email, uid: data.user.uid, state: data.user.state, phone: data.user.phone, street: data.user.street, zip: data.user.zip, isAdmin: data.user.isAdmin, cart: data.user.cart }))

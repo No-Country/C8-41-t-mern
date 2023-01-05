@@ -12,8 +12,8 @@ const NewPassword = () => {
 
   let token = tokenURL.substring(7);
 
-  console.log(id);
-  console.log(token);
+  // console.log(id);
+  // console.log(token);
 
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState("");

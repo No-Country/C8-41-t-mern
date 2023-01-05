@@ -11,6 +11,7 @@ const Register = () => {
     street: "",
     phone: "",
     zip: "",
+    date: new Date()
   };
   const [user, setUser] = useState(regUser);
   const [alerta, setAlerta] = useState("");

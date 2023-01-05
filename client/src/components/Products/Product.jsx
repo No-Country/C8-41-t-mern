@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import ProductDetail from "../ProductDetail";
+import { CartProvider, useCart } from "react-use-cart";
 
 const Product = ({ item, userId }) => {
   // console.log(userId)
@@ -11,11 +12,14 @@ const Product = ({ item, userId }) => {
   const { startAddToCart } = useAuthStore();
 
   const dispatch = useDispatch();
-
-  const handleClick = () => {
+  const { addItem } = useCart();
+  const handleClick = (item) => {
     let quantity = 1;
-    startAddToCart(item, userId, quantity);
+   // startAddToCart(item, userId, quantity);
+   let newItem={...item, id:item._id}
+   addItem(newItem, 1);
   };
+  
 
   return (
     <>
@@ -51,7 +55,9 @@ const Product = ({ item, userId }) => {
           <div className="products__list-item__content-btn">
             <button
               className="products__list-item__content-btn__buy"
-              onClick={handleClick}
+              onClick={(e)=>{
+                handleClick(item);
+              }}
             >
               <i class="fa-solid fa-cart-shopping"></i>
             </button>
