@@ -26,7 +26,7 @@ const Cart = () => {
     cartTotal,
   } = useCart();
   //let total = 0.0;
-  if (isEmpty) return <p>Tu Carrito esta vacio</p>;
+
   let order = {
     orderItems: items,
     shippingAddress: {
@@ -48,66 +48,27 @@ const Cart = () => {
 
     setBuyId(data.data);
   };
-  // useEffect(() => {
-  //   axios
-  //     .post(`${import.meta.env.VITE_BACKEND_URL}/api/compra`, order, {
-  //       headers: { "x-token": ` ${token}` },
-  //     })
-  //     .then((resp) => {
-  //       //respuesta = resp.data;
-  //       console.log(resp);
-  //       setBuyId(resp.data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, [items]);
+
+  useEffect(() => {
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/compra`, order, {
+        headers: { "x-token": ` ${token}` },
+      })
+      .then((resp) => {
+        //respuesta = resp.data;
+        console.log(resp);
+        setBuyId(resp.data);
+      })
+      .catch((error) => console.log(error));
+  }, [items]);
 
   const handleClick = async (e) => {
     e.preventDefault();
     console.log(items);
-
-    // const url=`${import.meta.env.VITE_BACKEND_URL}/api/orders`;
-    // //ORDEN DE COMPRA (FUNCIONA)
-    // await axios
-    //     .post(url, order, { headers: { "x-token": ` ${token}` } })
-    //     .then((resp) => {
-    //     //respuesta = resp.data.name;
-    //     console.log(resp);
-    //   })
-    //     .catch((error) => console.log(error));
-    //ESTABLECER METODO PARA CHECKOUT AQUI
   };
-  console.log(items);
+  if (isEmpty) return <h1>Tu carrito esta bacio</h1>;
   return (
     <>
-      {/* <Container>
-      <h1>Cart ({totalUniqueItems})</h1>
-
-      <ul>
-        {  items.map((item) => (
-          <li key={item.id}>
-            {item.quantity} x {item.name} &mdash;
-            <button
-              onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-            >
-              -
-            </button>
-            <button
-              onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-            >
-              +
-            </button>
-            <button onClick={() => removeItem(item.id)}>&times;</button>
-          </li>
-        ))}
-      </ul>
-      <h2 className="text-end">Total: {cartTotal}</h2> */}
-      {/* <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
-          <div className="text-end">
-            <Button>Comprar</Button>
-          </div>
-        </form> */}
-      {/* <PayForm/>*/}
-
       {/* </Container> */}
       <Container className="my-3">
         <h1
@@ -180,7 +141,6 @@ const Cart = () => {
               </>
             );
           })}
-          <button onClick={compra}>Confirmar Compra</button>
         </Accordion>
         <h2 className="text-end">Total: {cartTotal}</h2>
         <MercadoPago buyId={buyId} />
