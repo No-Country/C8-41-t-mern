@@ -54,10 +54,6 @@ const Cart = () => {
     (items) => {
       console.log();
       let data = compra().then((data) => {
-        if (data.data == 0) {
-          return isEmpty;
-        }
-
         return setBuyId(data.data);
       });
     },
@@ -66,9 +62,12 @@ const Cart = () => {
 
   useEffect(
     //elimina los todos los elementos
-    (buyId) => {
+    () => {
       let boton = document.getElementsByClassName("cho-container")[0];
-      boton.innerHTML = "";
+
+      if (boton) {
+        boton.innerHTML = "";
+      }
     },
     [buyId]
   );
