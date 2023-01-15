@@ -3,7 +3,7 @@ import nodemailerSendgrid from "nodemailer-sendgrid";
 import sendgridMail from "@sendgrid/mail";
 
 const apiKey =
-  "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";
+  
 
 const SengridApiKey = process.env.SENGRID_API;
 
