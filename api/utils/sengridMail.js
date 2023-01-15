@@ -1,7 +1,7 @@
 import sgMail from "@sendgrid/mail";
 
 const URL_FRONT = process.env.URL_FRONT
-const SengridApiKey = process.env.SENGRID_API;
+const SengridApiKey = process.env.SENGRID_ApiKey;
 
 sgMail.setApiKey(SengridApiKey);
 
