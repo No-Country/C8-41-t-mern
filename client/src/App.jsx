@@ -28,6 +28,7 @@ import CheckoutResult from "./components/Checkout/CheckoutResult";
 import Checkout from "./components/Checkout/Checkout";
 import AdminProfile from "./components/AdminPanel/AdminProfile";
 import ChangePass from "./components/UserPanel/ChangePass";
+import Operation from "./components/operation/Operation";
 
 function App() {
   const auth = useSelector((state) => state) || "";
@@ -68,7 +69,7 @@ function App() {
               }
             />
           </Route>
-
+            <Route path="operation" element={<Operation/>}/>
           <Route path="detalle-busqueda" element={<DetalleBusqueda />} />
           <Route path="restringido" element={<Forbidden />} />
 

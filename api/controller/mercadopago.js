@@ -36,7 +36,8 @@ const compraMp = async (req, res) => {
           email: order.email,
         },
         back_urls: {
-          success: "http://localhost:3001/api/orders",
+          // success: `${VITE_BACKEND_URL}/api/orders`,
+          success: 'http://localhost:3000/operation',
           pending: "Su pago esta pendiente",
           failure: "El pago a fallado",
         },
