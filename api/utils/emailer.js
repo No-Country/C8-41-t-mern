@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import nodemailerSendgrid from "nodemailer-sendgrid";
 import sendgridMail from "@sendgrid/mail";
 
-const apiKey =
+const apiKey = process.env.SENGRID_API
   
 
 const SengridApiKey = process.env.SENGRID_API;
