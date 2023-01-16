@@ -27,12 +27,12 @@ const Operation = () => {
   //   }))
   
     console.log(status)
-  return (
-    <>
-        <h1>Hola</h1>
-    </>
-    
-  )
+    if(status == "approved"){
+        return <h1>Hola muchas gracias por tu compra estamos preparando tu pedido</h1>
+    }else{
+      return <h1>Entre aca</h1>
+    }
+
 }
 
 export default Operation
