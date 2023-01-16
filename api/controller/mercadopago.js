@@ -1,4 +1,5 @@
 import axios from "axios";
+import { query } from "express";
 
 const compraMp = async (req, res) => {
   const order = req.body;
@@ -36,8 +37,7 @@ const compraMp = async (req, res) => {
           email: order.email,
         },
         back_urls: {
-          // success: `${VITE_BACKEND_URL}/api/orders`,
-          success: 'http://localhost:3000/operation',
+          success: "http://localhost:3000/operation",
           pending: "Su pago esta pendiente",
           failure: "El pago a fallado",
         },
@@ -51,20 +51,6 @@ const compraMp = async (req, res) => {
         data: buyOrder,
       });
 
-      // Pedido a la ruta de orders
-      // const result2 = await axios({
-      //   method: "post",
-      //   url: url2,
-      //   headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}` },
-      //   data: {
-      //     street:order.shippingAddress.address, 
-      //     phone:order.phone, 
-      //     uid:order.userId, 
-      //     totalPrice:order.totalPrice,
-      //     cart:order.orderItems
-      //   },
-      // });
-
       console.log(result.data.id);
       // res.send(result.data.init_point); //ENLACE DE FORMATO DE PAGO
       return res.send(result.data.id); //ID de preferencia del formato
@@ -75,5 +61,24 @@ const compraMp = async (req, res) => {
     res.send("no hay items");
   }
 };
+
+// const comStatus=(req,res)=>{
+//     const status=req.query
+//         console.log(status.status);
+//      //dido a la ruta de orders
+//       nst result2 = await axios({
+//       method: "post",
+//       url: url2,
+//       headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}` },
+//       data: {
+//        street:order.shippingAddress.address, 
+//        phone:order.phone, 
+//        uid:order.userId, 
+//        totalPrice:order.totalPrice,
+//        cart:order.orderItems
+//       },
+//       ;
+//       res.redirect("http://localhost:3000/operation",{status:status})
+// }
 
 export default compraMp;
