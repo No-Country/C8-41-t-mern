@@ -22,6 +22,7 @@ const UserSchema = new Schema({
       price:Number,
       description:String,
       image:String,
+      
     },
   ],
   street: {

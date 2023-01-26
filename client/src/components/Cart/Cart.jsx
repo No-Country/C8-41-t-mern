@@ -12,13 +12,14 @@ import Checkout from "./MercadoPago";
 import axios from "axios";
 import MercadoPago from "./MercadoPago";
 import { Link } from "react-router-dom";
-
+import {useAuthStore} from"../../hooks/useAuthStore"
 const Cart = () => {
   const user = useSelector((state) => state.user) || "";
   const token = localStorage.getItem("token");
   const [buyId, setBuyId] = useState(null);
   const [showBoton, setShowboton] = useState(false);
   let refmp=useRef()
+  const {startAddToCart,startDeleteToCart,startupdateToCart}=useAuthStore()
   const {
     isEmpty,
     totalUniqueItems,
@@ -29,6 +30,7 @@ const Cart = () => {
     cartTotal,
   } = useCart();
   //let total = 0.0;
+   console.log(useCart());
   let order = {
     orderItems: items,
     shippingAddress: {
@@ -68,7 +70,9 @@ const Cart = () => {
         if (items.length>=1) {
           let remover=refmp.current.children[0]
           remover.innerHTML="" 
-        }  
+        } 
+        //por el momento
+        
     },
     [buyId]
   );
@@ -89,6 +93,15 @@ const Cart = () => {
     //ESTABLECER METODO PARA CHECKOUT AQUI
   };
   if (isEmpty) return <h1>Tu carito esta vacio</h1>;
+//Prueba para conseguir _ids falta corregir el condicional para que reconosco y devuelva el id
+  const conseguirIdProguct=(id,name)=>{
+    console.log(user);
+    let _id= user.cart.filter(item=> item.productID==id ) 
+    
+     return _id
+    
+    
+  }
   return (
     <>
       {/* <Container>
@@ -147,29 +160,49 @@ const Cart = () => {
                     <span> </span>{" "}
                   </Accordion.Header>
                   {/* <Accordion.Header></Accordion.Header> */}
+                  {/* Solucionado problema de item con quantity 0 */}
                   <div className="text-end my-3 mx-3">
                     <Button
                       variant="warning"
-                      onClick={() =>
-                        updateItemQuantity(item.id, item.quantity - 1)
-                      }
+                      onClick={(e) =>{
+                        e.preventDefault()
+                        //evita que el contador baje de 0
+                        if(item.quantity - 1 !=0){
+                        let quantity= updateItemQuantity(item.id, item.quantity - 1)
+                        //Se encargan de la actualizacion en la base de datos
+                        let _id=conseguirIdProguct(item.id,item.name)
+                        startupdateToCart(item,user.uid,item.quantity-1,_id[0]._id)
+                        }
+                      }}
                     >
                       {" "}
                       <i class="fa-solid fa-minus"></i>{" "}
                     </Button>
                     <Button
                       variant="warning"
-                      onClick={() =>
+                      onClick={(e) =>{
+                        e.preventDefault()
+                        
                         updateItemQuantity(item.id, item.quantity + 1)
-                      }
+                        let _id=conseguirIdProguct(item.id,item.name)                       
+                        startupdateToCart(item,user.uid,item.quantity+1,_id[0]._id)
+                      
+                      }}
                     >
                       {" "}
                       <i class="fa-solid fa-plus"></i>{" "}
                     </Button>
-
+                    {/* Solucionado boton de eliminar */}
                     <Button
                       variant="danger"
-                      onClick={() => removeItem(item.id)}
+                      
+                      onClick={(e) => {
+                        e.preventDefault()
+                       let producto= removeItem(item.id)
+                       let _id=conseguirIdProguct(item.id)
+                       console.log(_id[0]._id);
+                       startDeleteToCart(user.uid,_id[0]._id)
+                      }}
                     >
                       {" "}
                       <i class="fa-solid fa-trash-can"></i>{" "}

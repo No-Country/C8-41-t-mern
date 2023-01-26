@@ -140,6 +140,30 @@ export const useAuthStore = () => {
 
             }
        
+            const startupdateToCart = async (item, id, quantity,_id,token) => {
+                
+                
+                  let cart= {
+                    idProduct:_id,
+                    quantity,
+                    }
+                    
+                
+                
+                try {
+                    const  {data}  = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/cart/Uquantity/${id}`, cart, { headers: { 'x-token': ` ${token}` } }  )
+                    
+                    
+                    
+                    
+                } catch (error) {
+                   
+                    console.log(error)
+                   
+                    
+                }
+                
+            };
 
     return {
         // Propiedades
@@ -152,7 +176,8 @@ export const useAuthStore = () => {
         startEditMyProfile,
         startEditProfile,
         startAddToCart,
-        startDeleteToCart
+        startDeleteToCart,
+        startupdateToCart
         
         
     }

@@ -1,5 +1,5 @@
 
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect } from 'react';
 import  axios  from 'axios';
 const Operation = () => {
@@ -7,7 +7,8 @@ const Operation = () => {
   console.log(search);
   const status = new URLSearchParams(search).get('status');
   
-  let url = "http://localhost:3000/api/orders"; 
+  let url = "http://localhost:3000/api/orders"; //usar variable de entorno
+
   
   
   // useEffect(
@@ -27,12 +28,18 @@ const Operation = () => {
   //   }))
   
     console.log(status)
-    if(status == "approved"){
-        return <h1>Hola muchas gracias por tu compra estamos preparando tu pedido</h1>
-    }else{
-      return <h1>Entre aca</h1>
-    }
+    return(
+      <>
+      {status !== "approved" && <h1>No se aprobo la compra sentimosla molestia</h1>&&<h1>Se aprobo la compra estamos preparando su pedido muchas gracias</h1>}
+      
+      </>
+    )
+//     if(status == "approved"){
+//         return <h1>Hola muchas gracias por tu compra estamos preparando tu pedido</h1>
+//     }else{
+//       return <h1>Entre aca</h1>
+//     }
 
-}
+ }
 
 export default Operation

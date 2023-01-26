@@ -18,6 +18,8 @@ const Product = ({ item, userId }) => {
    // startAddToCart(item, userId, quantity);
    let newItem={...item, id:item._id}
    addItem(newItem, 1);
+  //agrega a la base de datos
+   startAddToCart(item,userId,quantity)
   };
   
 
