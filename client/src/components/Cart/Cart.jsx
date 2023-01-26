@@ -80,27 +80,16 @@ const Cart = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     console.log(items);
-
-    // const url=`${import.meta.env.VITE_BACKEND_URL}/api/orders`;
-    // //ORDEN DE COMPRA (FUNCIONA)
-    // await axios
-    //     .post(url, order, { headers: { "x-token": ` ${token}` } })
-    //     .then((resp) => {
-    //     //respuesta = resp.data.name;
-    //     console.log(resp);
-    //   })
-    //     .catch((error) => console.log(error));
-    //ESTABLECER METODO PARA CHECKOUT AQUI
   };
+
   if (isEmpty) return <h1>Tu carito esta vacio</h1>;
-//Prueba para conseguir _ids falta corregir el condicional para que reconosco y devuelva el id
-  const conseguirIdProguct=(id,name)=>{
+
+  //Consigue el _id de objeto dentro de cart, necesario para la eliminacion
+  const conseguirIdProguct=(id)=>{
     console.log(user);
     let _id= user.cart.filter(item=> item.productID==id ) 
     
      return _id
-    
-    
   }
   return (
     <>
@@ -160,7 +149,6 @@ const Cart = () => {
                     <span> </span>{" "}
                   </Accordion.Header>
                   {/* <Accordion.Header></Accordion.Header> */}
-                  {/* Solucionado problema de item con quantity 0 */}
                   <div className="text-end my-3 mx-3">
                     <Button
                       variant="warning"
@@ -182,7 +170,6 @@ const Cart = () => {
                       variant="warning"
                       onClick={(e) =>{
                         e.preventDefault()
-                        
                         updateItemQuantity(item.id, item.quantity + 1)
                         let _id=conseguirIdProguct(item.id,item.name)                       
                         startupdateToCart(item,user.uid,item.quantity+1,_id[0]._id)
@@ -194,13 +181,11 @@ const Cart = () => {
                     </Button>
                     {/* Solucionado boton de eliminar */}
                     <Button
-                      variant="danger"
-                      
+                      variant="danger"                      
                       onClick={(e) => {
                         e.preventDefault()
                        let producto= removeItem(item.id)
                        let _id=conseguirIdProguct(item.id)
-                       console.log(_id[0]._id);
                        startDeleteToCart(user.uid,_id[0]._id)
                       }}
                     >

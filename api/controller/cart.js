@@ -53,8 +53,6 @@ const updateCartQuantity= async (req, res) => {
     res.json(user);
   }
   
-  
-  
 };
 
 export { addCart, deleteCart, updateCartQuantity };

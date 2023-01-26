@@ -119,8 +119,7 @@ export const useAuthStore = () => {
             };
             
             const startDeleteToCart = async (id, idProduct) => {
-              console.log(idProduct)
-              console.log(id)
+              
               const token = localStorage.getItem('token')
               
             //   const item = {
