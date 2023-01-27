@@ -45,8 +45,9 @@ const getOneOrder = async (req, res) => {
 const createOrder = async (req, res) => {
   try {
     const body = req.body;
-
+    
     const {street, phone, uid, totalPrice,cart } = body;
+    console.log( street, phone, uid, totalPrice);
     let total;
     console.log(cart[0])
    
@@ -69,7 +70,7 @@ const createOrder = async (req, res) => {
       deliveryDate: new Date(), //TODO: Incrementar la fecha
       totalPrice: totalPrice,
       userId: uid,
-      orderItems:cart[0]
+      orderItems:cart
     });
     const saved = await newOrder.save();
     res.status(200).json(saved);

@@ -1,36 +1,44 @@
 
 import { Link, useLocation } from 'react-router-dom'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 import  axios  from 'axios';
+import { CartProvider, useCart } from "react-use-cart";
+
 const Operation = () => {
+  const user = useSelector((state) => state.user) || "";
+  console.log(user);
   const search = useLocation().search;
   console.log(search);
   const status = new URLSearchParams(search).get('status');
   
-  let url = "http://localhost:3000/api/orders"; //usar variable de entorno
-
+  let url = "http://localhost:3001/api/orders"; //usar variable de entorno
+  let cart=useCart()
   
-  
-  // useEffect(
-    
-  //        //Pedido a la ruta de orders
-  //      axios({
-  //     method: "post",
-  //     url: url,
-  //     headers: { Authorization: `Bearer ${process.env.ACCESS_TOKEN}` },
-  //     data: {
-  //      street:order.shippingAddress.address, 
-  //      phone:order.phone, 
-  //      uid:order.userId, 
-  //      totalPrice:order.totalPrice,
-  //      cart:order.orderItems
-  //     },
-  //   }))
+  console.log(user.street);
+  useEffect(()=>{
+        let enviar=async()=>{
+         //Pedido a la ruta de orders
+       await axios({
+      method: "post",
+      url: url,
+      headers: { Authorization: `Bearer ${import.meta.env.ACCESS_TOKEN}` },
+      data: {
+        street:user.street, 
+       phone:user.phone, 
+       uid:user.uid, 
+       totalPrice:cart.cartTotal,
+       cart:cart.items
+      },
+    })
+  }
+  enviar()
+},[])
   
     console.log(status)
     return(
       <>
-      {status !== "approved" && <h1>No se aprobo la compra sentimosla molestia</h1>&&<h1>Se aprobo la compra estamos preparando su pedido muchas gracias</h1>}
+      <h1>hola</h1>
       
       </>
     )
