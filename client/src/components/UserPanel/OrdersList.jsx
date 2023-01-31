@@ -76,8 +76,8 @@ const OrdersList = () => {
                 <td>{item.phone}</td>
                 {/* <td>{item.shippingAddress.name}</td> */}
                 <td>Calle Principal</td>
-                <td>{item.shippingAddress.city}</td>
-                <td>{item.shippingAddress.zip}</td>
+                {/* <td>{item.shippingAddress.city}</td>
+                <td>{item.shippingAddress.zip}</td> */}
                 <td>{item.totalPrice}</td>
                 <td>{item._id}</td>
 

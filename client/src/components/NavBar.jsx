@@ -23,7 +23,7 @@ const NavBar = () => {
   Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   const [cart, setCart] = useState([cartItems]);
 
-  console.log(auth)
+  // console.log(auth.user)
   const { items, totalItems } = useCart();
 
   
@@ -68,7 +68,10 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              {auth.user.name}
+             {
+              user ? <span className="text-white p-2 " ><span className="text-danger">User:</span> {auth.user.name}</span>
+                    : ''
+             } 
               <Buscador />
               <Nav.Link>
                 <Link to="/" className="link">

@@ -29,12 +29,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    startLogin({ email, password }).then(()=>{
-      const name = localStorage.getItem("user");
-      Swal.fire("Bienvenido/a!", `${name}`, "success");
-    }
+    startLogin({ email, password })
+    //         .then(() => {
+    //           const name = localStorage.getItem("user")
+    //           .then(() => { Swal.fire("Bienvenido/a!", `${name}`, "success") } )
+    // }
       
-    )
+    // )
     
 
     // if ([email, password].includes("")) {

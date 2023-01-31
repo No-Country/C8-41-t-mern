@@ -26,6 +26,8 @@ import MyProfile from "./components/UserPanel/MyProfile";
 import Cart from "./components/Cart/Cart";
 import CheckoutResult from "./components/Checkout/CheckoutResult";
 import Checkout from "./components/Checkout/Checkout";
+import AdminProfile from "./components/AdminPanel/AdminProfile";
+import ChangePass from "./components/UserPanel/ChangePass";
 
 
 
@@ -77,6 +79,7 @@ function App() {
             <Route index element={<UserProfile />} />
             <Route path="editar" element={<EditProfile />} />
             <Route path="ordenes" element={<OrdersList />} />
+            <Route path="change-password" element={<ChangePass />} />
             <Route path="mensajes" element={<h3>Mis Mensajes</h3>} />
           </Route>
         </Routes>
@@ -89,7 +92,7 @@ function App() {
               isAdmin ? <AdminPanel /> : <Navigate to="/restringido" replace />
             }
           >
-            <Route index element={<h3>Admin panel</h3>} />
+            <Route index element={<AdminProfile/>} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<ManageUsers />} />
             <Route path="crear-producto" element={<CreateProduct />} />

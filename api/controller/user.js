@@ -98,11 +98,15 @@ const passwordReset = async (req, res) => {
     const { email } = req.body;
     const user = await User.findOne({ email: email });
 
-    const message =
-      "Si el correo está registrado, se enviarán a este las instrucciones de recuperación";
     if (!user) {
-      return res.status(400).send(message);
+      return res.status(400).json({msg: 'El email no se encuentra registrado en la base de datos'})
     }
+
+    // const message =
+    //   "Si el correo está registrado, se enviarán a este las instrucciones de recuperación";
+    // if (!user) {
+    //   return res.status(400).send(message);
+    // }
 
     //Crear Token
     const token = await generateJWT(user.uid);

@@ -200,7 +200,7 @@ const UpdateProduct = ({ item }) => {
           type="submit"
           className="products__list-item__content-btn__details login__btn"
         >
-          Create Product
+          Editar Producto
         </button>
         {/* <a href="#" className="login__btn-link">
           Already got an account?

@@ -99,11 +99,11 @@ const ManageUsers = () => {
           </thead>
           <tbody>
             {users.map((user, index) => {
-              //console.log("user is...");
-              //console.log(user);
+              console.log("user is...");
+              console.log(user);
               return (
                 <tr key={index}>
-                  <td>{user._id}</td>
+                  <td>{user.uid}</td>
                   <td>{user.name}</td>
                   {/* <td>{checkStock(user.stock)}</td> */}
                   <td>{user.email}</td>
