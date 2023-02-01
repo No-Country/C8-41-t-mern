@@ -3,9 +3,10 @@ import { httpError } from "../helper/handleError.js";
 
 const getOrders = async (req, res) => {
   //Conseguir el estatus
-  console.log(req.query.status);
+  // console.log(req.query.status);
   try {
     const orders = await ordersModel.find();
+    console.log(orders)
     if (orders.length < 1) {
       res.send("No hay órdenes que mostrar.");
     } else {

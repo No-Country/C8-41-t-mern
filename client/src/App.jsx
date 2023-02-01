@@ -29,6 +29,7 @@ import Checkout from "./components/Checkout/Checkout";
 import AdminProfile from "./components/AdminPanel/AdminProfile";
 import ChangePass from "./components/UserPanel/ChangePass";
 import Operation from "./components/operation/Operation";
+import OrdersUser from "./components/AdminPanel/OrdersUser";
 
 function App() {
   const auth = useSelector((state) => state) || "";
@@ -99,6 +100,7 @@ function App() {
             <Route path="usuarios" element={<ManageUsers />} />
             <Route path="crear-producto" element={<CreateProduct />} />
             <Route path="editar-producto" element={<UpdateProduct />} />
+            <Route path="ordenes-usuarios" element={<OrdersUser />} />
           </Route>
         </Routes>
 

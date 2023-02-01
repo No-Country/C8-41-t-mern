@@ -12,7 +12,7 @@ const Operation = () => {
   console.log(search);
   const status = new URLSearchParams(search).get('status');
   
-  let url = "http://localhost:3001/api/orders"; //usar variable de entorno
+  let url = `${import.meta.env.VITE_BACKEND_URL}/api/orders`; //usar variable de entorno
   let cart=useCart()
   
   console.log(user.street);
