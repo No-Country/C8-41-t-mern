@@ -30,6 +30,7 @@ import AdminProfile from "./components/AdminPanel/AdminProfile";
 import ChangePass from "./components/UserPanel/ChangePass";
 import Operation from "./components/operation/Operation";
 import OrdersUser from "./components/AdminPanel/OrdersUser";
+import UpdateOrders from "./components/UpdateOrders";
 
 function App() {
   const auth = useSelector((state) => state) || "";
@@ -101,6 +102,7 @@ function App() {
             <Route path="crear-producto" element={<CreateProduct />} />
             <Route path="editar-producto" element={<UpdateProduct />} />
             <Route path="ordenes-usuarios" element={<OrdersUser />} />
+            <Route path="actualizar-ordenes" element={<UpdateOrders />} />
           </Route>
         </Routes>
 

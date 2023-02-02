@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {Table, Container, Button, Alert, Row, Col} from "react-bootstrap";
+import {Table, Container, Button, Alert, Row, Col, Modal} from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
+import UpdateOrders from "../UpdateOrders";
 
 
 const OrdersUser = () => {
@@ -11,6 +12,18 @@ const OrdersUser = () => {
     // console.log(auth)
   
     const [orders, setOrders] = useState([]);
+    const [show, setShow] = useState(false);
+    const [edit, setEdit] = useState(false);
+    const [product, setProduct] = useState();
+
+    const handleClose = () => setShow(false);
+  
+    const handleShow = (e, item, title) => {
+      e.preventDefault();
+      setShow(true);
+      console.log(item)
+      setProduct(item);
+    };
     
     useEffect(() => {
      
@@ -78,25 +91,23 @@ const OrdersUser = () => {
                 <td>{item.totalPrice}</td>
                 <td>{item._id}</td>
                 <td>
-                    <Button
-                      variant="success"
-                      onClick={(e) =>console.log(e)}
-                    >
-                      Editar
-                    </Button>{" "}
-                    {/* <Button variant="warning">Ed</Button>{' '} */}
-                    <Button
-                      variant="danger"
-                      
-                    >
-                      Borrar
+                <Button variant="success">
+                      <i
+                        className=" fa-solid fa-edit"
+                        onClick={(e) => {
+                          handleShow(e, item, setEdit(true));
+                        }}
+                      ></i>
                     </Button>{" "}
                   </td>
               </tr>
              
             );
+          
           })
+          
           )
+          
           :
             (
               <Container>
@@ -110,11 +121,39 @@ const OrdersUser = () => {
           </Col>
          
           </Row>
+          
           </Container>
           )
+          
           }
         </tbody>
       </Table>
+      <Button
+          className="products__list-item__content-btn__details"
+          onClick={(e) => {
+            handleShow(e, {}, setEdit(false));
+          }}
+        >
+          Añadir Producto <i className=" fa-solid fa-plus"></i>
+        </Button>
+        {/* </div> */}
+     
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          {/* <Modal.Title>Editar Usuario</Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body className="py-0 my-0">
+          {edit == true ? <UpdateOrders item={product} /> : ''}
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer> */}
+      </Modal>
     </Container>
     </>
   )
