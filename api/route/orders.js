@@ -16,8 +16,9 @@ const router = express.Router();
 router.use(express.json());
 router.get("/", getOrders);
 router.post("/", createOrder);
+router.put("/update/:id", updateOrder);
 router.get("/:id", getOneOrder);
 router.get("/misOrdenes/:id", getOrdersUser);
-router.put("/:id",isAdminRole, validateUpdate, updateOrder);
+router.put("/:id", isAdminRole, validateUpdate, updateOrder);
 
 export default router;

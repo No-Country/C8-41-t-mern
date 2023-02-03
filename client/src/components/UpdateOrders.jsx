@@ -3,21 +3,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
+const UpdateOrders = ({ item }) => {
+  console.log(item);
 
-const UpdateOrders = ({item}) => {
-    console.log(item)
-
-    const token = localStorage.getItem('token')
-    console.log(token)
+  const token = localStorage.getItem("token");
+  console.log(token);
 
   const [orders, setOrders] = useState({});
   const [alerta, setAlerta] = useState("");
 
-//   useEffect(() => {
-//      setOrders(item);
-//     // console.log("item is");
-//     // console.log(orders);
-//   }, [item]);
+  //   useEffect(() => {
+  //      setOrders(item);
+  //     // console.log("item is");
+  //     // console.log(orders);
+  //   }, [item]);
 
   const handleInput = (e) => {
     setOrders({
@@ -31,8 +30,7 @@ const UpdateOrders = ({item}) => {
 
     let respuesta;
     let { _id, orderStatus } = item;
-    console.log(_id)
-    
+    console.log(_id);
 
     if (!orderStatus) {
       setAlerta(
@@ -46,7 +44,10 @@ const UpdateOrders = ({item}) => {
 
       return;
     } else {
-      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/orders/${_id}` ,orders
+      await axios
+        .put(
+          `${import.meta.env.VITE_BACKEND_URL}/api/orders/update/${_id}`,
+          orders
         )
         .then((resp) => (respuesta = resp.data.name));
 
@@ -93,9 +94,6 @@ const UpdateOrders = ({item}) => {
             id="lastname"
           /> */}
         </div>
-        
-        
-        
 
         <button
           type="submit"
@@ -113,6 +111,6 @@ const UpdateOrders = ({item}) => {
       </form>
     </div>
   );
-}
+};
 
-export default UpdateOrders
+export default UpdateOrders;
