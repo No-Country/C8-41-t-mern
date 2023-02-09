@@ -204,7 +204,7 @@ Contributions are what make the open source community such an amazing place to b
 | <a target="_blank" href="https://github.com/SergioCalbino"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a target="_blank" href="https://www.linkedin.com/in/sergio-oscar/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | |
 | <img src="https://avatars.githubusercontent.com/u/33527556?v=4" width=80> |
 |Yohan Bello|
-| <a target="_blank" href="https://github.com/yohanolmedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a target="_blank" href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | |
+| <a target="_blank" href="https://github.com/yohanolmedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a target="_blank" href="https://www.linkedin.com/in/yohan-olmedo-bello-trejos-97a611b2/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | |
 
 ---
 
