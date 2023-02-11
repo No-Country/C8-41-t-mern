@@ -61,7 +61,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="password-reset" element={<PasswordReset />} />
           <Route path="newpassword/:id" element={<NewPassword />} />
-          <Route path="cart" element={<Cart />} />
+          
+          <Route path="cart" element={ user ? <Cart /> : <Navigate to="/login" replace />} />
 
           <Route path="checkout" element={<Checkout />}>
             <Route
@@ -102,7 +103,7 @@ function App() {
             <Route path="crear-producto" element={<CreateProduct />} />
             <Route path="editar-producto" element={<UpdateProduct />} />
             <Route path="ordenes-usuarios" element={<OrdersUser />} />
-            <Route path="actualizar-ordenes" element={<UpdateOrders />} />
+            <Route path="actualizar-ordenes/:id" element={<UpdateOrders />} />
           </Route>
         </Routes>
 

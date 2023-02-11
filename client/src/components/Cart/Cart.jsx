@@ -81,7 +81,19 @@ const Cart = () => {
     console.log(items);
   };
 
-  if (isEmpty) return <h1>Tu carito esta vacio</h1>;
+  if (isEmpty) {
+    return  <>
+    <div className="card">
+  <div className="card-header">
+    Su carrito esta vacio
+  </div>
+  <div className="card-body">
+   Esperemos que disfrute de su compra
+  </div>
+</div>
+
+    </>
+};
 
   //Consigue el _id de objeto dentro de cart, necesario para la eliminacion
   const conseguirIdProguct = (id) => {

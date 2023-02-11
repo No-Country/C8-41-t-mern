@@ -12,6 +12,7 @@ import {
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import UpdateOrders from "../UpdateOrders";
+import { formatDateOrders } from "./formatDateOrders";
 
 const OrdersUser = () => {
   const auth = useSelector((state) => state);
@@ -24,6 +25,7 @@ const OrdersUser = () => {
 
   const handleClose = () => setShow(false);
 
+  
   const handleShow = (e, item, title) => {
     e.preventDefault();
     setShow(true);
@@ -50,6 +52,16 @@ const OrdersUser = () => {
 
   return (
     <>
+    deliveryDate
+: 
+"2022-12-02T22:58:24.675Z"
+
+
+
+
+
+
+    
       <Container>
         <Table striped>
           <thead>
@@ -58,19 +70,21 @@ const OrdersUser = () => {
               <th>Cantidad</th>
               <th>Estado</th>
               <th>Telefono</th>
-              <th>Domicilio</th>
-              <th>Ciudad</th>
-              <th>Codigo postal</th>
-              <th>Precio</th>
+              {/* <th>Codigo postal</th> */}
+              <th>Precio Total</th>
               <th>Id Pedido</th>
+              <th>Id Usuario</th>
             </tr>
           </thead>
           <tbody>
             {orders.length ? (
               orders?.map((item, index) => {
+                console.log(item)
                 return (
+                  
                   <tr key={item.id}>
-                    <td>{item.orderDate}</td>
+                  
+                    <td> {formatDateOrders(item.orderDate)} </td>
                     <td>
                       {item.orderItems.map((quant) => {
                         return <td>{quant.quantity} </td>;
@@ -79,14 +93,15 @@ const OrdersUser = () => {
 
                     <td>{item.orderStatus}</td>
                     <td>{item.phone}</td>
-                    {/* <td>{item.shippingAddress.name}</td> */}
-                    <td>Calle Principal</td>
-                    <td>tartagal</td>
-                    <td>2556</td>
+                     {/* <td>{item.shippingAddress.address}</td>  */}
+                    
+                   
+                   
                     {/* <td>{item.shippingAddress.city}</td>
                 <td>{item.shippingAddress.zip}</td> */}
                     <td>{item.totalPrice}</td>
                     <td>{item._id}</td>
+                    <td>{item.userId}</td>
                     <td>
                       <Button variant="success">
                         <i

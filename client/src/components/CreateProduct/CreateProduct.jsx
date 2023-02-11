@@ -54,16 +54,12 @@ const CreateProduct = () => {
     });
       console.log("url image is "+ urlImage);
       setHidden(false);
-      console.log(producto);
+      // console.log(producto);
     } catch (error) {
       console.log(error)
       
     }
-    // console.log(file)
-    // setProducto({
-    //   ...producto,
-    //   [e.target.name]: e.target.value,
-    // });
+    
   }
   
 
