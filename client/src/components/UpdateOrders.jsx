@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const UpdateOrders = ({ item }) => {
-  console.log(item);
+  // console.log(item);
 
   const token = localStorage.getItem("token");
   console.log(token);
@@ -30,7 +30,7 @@ const UpdateOrders = ({ item }) => {
 
     let respuesta;
     let { _id, orderStatus } = item;
-    console.log(_id);
+     console.log(_id);
 
     if (!orderStatus) {
       setAlerta(
@@ -44,12 +44,14 @@ const UpdateOrders = ({ item }) => {
 
       return;
     } else {
+    console.log(orders)
       await axios
         .put(
           `${import.meta.env.VITE_BACKEND_URL}/api/orders/update/${_id}`,
           orders
         )
-        .then((resp) => (respuesta = resp.data.name));
+        .then((resp) => (respuesta = resp.data.orderStatus));
+        // .then((resp) => (console.log(resp.data.orderStatus) ));
 
       Swal.fire({
         position: "center",
@@ -74,7 +76,7 @@ const UpdateOrders = ({ item }) => {
           {/* <i className="input-icon fa-solid fa-user"></i> */}
           <input
             // {...register("name")}
-            value={orders.orderStatus}
+            // value={orders.orderStatus}
             autoComplete="on"
             placeholder="Actualizar estado de orden"
             className="login__input-field"

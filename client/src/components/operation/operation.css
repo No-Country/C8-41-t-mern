@@ -1,0 +1,24 @@
+.card {
+    display: flex;
+    width: 300px;
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 4px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .card-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  

@@ -81,7 +81,7 @@ const updateOrder = async (req, res) => {
   try {
     const { id } = req.params;
     const order = await ordersModel.findById(id);
-    console.log(order);
+    // console.log(order);
     if (!order) {
       res.send("La orden no existe.");
     } else {

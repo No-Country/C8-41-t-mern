@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import  axios  from 'axios';
+import './operation.css'
 import { CartProvider, useCart } from "react-use-cart";
 
 const Operation = () => {
@@ -38,7 +39,14 @@ const Operation = () => {
     console.log(status)
     return(
       <>
-      <h1>hola</h1>
+      <div className="card">
+  <div className="card-header">
+    Gracias por su compra
+  </div>
+  <div className="card-body">
+    Esperamos que haya disfrutado de su experiencia de compra con nosotros. ¡Gracias por confiar en nosotros!
+  </div>
+</div>
       
       </>
     )
