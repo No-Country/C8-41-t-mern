@@ -2,13 +2,11 @@ import nodemailer from "nodemailer";
 import nodemailerSendgrid from "nodemailer-sendgrid";
 import sendgridMail from "@sendgrid/mail";
 
-const apiKey =//colocar una variable.env para enviar los correos
-  
+const apiKey = process.env.SENGRID_API;
 
 const SengridApiKey = process.env.SENGRID_API;
 
 sendgridMail.setApiKey(SengridApiKey);
-
 
 // const createTrans = () => {
 //   // const transport = nodemailer.createTransport({
@@ -63,37 +61,34 @@ sendgridMail.setApiKey(SengridApiKey);
 //   // })
 // }
 
-
 function getMessage() {
-  const body = 'This is a test email using SendGrid from Node.js';
+  const body = "This is a test email using SendGrid from Node.js";
   return {
-    to: 'yohancasaol@gmai.com',
-    from: 'yohanwebdev@gmail.com',
-    subject: 'Test email with Node.js and SendGrid',
+    to: "yohancasaol@gmai.com",
+    from: "yohanwebdev@gmail.com",
+    subject: "Test email with Node.js and SendGrid",
     text: body,
     html: `<strong>${body}</strong>`,
   };
 }
 
-
 async function sendEmail() {
   try {
     await sendGridMail.send(getMessage());
-    console.log('Test email sent successfully');
+    console.log("Test email sent successfully");
   } catch (error) {
-    console.error('Error sending test email');
+    console.error("Error sending test email");
     console.error(error);
     if (error.response) {
-      console.error(error.response.body)
+      console.error(error.response.body);
     }
   }
 }
 
 (async () => {
-  console.log('Sending test email');
+  console.log("Sending test email");
   await sendEmail();
 })();
-
 
 async function sendRecoveryPasswordMail(user, link) {
   const transporter = createTrans();

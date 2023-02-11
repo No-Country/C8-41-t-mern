@@ -1,7 +1,7 @@
 import sgMail from "@sendgrid/mail";
 
-const URL_FRONT = process.env.URL_FRONT
-const SengridApiKey = process.env.SENGRID_API;
+const URL_FRONT = process.env.URL_FRONT;
+const SengridApiKey = process.env.SENGRID_ApiKey;
 
 sgMail.setApiKey(SengridApiKey);
 
@@ -47,7 +47,9 @@ function getMessagePassword(user, link, token) {
     `,
   };
 }
-{/* <a href=${link} > ${link} </a> */}
+{
+  /* <a href=${link} > ${link} </a> */
+}
 
 async function sendRecoveryPasswordMail(userPassword, link, token) {
   try {

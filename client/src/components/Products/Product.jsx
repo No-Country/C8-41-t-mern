@@ -15,11 +15,12 @@ const Product = ({ item, userId }) => {
   const { addItem } = useCart();
   const handleClick = (item) => {
     let quantity = 1;
-   // startAddToCart(item, userId, quantity);
-   let newItem={...item, id:item._id}
-   addItem(newItem, 1);
+    // startAddToCart(item, userId, quantity);
+    let newItem = { ...item, id: item._id };
+    addItem(newItem, 1);
+    //agrega a la base de datos
+    startAddToCart(item, userId, quantity);
   };
-  
 
   return (
     <>
@@ -55,7 +56,7 @@ const Product = ({ item, userId }) => {
           <div className="products__list-item__content-btn">
             <button
               className="products__list-item__content-btn__buy"
-              onClick={(e)=>{
+              onClick={(e) => {
                 handleClick(item);
               }}
             >

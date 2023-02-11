@@ -5,19 +5,22 @@ import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import PayForm from "./PayForm";
 import Checkout from "./MercadoPago";
 import axios from "axios";
 import MercadoPago from "./MercadoPago";
 import { Link } from "react-router-dom";
-
+import { useAuthStore } from "../../hooks/useAuthStore";
 const Cart = () => {
   const user = useSelector((state) => state.user) || "";
   const token = localStorage.getItem("token");
   const [buyId, setBuyId] = useState(null);
   const [showBoton, setShowboton] = useState(false);
-
+  let refmp = useRef();
+  const { startAddToCart, startDeleteToCart, startupdateToCart } =
+    useAuthStore();
   const {
     isEmpty,
     totalUniqueItems,
@@ -28,6 +31,7 @@ const Cart = () => {
     cartTotal,
   } = useCart();
   //let total = 0.0;
+  console.log(useCart());
   let order = {
     orderItems: items,
     shippingAddress: {
@@ -63,11 +67,11 @@ const Cart = () => {
   useEffect(
     //elimina los todos los elementos
     () => {
-      let boton = document.getElementsByClassName("cho-container")[0];
-
-      if (boton) {
-        boton.innerHTML = "";
+      if (items.length >= 1) {
+        let remover = refmp.current.children[0];
+        remover.innerHTML = "";
       }
+      //por el momento
     },
     [buyId]
   );
@@ -75,19 +79,17 @@ const Cart = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     console.log(items);
-
-    // const url=`${import.meta.env.VITE_BACKEND_URL}/api/orders`;
-    // //ORDEN DE COMPRA (FUNCIONA)
-    // await axios
-    //     .post(url, order, { headers: { "x-token": ` ${token}` } })
-    //     .then((resp) => {
-    //     //respuesta = resp.data.name;
-    //     console.log(resp);
-    //   })
-    //     .catch((error) => console.log(error));
-    //ESTABLECER METODO PARA CHECKOUT AQUI
   };
+
   if (isEmpty) return <h1>Tu carito esta vacio</h1>;
+
+  //Consigue el _id de objeto dentro de cart, necesario para la eliminacion
+  const conseguirIdProguct = (id) => {
+    console.log(user);
+    let _id = user.cart.filter((item) => item.productID == id);
+
+    return _id;
+  };
   return (
     <>
       {/* <Container>
@@ -149,26 +151,54 @@ const Cart = () => {
                   <div className="text-end my-3 mx-3">
                     <Button
                       variant="warning"
-                      onClick={() =>
-                        updateItemQuantity(item.id, item.quantity - 1)
-                      }
+                      onClick={(e) => {
+                        e.preventDefault();
+                        //evita que el contador baje de 0
+                        if (item.quantity - 1 != 0) {
+                          let quantity = updateItemQuantity(
+                            item.id,
+                            item.quantity - 1
+                          );
+                          //Se encargan de la actualizacion en la base de datos
+                          let _id = conseguirIdProguct(item.id, item.name);
+                          startupdateToCart(
+                            item,
+                            user.uid,
+                            item.quantity - 1,
+                            _id[0]._id
+                          );
+                        }
+                      }}
                     >
                       {" "}
                       <i class="fa-solid fa-minus"></i>{" "}
                     </Button>
                     <Button
                       variant="warning"
-                      onClick={() =>
-                        updateItemQuantity(item.id, item.quantity + 1)
-                      }
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateItemQuantity(item.id, item.quantity + 1);
+                        let _id = conseguirIdProguct(item.id, item.name);
+                        startupdateToCart(
+                          item,
+                          user.uid,
+                          item.quantity + 1,
+                          _id[0]._id
+                        );
+                      }}
                     >
                       {" "}
                       <i class="fa-solid fa-plus"></i>{" "}
                     </Button>
-
+                    {/* Solucionado boton de eliminar */}
                     <Button
                       variant="danger"
-                      onClick={() => removeItem(item.id)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        let producto = removeItem(item.id);
+                        let _id = conseguirIdProguct(item.id);
+                        startDeleteToCart(user.uid, _id[0]._id);
+                      }}
                     >
                       {" "}
                       <i class="fa-solid fa-trash-can"></i>{" "}
@@ -190,7 +220,9 @@ const Cart = () => {
           })}
         </Accordion>
         <h2 className="text-end">Total: {cartTotal}</h2>
-        <MercadoPago buyId={buyId} />
+        <div ref={refmp}>
+          <MercadoPago buyId={buyId} />
+        </div>
         {/* <Button onClick={handleClick}>Confirmar Compra</Button> */}
         {/* <form onSubmit={handleSubmit} style={{ marginTop: "50px" }}>
           <div className="text-end">

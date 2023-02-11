@@ -19,8 +19,7 @@ const deleteCart = async (req, res) => {
   const { id } = req.params;
   const { idProduct } = req.body;
 
-  console.log(idProduct);
-  console.log(req.body);
+  console.log(req.body, id);
   // const updateUser = await User.updateOne(
   //   { id },
   //   { $pull: { cart: { _id: idProduct } } }
@@ -33,21 +32,24 @@ const deleteCart = async (req, res) => {
     { $pull: { cart: { _id: idProduct } } }
   );
 
-   
   const updateUser = await User.findById({ _id: id });
 
-    console.log(updateUser);
   res.json(updateUser);
 };
 
 const updateCartQuantity = async (req, res) => {
   const { id } = req.params;
   const { idProduct, quantity } = req.body;
-  const user = await User.findById(id);
+  if (quantity > 0) {
+    const user = await User.findById(id);
+    const updateUser = (user.cart.id(idProduct).quantity = quantity);
 
-  const updateUser = (user.cart.id(idProduct).quantity = quantity);
-  user.save();
-  res.json(user.cart);
+    user.save();
+    res.json(updateUser.cart);
+  } else {
+    const user = await User.findById(id);
+    res.json(user);
+  }
 };
 
 export { addCart, deleteCart, updateCartQuantity };

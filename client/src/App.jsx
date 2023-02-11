@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useAuthStore } from "./hooks/useAuthStore";
 import { useEffect } from "react";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer";
@@ -28,17 +28,18 @@ import CheckoutResult from "./components/Checkout/CheckoutResult";
 import Checkout from "./components/Checkout/Checkout";
 import AdminProfile from "./components/AdminPanel/AdminProfile";
 import ChangePass from "./components/UserPanel/ChangePass";
-
-
+import Operation from "./components/operation/Operation";
+import OrdersUser from "./components/AdminPanel/OrdersUser";
+import UpdateOrders from "./components/UpdateOrders";
 
 function App() {
   const auth = useSelector((state) => state) || "";
-  let user=null;
-  let isAdmin=false;
+  let user = null;
+  let isAdmin = false;
 
   if (auth.status === "authenticated") {
     user = auth.user;
-   isAdmin = auth.user.isAdmin;
+    isAdmin = auth.user.isAdmin;
     Object.keys(auth.user).length > 0 ? (user = auth.user) : (user = null);
   } else {
     user = null;
@@ -46,8 +47,6 @@ function App() {
   }
 
   //user.isAdmin? isAdmin=auth.isAdmin : isAdmin=false;
-
-  
 
   //console.log(auth.user.isAdmin);
 
@@ -65,9 +64,14 @@ function App() {
           <Route path="cart" element={<Cart />} />
 
           <Route path="checkout" element={<Checkout />}>
-          <Route path="result" element={user ? <CheckoutResult /> : <Navigate to="/login" replace/>} />
+            <Route
+              path="result"
+              element={
+                user ? <CheckoutResult /> : <Navigate to="/login" replace />
+              }
+            />
           </Route>
-        
+          <Route path="operation" element={<Operation />} />
           <Route path="detalle-busqueda" element={<DetalleBusqueda />} />
           <Route path="restringido" element={<Forbidden />} />
 
@@ -92,11 +96,13 @@ function App() {
               isAdmin ? <AdminPanel /> : <Navigate to="/restringido" replace />
             }
           >
-            <Route index element={<AdminProfile/>} />
+            <Route index element={<AdminProfile />} />
             <Route path="inventario" element={<ManageProducts />} />
             <Route path="usuarios" element={<ManageUsers />} />
             <Route path="crear-producto" element={<CreateProduct />} />
             <Route path="editar-producto" element={<UpdateProduct />} />
+            <Route path="ordenes-usuarios" element={<OrdersUser />} />
+            <Route path="actualizar-ordenes" element={<UpdateOrders />} />
           </Route>
         </Routes>
 

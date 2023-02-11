@@ -21,7 +21,7 @@ const ProductDetail = () => {
     axios
       .get(url)
       .then((res) => setOneProduct(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(url));
   }, []);
 
   console.log(oneProduct);

@@ -10,6 +10,19 @@ import UpdateProduct from "../UpdateProduct";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
+  const [show, setShow] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [product, setProduct] = useState();
+
+  const handleClose = () => setShow(false);
+
+  const handleShow = (e, item, title) => {
+    e.preventDefault();
+    setShow(true);
+    // console.log(item)
+    setProduct(item);
+  };
+
   useEffect(() => {
     //console.log("url " + import.meta.env.VITE_BACKEND_URL);
     const traerProductos = () => {
@@ -23,20 +36,6 @@ const ManageProducts = () => {
     traerProductos();
     // setProducts({...products});
   }, [products]);
-
-  // useEffect(() => {
-
-  //   const traerProductos = () => {
-  //     const url = `${import.meta.env.VITE_BACKEND_URL}/api/products`;
-
-  //     axios
-  //       .get(url)
-  //       .then((res) => setProducts(res.data))
-  //       .catch((error) => console.log(error));
-  //   };
-  //   traerProductos();
-  //   // setProducts({...products});
-  // }, []);
 
   const checkStock = (stock) => {
     console.log("stock is " + stock);
@@ -86,17 +85,7 @@ const ManageProducts = () => {
       handleClose();
     });
   };
-  const [show, setShow] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const [product, setProduct] = useState();
-  
-  const handleClose = () => setShow(false);
-  
-  const handleShow = (e, item, title) => {
-    e.preventDefault();
-    setShow(true);
-    setProduct(item);
-  };
+
   return (
     <>
       <Container style={{ marginBottom: "40px" }}>

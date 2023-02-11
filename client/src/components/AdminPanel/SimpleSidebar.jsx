@@ -35,6 +35,13 @@ const SimpleSidebar = () => {
             </Link>
           </Nav.Link>
         </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2">
+            <Link to="ordenes-usuarios" className="link">
+              Mostrar ordenes
+            </Link>
+          </Nav.Link>
+        </Nav.Item>
       </Nav>
     </>
   );
