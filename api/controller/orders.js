@@ -1,6 +1,5 @@
 import ordersModel from "../models/orders.js";
 import { httpError } from "../helper/handleError.js";
-
 const getOrders = async (req, res) => {
   //Conseguir el estatus
 
